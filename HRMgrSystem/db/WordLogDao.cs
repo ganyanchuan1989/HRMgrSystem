@@ -42,6 +42,17 @@ namespace HRMgrSystem.db
         }
 
         /// <summary>
+        /// 查询员工所有日志
+        /// </summary>
+        /// <param name="EmpId"></param>
+        /// <returns></returns>
+        public List<HRWorkLog> FindByEmpId(string EmpId)
+        {
+            List<HRWorkLog> list = conn.Query<HRWorkLog>("SELECT * FROM HR_WORK_LOG where EMP_ID = @EmpId", new { EmpId = EmpId }).ToList();
+            return list;
+        }
+
+        /// <summary>
         /// 查询所有
         /// </summary>
         /// <returns></returns>

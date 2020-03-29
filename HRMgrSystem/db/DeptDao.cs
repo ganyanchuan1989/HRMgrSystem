@@ -16,11 +16,12 @@ namespace HRMgrSystem.db
         /// 新增
         /// </summary>
         /// <param name="deptVo"></param>
-        public void Add(HRDept deptVo)
+        public int Add(HRDept deptVo)
         {
-            var ret = conn.Execute(@"insert HR_DEPT(ID, NAME, HEADER_ID) values (@id, @name, @headerId)", 
-                new[] { new { id = deptVo.Id, name = deptVo.Name, headerId = deptVo.HeaderId } });
+            int ret = conn.Execute(@"insert HR_DEPT(ID, NAME ) values (@id, @name)", 
+                new[] { new { id = deptVo.Id, name = deptVo.Name } });
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
+            return ret;
         }
 
         /// <summary>
@@ -57,8 +58,8 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public int Update(HRDept deptVo)
         {
-            return conn.Execute(@"update HR_DEPT SET NAME=@name, HEADER_ID=@headerId WHERE id =@id",
-                new { id = deptVo.Id, headerId = deptVo.HeaderId }); 
+            return conn.Execute(@"update HR_DEPT SET NAME=@name WHERE id =@id",
+                new { id = deptVo.Id, name = deptVo.Name}); 
         }
 
         /// <summary>

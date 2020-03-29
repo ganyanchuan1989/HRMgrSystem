@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuItemUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemMgr = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemChangePwd = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemContract = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDept = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemDeptJob = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemDeptEmployee = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemDeptContract = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemDeptUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemDeptWorkLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemJob = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemWorkLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemJC = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,17 +45,55 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemDeptJob,
-            this.menuItemDeptEmployee,
-            this.menuItemDeptContract,
-            this.menuItemDeptUser,
+            this.menuItemUser,
+            this.menuItemEmployee,
+            this.menuItemContract,
             this.menuItemDept,
-            this.menuItemDeptWorkLog});
+            this.menuItemJob,
+            this.menuItemWorkLog,
+            this.menuItemJC});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1006, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1232, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuItemUser
+            // 
+            this.menuItemUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemMgr,
+            this.menuItemChangePwd});
+            this.menuItemUser.Name = "menuItemUser";
+            this.menuItemUser.Size = new System.Drawing.Size(81, 24);
+            this.menuItemUser.Text = "用户管理";
+            // 
+            // menuItemMgr
+            // 
+            this.menuItemMgr.Name = "menuItemMgr";
+            this.menuItemMgr.Size = new System.Drawing.Size(144, 26);
+            this.menuItemMgr.Text = "管理员";
+            this.menuItemMgr.Click += new System.EventHandler(this.管理员ToolStripMenuItem_Click);
+            // 
+            // menuItemChangePwd
+            // 
+            this.menuItemChangePwd.Name = "menuItemChangePwd";
+            this.menuItemChangePwd.Size = new System.Drawing.Size(144, 26);
+            this.menuItemChangePwd.Text = "修改密码";
+            this.menuItemChangePwd.Click += new System.EventHandler(this.menuItemChangePwd_Click);
+            // 
+            // menuItemEmployee
+            // 
+            this.menuItemEmployee.Name = "menuItemEmployee";
+            this.menuItemEmployee.Size = new System.Drawing.Size(81, 24);
+            this.menuItemEmployee.Text = "员工管理";
+            this.menuItemEmployee.Click += new System.EventHandler(this.menuItemDeptEmployee_Click);
+            // 
+            // menuItemContract
+            // 
+            this.menuItemContract.Name = "menuItemContract";
+            this.menuItemContract.Size = new System.Drawing.Size(81, 24);
+            this.menuItemContract.Text = "合同管理";
+            this.menuItemContract.Click += new System.EventHandler(this.menuItemDeptContract_Click);
             // 
             // menuItemDept
             // 
@@ -61,51 +102,38 @@
             this.menuItemDept.Text = "部门管理";
             this.menuItemDept.Click += new System.EventHandler(this.menuItemDept_Click);
             // 
-            // menuItemDeptJob
+            // menuItemJob
             // 
-            this.menuItemDeptJob.Name = "menuItemDeptJob";
-            this.menuItemDeptJob.Size = new System.Drawing.Size(81, 24);
-            this.menuItemDeptJob.Text = "职位管理";
-            this.menuItemDeptJob.Click += new System.EventHandler(this.menuItemDeptJob_Click);
+            this.menuItemJob.Name = "menuItemJob";
+            this.menuItemJob.Size = new System.Drawing.Size(81, 24);
+            this.menuItemJob.Text = "职位管理";
+            this.menuItemJob.Click += new System.EventHandler(this.menuItemDeptJob_Click);
             // 
-            // menuItemDeptEmployee
+            // menuItemWorkLog
             // 
-            this.menuItemDeptEmployee.Name = "menuItemDeptEmployee";
-            this.menuItemDeptEmployee.Size = new System.Drawing.Size(81, 24);
-            this.menuItemDeptEmployee.Text = "员工管理";
-            this.menuItemDeptEmployee.Click += new System.EventHandler(this.menuItemDeptEmployee_Click);
+            this.menuItemWorkLog.Name = "menuItemWorkLog";
+            this.menuItemWorkLog.Size = new System.Drawing.Size(81, 24);
+            this.menuItemWorkLog.Text = "工作日志";
+            this.menuItemWorkLog.Click += new System.EventHandler(this.menuItemDeptWorkLog_Click);
             // 
-            // menuItemDeptContract
+            // menuItemJC
             // 
-            this.menuItemDeptContract.Name = "menuItemDeptContract";
-            this.menuItemDeptContract.Size = new System.Drawing.Size(81, 24);
-            this.menuItemDeptContract.Text = "合同管理";
-            this.menuItemDeptContract.Click += new System.EventHandler(this.menuItemDeptContract_Click);
-            // 
-            // menuItemDeptUser
-            // 
-            this.menuItemDeptUser.Name = "menuItemDeptUser";
-            this.menuItemDeptUser.Size = new System.Drawing.Size(81, 24);
-            this.menuItemDeptUser.Text = "用户管理";
-            this.menuItemDeptUser.Click += new System.EventHandler(this.menuItemDeptUser_Click);
-            // 
-            // menuItemDeptWorkLog
-            // 
-            this.menuItemDeptWorkLog.Name = "menuItemDeptWorkLog";
-            this.menuItemDeptWorkLog.Size = new System.Drawing.Size(81, 24);
-            this.menuItemDeptWorkLog.Text = "工作日志";
-            this.menuItemDeptWorkLog.Click += new System.EventHandler(this.menuItemDeptWorkLog_Click);
+            this.menuItemJC.Name = "menuItemJC";
+            this.menuItemJC.Size = new System.Drawing.Size(81, 24);
+            this.menuItemJC.Text = "奖惩管理";
+            this.menuItemJC.Click += new System.EventHandler(this.奖惩管理ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 655);
+            this.ClientSize = new System.Drawing.Size(1232, 655);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "人力资源管理系统";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -116,12 +144,15 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menuItemDeptJob;
-        private System.Windows.Forms.ToolStripMenuItem menuItemDeptEmployee;
-        private System.Windows.Forms.ToolStripMenuItem menuItemDeptContract;
-        private System.Windows.Forms.ToolStripMenuItem menuItemDeptUser;
+        private System.Windows.Forms.ToolStripMenuItem menuItemJob;
+        private System.Windows.Forms.ToolStripMenuItem menuItemEmployee;
+        private System.Windows.Forms.ToolStripMenuItem menuItemContract;
+        private System.Windows.Forms.ToolStripMenuItem menuItemUser;
         private System.Windows.Forms.ToolStripMenuItem menuItemDept;
-        private System.Windows.Forms.ToolStripMenuItem menuItemDeptWorkLog;
+        private System.Windows.Forms.ToolStripMenuItem menuItemWorkLog;
+        private System.Windows.Forms.ToolStripMenuItem menuItemJC;
+        private System.Windows.Forms.ToolStripMenuItem menuItemMgr;
+        private System.Windows.Forms.ToolStripMenuItem menuItemChangePwd;
     }
 }
 

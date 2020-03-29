@@ -32,7 +32,8 @@ namespace HRMgrSystem.utils
         /// <returns></returns>
         public static string GGuidPrefix(string prefix)
         {
-            return prefix + GUID(16);
+            string str = prefix + GUID(20 - prefix.Length);
+            return str.ToUpper();
         }
     }
 }

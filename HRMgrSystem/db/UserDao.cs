@@ -12,21 +12,22 @@ namespace HRMgrSystem.db
     public class UserDao : BaseDao
     {
         // 新增
-        public void Add(HRUser vo)
+        public int Add(HRUser vo)
         {
             var ret = conn.Execute(@"insert HR_USER(ID,EMP_ID,PASSWORD,USERNAME,STATUS,USER_TYPE) values (@Id,@EmpId,@Password,@Username,@Status,@UserType)",
                 new[] { new { Id = vo.Id,
                     EmpId = vo.EmpId,
                     Password = vo.Password,
-                    Username = vo.Username,
+                    Username = vo.UserName,
                     Status = vo.Status,
                     UserType = vo.UserType} });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
+            return ret;
         }
 
         /// <summary>
-        /// 查询部门根据ID
+        /// 查询根据ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -42,6 +43,22 @@ namespace HRMgrSystem.db
                 return list[0];
             }
         }
+
+        public HRUser Login(string UserName, string Pwd)
+        {
+            List<HRUser> list = conn.Query<HRUser>("SELECT * FROM HR_USER where UserName=@Username and Password=@Password",
+                new { Username = UserName, Password = Pwd }).ToList();
+
+            if (EmptyUtils.EmptyList(list))
+            {
+                return null;
+            }
+            else
+            {
+                return list[0];
+            }
+        }
+
 
         /// <summary>
         /// 查询所有
@@ -64,7 +81,7 @@ namespace HRMgrSystem.db
                     Id = vo.Id,
                     EmpId = vo.EmpId,
                     Password = vo.Password,
-                    Username = vo.Username,
+                    Username = vo.UserName,
                     Status = vo.Status,
                     UserType = vo.UserType,
                 });

@@ -15,10 +15,10 @@ namespace HRMgrSystem.db
         /// <summary>
         /// 新增
         /// </summary>
-        public void Add(HREmployee vo)
+        public int Add(HREmployee vo)
         {
-            var ret = conn.Execute(@"insert HR_EMPLOYEE(ID,NAME,SEX,ID_CARD,EDUCATION,SCHOOL,GRADUATION_TIME,PROFESSION,TELEPHONE,NATION,POLITICAL_STATUS,ADDRESS,BANK_CARD,EMAIL,DEPT_ID,CONTRACT_ID,JOB_ID,STATUS) " +
-                   "values (@Id,@Name,@Sex,@IdCard,@Education,@School,@GraduationTime,@Profession,@Telephone,@Nation,@PoliticalStatus,@Address,@BankCard,@Email,@DeptId,@ContractId,@JobId,@Status)",
+            var ret = conn.Execute(@"insert HR_EMPLOYEE(ID,NAME,SEX,ID_CARD,EDUCATION,SCHOOL,GRADUATION_TIME,PROFESSION,TELEPHONE,POLITICAL_STATUS,ADDRESS,BANK_CARD,EMAIL,DEPT_ID,JOB_ID,STATUS) " +
+                   "values (@Id,@Name,@Sex,@IdCard,@Education,@School,@GraduationTime,@Profession,@Telephone,@PoliticalStatus,@Address,@BankCard,@Email,@DeptId,@JobId,@Status)",
                 new[] { new { Id = vo.Id,
                     Name = vo.Name,
                     Sex = vo.Sex,
@@ -28,17 +28,17 @@ namespace HRMgrSystem.db
                     GraduationTime = vo.GraduationTime,
                     Profession = vo.Profession,
                     Telephone = vo.Telephone,
-                    Nation = vo.Nation,
                     PoliticalStatus = vo.PoliticalStatus,
                     Address = vo.Address,
                     BankCard = vo.BankCard,
                     Email = vo.Email,
                     DeptId = vo.DeptId,
-                    ContractId = vo.ContractId,
                     JobId = vo.JobId,
                     Status = vo.Status } });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
+
+            return ret;
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public int Update(HREmployee vo)
         {
-            return conn.Execute(@"update HR_EMPLOYEE SET NAME=@Name,SEX=@Sex,ID_CARD=@IdCard,EDUCATION=@Education,SCHOOL=@School,GRADUATION_TIME=@GraduationTime,PROFESSION=@Profession,TELEPHONE=@Telephone,NATION=@Nation,POLITICAL_STATUS=@PoliticalStatus,ADDRESS=@Address,BANK_CARD=@BankCard,EMAIL=@Email,DEPT_ID=@DeptId,CONTRACT_ID=@ContractId,JOB_ID=@JobId,STATUS=@Status WHERE id = @Id",
+            return conn.Execute(@"update HR_EMPLOYEE SET NAME=@Name,SEX=@Sex,ID_CARD=@IdCard,EDUCATION=@Education,SCHOOL=@School,GRADUATION_TIME=@GraduationTime,PROFESSION=@Profession,TELEPHONE=@Telephone,POLITICAL_STATUS=@PoliticalStatus,ADDRESS=@Address,BANK_CARD=@BankCard,EMAIL=@Email,DEPT_ID=@DeptId,JOB_ID=@JobId,STATUS=@Status WHERE id = @Id",
                 new
                 {
                     Id = vo.Id,
@@ -86,13 +86,11 @@ namespace HRMgrSystem.db
                     GraduationTime = vo.GraduationTime,
                     Profession = vo.Profession,
                     Telephone = vo.Telephone,
-                    Nation = vo.Nation,
                     PoliticalStatus = vo.PoliticalStatus,
                     Address = vo.Address,
                     BankCard = vo.BankCard,
                     Email = vo.Email,
                     DeptId = vo.DeptId,
-                    ContractId = vo.ContractId,
                     JobId = vo.JobId,
                     Status = vo.Status
                 });

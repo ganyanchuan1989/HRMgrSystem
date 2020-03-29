@@ -30,27 +30,24 @@ namespace HRMgrSystem.vo
             // HRDept
             mappings.RegisterType<HRDept>()
                     .MapProperty(x => x.Id).ToColumn("ID")
-                    .MapProperty(x => x.Name).ToColumn("NAME")
-                    .MapProperty(x => x.HeaderId).ToColumn("HEADER_ID");
+                    .MapProperty(x => x.Name).ToColumn("NAME");
 
             // HREmployee
             mappings.RegisterType<HREmployee>()
                     .MapProperty(x => x.Id).ToColumn("ID")
                     .MapProperty(x => x.Name).ToColumn("NAME")
                     .MapProperty(x => x.Sex).ToColumn("SEX")
-                    .MapProperty(x => x.Id_card).ToColumn("ID_CARD")
+                    .MapProperty(x => x.IdCard).ToColumn("ID_CARD")
                     .MapProperty(x => x.Education).ToColumn("EDUCATION")
                     .MapProperty(x => x.School).ToColumn("SCHOOL")
                     .MapProperty(x => x.GraduationTime).ToColumn("GRADUATION_TIME")
                     .MapProperty(x => x.Profession).ToColumn("PROFESSION")
                     .MapProperty(x => x.Telephone).ToColumn("TELEPHONE")
-                    .MapProperty(x => x.Nation).ToColumn("NATION")
                     .MapProperty(x => x.PoliticalStatus).ToColumn("POLITICAL_STATUS")
                     .MapProperty(x => x.Address).ToColumn("ADDRESS")
                     .MapProperty(x => x.BankCard).ToColumn("BANK_CARD")
                     .MapProperty(x => x.Email).ToColumn("EMAIL")
                     .MapProperty(x => x.DeptId).ToColumn("DEPT_ID")
-                    .MapProperty(x => x.ContractId).ToColumn("CONTRACT_ID")
                     .MapProperty(x => x.JobId).ToColumn("JOB_ID")
                     .MapProperty(x => x.Status).ToColumn("STATUS");
 
@@ -69,12 +66,13 @@ namespace HRMgrSystem.vo
                    .MapProperty(x => x.Title).ToColumn("TITLE")
                    .MapProperty(x => x.Content).ToColumn("CONTENT")
                    .MapProperty(x => x.Amount).ToColumn("AMOUNT");
+
             // HR_USER 
             mappings.RegisterType<HRUser>()
                    .MapProperty(x => x.Id).ToColumn("ID")
                    .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
                    .MapProperty(x => x.Password).ToColumn("PASSWORD")
-                   .MapProperty(x => x.Username).ToColumn("USERNAME")
+                   .MapProperty(x => x.UserName).ToColumn("USERNAME")
                    .MapProperty(x => x.Status).ToColumn("STATUS")
                    .MapProperty(x => x.UserType).ToColumn("USER_TYPE");
 

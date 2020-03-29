@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRMgrSystem.vo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,7 +16,11 @@ namespace HRMgrSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            // 数据库字段映射
+            VoMapping.Mapping();
+            // Application.Run(new MainForm());
+            Application.Run(new LoginForm());
         }
     }
 }

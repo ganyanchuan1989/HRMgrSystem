@@ -11,5 +11,10 @@ namespace HRMgrSystem.db
     public class BaseDao 
     {
         protected MySqlConnection conn = DBUtils.GetConnection();
+
+        public MySqlConnection getConn()
+        {
+            return conn;
+        }
     }
 }

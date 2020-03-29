@@ -12,7 +12,7 @@ namespace HRMgrSystem.db
     public class ContractDao : BaseDao
     {
         // 新增
-        public void Add(HRContract vo)
+        public int Add(HRContract vo)
         {
             var ret = conn.Execute(@"insert HR_CONTRACT(ID,EMPLOYEE_ID,START_TIME,END_TIME,PROBATION,PROBATION_SALARY,CORRECTED_SALARY,CONTRACT_TYPE) " +
                     "values (@Id,@EmployeeId,@StartTime,@EndTime,@Probation,@ProbationSalary,@CorrectedSalary,@ContractType)",
@@ -26,6 +26,8 @@ namespace HRMgrSystem.db
                     ContractType = vo.ContractType } });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
+
+            return ret;
         }
 
         /// <summary>

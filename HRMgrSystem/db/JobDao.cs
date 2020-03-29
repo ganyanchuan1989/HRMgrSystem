@@ -12,14 +12,16 @@ namespace HRMgrSystem.db
     public class JobDao : BaseDao
     {
         // 新增
-        public void Add(HRJob vo)
+        public int Add(HRJob vo)
         {
-            var ret = conn.Execute(@"insert HR_JOB(ID,NAME,CREATE_TIME) values (@Id,@Name,@CreateTime)" ,
+            int ret = conn.Execute(@"insert HR_JOB(ID,NAME,CREATE_TIME) values (@Id,@Name,@CreateTime)" ,
                 new[] { new { Id = vo.Id,
                     Name = vo.Name,
                     CreateTime = vo.CreateTime} });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
+
+            return ret;
         }
 
         /// <summary>

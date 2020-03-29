@@ -11,7 +11,6 @@ namespace HRMgrSystem.vo
     public class HRDept : BaseVo
     {
         public string Name { get; set; }
-        public string HeaderId { get; set; }
     }
 
     

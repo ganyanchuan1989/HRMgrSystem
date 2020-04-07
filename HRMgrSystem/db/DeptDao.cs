@@ -51,6 +51,19 @@ namespace HRMgrSystem.db
             return conn.Query<HRDept>("SELECT * FROM HR_DEPT").ToList();
         }
 
+        public List<HRDept> FindByWhere(HRDept vo)
+        {
+            string whereSql = "";
+            if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and id=@Id";
+            if (!EmptyUtils.EmptyStr(vo.Name)) whereSql += " and Name=@Name";
+
+            return conn.Query<HRDept>("SELECT * FROM HR_DEPT where 1=1 " + whereSql, new {
+                Id = vo.Id,
+                Name = vo.Name,
+            }).ToList();
+        }
+
+
         /// <summary>
         /// 更新
         /// </summary>

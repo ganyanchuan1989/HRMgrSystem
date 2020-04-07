@@ -95,8 +95,15 @@ namespace HRMgrSystem
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            List<HRDept> tempList = list.Where(x => x.Id == txtId.Text).ToList();
-            grid.DataSource = tempList;
+            HRDept dept = new HRDept();
+            dept.Id = txtId.Text;
+            dept.Name = txtName.Text;
+            
+            list = dao.FindByWhere(dept);
+
+            var bindingList = new BindingList<HRDept>(list);
+            listSource = new BindingSource(bindingList, null);
+            grid.DataSource = listSource;
         }
 
         private void grid_CellClick(object sender, DataGridViewCellEventArgs e)

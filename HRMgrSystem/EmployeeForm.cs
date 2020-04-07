@@ -73,7 +73,37 @@ namespace HRMgrSystem
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            string jobId = cboJob.SelectedValue != null ? cboJob.SelectedValue.ToString() : null;
+            string deptId = cboDept.SelectedValue != null ? cboDept.SelectedValue.ToString() : null;
 
+            list = dao.FindByWhere(txtId.Text, txtName.Text, jobId, deptId);
+            // datagrid
+            var bindingList = new BindingList<HREmployee>(list);
+            listSource = new BindingSource(bindingList, null);
+            grid.DataSource = listSource;
+        }
+
+        private HREmployee InputToVo()
+        {
+            HREmployee emp = new HREmployee();
+            emp.Address = txtAddress.Text;
+            emp.BankCard = txtBank.Text;
+            emp.Email = txtEmail.Text;
+            emp.Id = txtId.Text;
+            emp.IdCard = txtIdCard.Text;
+            emp.Name = txtName.Text;
+            emp.Telephone = txtPhone.Text;
+            emp.Profession = txtPro.Text;
+            emp.School = txtSchool.Text;
+            emp.Education = !EmptyUtils.EmptyObj(cboEdu.SelectedValue) ? int.Parse(cboEdu.SelectedValue.ToString()) : -1;
+            emp.Sex = !EmptyUtils.EmptyObj(cboSex.SelectedValue)? int.Parse(cboSex.SelectedValue.ToString()): -1;
+            emp.Status = !EmptyUtils.EmptyObj(cboStatus.SelectedValue) ? int.Parse(cboStatus.SelectedValue.ToString()) : -1;
+            emp.DeptId = cboDept.SelectedValue.ToString();
+            emp.JobId = cboJob.SelectedValue.ToString();
+            emp.GraduationTime = dtTime.Text;
+            emp.PoliticalStatus = int.Parse(cboPo.SelectedValue.ToString());
+
+            return emp;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -144,6 +174,8 @@ namespace HRMgrSystem
         {
             btnSaveEnbaled(false);
             cleanData();
+
+            initData();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -251,6 +283,33 @@ namespace HRMgrSystem
             cboJob.SelectedValue = emp.JobId;
             dtTime.Text = emp.GraduationTime;
             cboPo.SelectedValue = emp.PoliticalStatus;
+        }
+
+        private void grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataRow[] rows = null;
+
+            if (grid.Columns[e.ColumnIndex].Name.Equals("gridStatus"))
+            {
+                rows = DataDictionaryUtils.GetStatusDict().Select("value=" + e.Value);
+            }
+            else if (grid.Columns[e.ColumnIndex].Name.Equals("gridSex"))
+            {
+                rows = DataDictionaryUtils.GetSexDict().Select("value=" + e.Value);
+            }
+            else if (grid.Columns[e.ColumnIndex].Name.Equals("gridPoliticalStatus"))
+            {
+                rows = DataDictionaryUtils.GetPoliticalStatusDict().Select("value=" + e.Value);
+            }
+            else if (grid.Columns[e.ColumnIndex].Name.Equals("gridEducation"))
+            {
+                rows = DataDictionaryUtils.GetEducationDict().Select("value=" + e.Value);
+            }
+            
+            if (rows != null)
+            {
+                e.Value = rows[0]["label"];
+            }
         }
     }
 }

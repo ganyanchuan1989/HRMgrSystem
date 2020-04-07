@@ -25,7 +25,8 @@ namespace HRMgrSystem.vo
                     .MapProperty(x => x.Probation).ToColumn("PROBATION")
                     .MapProperty(x => x.ProbationSalary).ToColumn("PROBATION_SALARY")
                     .MapProperty(x => x.CorrectedSalary).ToColumn("CORRECTED_SALARY")
-                    .MapProperty(x => x.ContractType).ToColumn("CONTRACT_TYPE");
+                    .MapProperty(x => x.ContractType).ToColumn("CONTRACT_TYPE")
+                    .MapProperty(x => x.EmpName).ToColumn("EMP_NAME"); // 
 
             // HRDept
             mappings.RegisterType<HRDept>()
@@ -49,7 +50,9 @@ namespace HRMgrSystem.vo
                     .MapProperty(x => x.Email).ToColumn("EMAIL")
                     .MapProperty(x => x.DeptId).ToColumn("DEPT_ID")
                     .MapProperty(x => x.JobId).ToColumn("JOB_ID")
-                    .MapProperty(x => x.Status).ToColumn("STATUS");
+                    .MapProperty(x => x.Status).ToColumn("STATUS")
+                    .MapProperty(x => x.DeptName).ToColumn("DEPT_NAME")
+                    .MapProperty(x => x.JobName).ToColumn("JOB_NAME");
 
 
             // HRJob
@@ -74,9 +77,10 @@ namespace HRMgrSystem.vo
                    .MapProperty(x => x.Password).ToColumn("PASSWORD")
                    .MapProperty(x => x.UserName).ToColumn("USERNAME")
                    .MapProperty(x => x.Status).ToColumn("STATUS")
-                   .MapProperty(x => x.UserType).ToColumn("USER_TYPE");
+                   .MapProperty(x => x.UserType).ToColumn("USER_TYPE")
+                   .MapProperty(x => x.EmpName).ToColumn("EMP_NAME");
 
-
+            
             // HR_WORK_LOG 
             mappings.RegisterType<HRWorkLog>()
                    .MapProperty(x => x.Id).ToColumn("ID")

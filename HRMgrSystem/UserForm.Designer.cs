@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboUserType = new System.Windows.Forms.ComboBox();
+            this.txtPwd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.cboEmp = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -43,12 +49,13 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.cboStatus = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPwd = new System.Windows.Forms.TextBox();
-            this.cboUserType = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.gridID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.girdUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridPwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridUserType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +83,60 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "用户信息";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(572, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 15);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "用户类型";
+            // 
+            // cboUserType
+            // 
+            this.cboUserType.DisplayMember = "label";
+            this.cboUserType.FormattingEnabled = true;
+            this.cboUserType.Location = new System.Drawing.Point(644, 70);
+            this.cboUserType.Name = "cboUserType";
+            this.cboUserType.Size = new System.Drawing.Size(167, 23);
+            this.cboUserType.TabIndex = 6;
+            this.cboUserType.ValueMember = "value";
+            // 
+            // txtPwd
+            // 
+            this.txtPwd.Location = new System.Drawing.Point(644, 25);
+            this.txtPwd.Name = "txtPwd";
+            this.txtPwd.Size = new System.Drawing.Size(167, 25);
+            this.txtPwd.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(602, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 15);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "密码";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(311, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "用户状态";
+            // 
+            // cboStatus
+            // 
+            this.cboStatus.DisplayMember = "label";
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(384, 70);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(164, 23);
+            this.cboStatus.TabIndex = 5;
+            this.cboStatus.ValueMember = "value";
             // 
             // txtUserName
             // 
@@ -207,6 +268,14 @@
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridID,
+            this.gridEmpName,
+            this.girdUserName,
+            this.gridPwd,
+            this.gridStatus,
+            this.gridUserType,
+            this.gridEmpId});
             this.grid.Location = new System.Drawing.Point(27, 223);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
@@ -214,60 +283,57 @@
             this.grid.Size = new System.Drawing.Size(847, 293);
             this.grid.TabIndex = 15;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
+            this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
             // 
-            // cboStatus
+            // gridID
             // 
-            this.cboStatus.DisplayMember = "label";
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(384, 70);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(164, 23);
-            this.cboStatus.TabIndex = 5;
-            this.cboStatus.ValueMember = "value";
+            this.gridID.DataPropertyName = "id";
+            this.gridID.HeaderText = "ID";
+            this.gridID.Name = "gridID";
+            this.gridID.ReadOnly = true;
             // 
-            // label4
+            // gridEmpName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(311, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "用户状态";
+            this.gridEmpName.DataPropertyName = "empName";
+            this.gridEmpName.HeaderText = "关联员工";
+            this.gridEmpName.Name = "gridEmpName";
+            this.gridEmpName.ReadOnly = true;
             // 
-            // label5
+            // girdUserName
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(602, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 15);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "密码";
+            this.girdUserName.DataPropertyName = "UserName";
+            this.girdUserName.HeaderText = "用户名";
+            this.girdUserName.Name = "girdUserName";
+            this.girdUserName.ReadOnly = true;
             // 
-            // txtPwd
+            // gridPwd
             // 
-            this.txtPwd.Location = new System.Drawing.Point(644, 25);
-            this.txtPwd.Name = "txtPwd";
-            this.txtPwd.Size = new System.Drawing.Size(167, 25);
-            this.txtPwd.TabIndex = 3;
+            this.gridPwd.DataPropertyName = "password";
+            this.gridPwd.HeaderText = "密码";
+            this.gridPwd.Name = "gridPwd";
+            this.gridPwd.ReadOnly = true;
             // 
-            // cboUserType
+            // gridStatus
             // 
-            this.cboUserType.DisplayMember = "label";
-            this.cboUserType.FormattingEnabled = true;
-            this.cboUserType.Location = new System.Drawing.Point(644, 70);
-            this.cboUserType.Name = "cboUserType";
-            this.cboUserType.Size = new System.Drawing.Size(167, 23);
-            this.cboUserType.TabIndex = 6;
-            this.cboUserType.ValueMember = "value";
+            this.gridStatus.DataPropertyName = "status";
+            this.gridStatus.HeaderText = "状态";
+            this.gridStatus.Name = "gridStatus";
+            this.gridStatus.ReadOnly = true;
             // 
-            // label6
+            // gridUserType
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(572, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 15);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "用户类型";
+            this.gridUserType.DataPropertyName = "userType";
+            this.gridUserType.HeaderText = "员工类型";
+            this.gridUserType.Name = "gridUserType";
+            this.gridUserType.ReadOnly = true;
+            // 
+            // gridEmpId
+            // 
+            this.gridEmpId.DataPropertyName = "empId";
+            this.gridEmpId.HeaderText = "员工ID";
+            this.gridEmpId.Name = "gridEmpId";
+            this.gridEmpId.ReadOnly = true;
+            this.gridEmpId.Visible = false;
             // 
             // UserForm
             // 
@@ -313,5 +379,12 @@
         private System.Windows.Forms.ComboBox cboUserType;
         private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn girdUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridPwd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridUserType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpId;
     }
 }

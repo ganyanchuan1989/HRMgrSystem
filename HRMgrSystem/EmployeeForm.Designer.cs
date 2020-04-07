@@ -69,6 +69,24 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.gridId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridIdCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridDept = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEducation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridGraduationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridProfession = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridSchool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridPoliticalStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridAaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridBankCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridJobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridDeptId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -432,6 +450,25 @@
             this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridId,
+            this.gridName,
+            this.gridIdCard,
+            this.gridDept,
+            this.gridJob,
+            this.gridEducation,
+            this.gridGraduationTime,
+            this.gridProfession,
+            this.gridSchool,
+            this.gridTelephone,
+            this.gridSex,
+            this.gridPoliticalStatus,
+            this.gridAaddress,
+            this.gridBankCard,
+            this.gridEmail,
+            this.gridStatus,
+            this.gridJobId,
+            this.gridDeptId});
             this.grid.Location = new System.Drawing.Point(13, 332);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
@@ -439,6 +476,7 @@
             this.grid.Size = new System.Drawing.Size(1132, 254);
             this.grid.TabIndex = 1;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
+            this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
             // 
             // btnFind
             // 
@@ -481,6 +519,132 @@
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // gridId
+            // 
+            this.gridId.DataPropertyName = "Id";
+            this.gridId.HeaderText = "ID";
+            this.gridId.Name = "gridId";
+            this.gridId.ReadOnly = true;
+            // 
+            // gridName
+            // 
+            this.gridName.DataPropertyName = "Name";
+            this.gridName.HeaderText = "姓名";
+            this.gridName.Name = "gridName";
+            this.gridName.ReadOnly = true;
+            // 
+            // gridIdCard
+            // 
+            this.gridIdCard.DataPropertyName = "IdCard";
+            this.gridIdCard.HeaderText = "身份证";
+            this.gridIdCard.Name = "gridIdCard";
+            this.gridIdCard.ReadOnly = true;
+            // 
+            // gridDept
+            // 
+            this.gridDept.DataPropertyName = "deptName";
+            this.gridDept.HeaderText = "部门";
+            this.gridDept.Name = "gridDept";
+            this.gridDept.ReadOnly = true;
+            // 
+            // gridJob
+            // 
+            this.gridJob.DataPropertyName = "jobName";
+            this.gridJob.HeaderText = "职位";
+            this.gridJob.Name = "gridJob";
+            this.gridJob.ReadOnly = true;
+            // 
+            // gridEducation
+            // 
+            this.gridEducation.DataPropertyName = "Education";
+            this.gridEducation.HeaderText = "学历";
+            this.gridEducation.Name = "gridEducation";
+            this.gridEducation.ReadOnly = true;
+            // 
+            // gridGraduationTime
+            // 
+            this.gridGraduationTime.DataPropertyName = "GraduationTime";
+            this.gridGraduationTime.HeaderText = "毕业时间";
+            this.gridGraduationTime.Name = "gridGraduationTime";
+            this.gridGraduationTime.ReadOnly = true;
+            // 
+            // gridProfession
+            // 
+            this.gridProfession.DataPropertyName = "Profession";
+            this.gridProfession.HeaderText = "专业";
+            this.gridProfession.Name = "gridProfession";
+            this.gridProfession.ReadOnly = true;
+            // 
+            // gridSchool
+            // 
+            this.gridSchool.DataPropertyName = "School";
+            this.gridSchool.HeaderText = "学校";
+            this.gridSchool.Name = "gridSchool";
+            this.gridSchool.ReadOnly = true;
+            // 
+            // gridTelephone
+            // 
+            this.gridTelephone.DataPropertyName = "Telephone";
+            this.gridTelephone.HeaderText = "电话";
+            this.gridTelephone.Name = "gridTelephone";
+            this.gridTelephone.ReadOnly = true;
+            // 
+            // gridSex
+            // 
+            this.gridSex.DataPropertyName = "Sex";
+            this.gridSex.HeaderText = "性别";
+            this.gridSex.Name = "gridSex";
+            this.gridSex.ReadOnly = true;
+            // 
+            // gridPoliticalStatus
+            // 
+            this.gridPoliticalStatus.DataPropertyName = "PoliticalStatus";
+            this.gridPoliticalStatus.HeaderText = "政治面貌";
+            this.gridPoliticalStatus.Name = "gridPoliticalStatus";
+            this.gridPoliticalStatus.ReadOnly = true;
+            // 
+            // gridAaddress
+            // 
+            this.gridAaddress.DataPropertyName = "Address";
+            this.gridAaddress.HeaderText = "联系地址";
+            this.gridAaddress.Name = "gridAaddress";
+            this.gridAaddress.ReadOnly = true;
+            // 
+            // gridBankCard
+            // 
+            this.gridBankCard.DataPropertyName = "BankCard";
+            this.gridBankCard.HeaderText = "银行卡";
+            this.gridBankCard.Name = "gridBankCard";
+            this.gridBankCard.ReadOnly = true;
+            // 
+            // gridEmail
+            // 
+            this.gridEmail.DataPropertyName = "email";
+            this.gridEmail.HeaderText = "电子邮箱";
+            this.gridEmail.Name = "gridEmail";
+            this.gridEmail.ReadOnly = true;
+            // 
+            // gridStatus
+            // 
+            this.gridStatus.DataPropertyName = "Status";
+            this.gridStatus.HeaderText = "状态";
+            this.gridStatus.Name = "gridStatus";
+            this.gridStatus.ReadOnly = true;
+            // 
+            // gridJobId
+            // 
+            this.gridJobId.HeaderText = "职位ID";
+            this.gridJobId.Name = "gridJobId";
+            this.gridJobId.ReadOnly = true;
+            this.gridJobId.Visible = false;
+            // 
+            // gridDeptId
+            // 
+            this.gridDeptId.HeaderText = "部门ID";
+            this.gridDeptId.Name = "gridDeptId";
+            this.gridDeptId.ReadOnly = true;
+            this.gridDeptId.Visible = false;
             // 
             // EmployeeForm
             // 
@@ -546,5 +710,23 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DateTimePicker dtTime;
         private System.Windows.Forms.ComboBox cboEdu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridIdCard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridDept;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridJob;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEducation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridGraduationTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridProfession;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridSchool;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridTelephone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridSex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridPoliticalStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridAaddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridBankCard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridJobId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridDeptId;
     }
 }

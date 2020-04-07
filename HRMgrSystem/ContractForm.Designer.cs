@@ -53,14 +53,15 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Probation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProbationSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CorrectedSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridProbation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridProbationSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridCorrectedSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -313,14 +314,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.EmployeeId,
-            this.StartTime,
-            this.EndTime,
-            this.Probation,
-            this.ProbationSalary,
-            this.CorrectedSalary,
-            this.ContractType});
+            this.gridID,
+            this.gridEmpName,
+            this.gridStartTime,
+            this.gridEndTime,
+            this.gridProbation,
+            this.gridProbationSalary,
+            this.gridCorrectedSalary,
+            this.gridContractType,
+            this.gridEmpID});
             this.grid.Location = new System.Drawing.Point(13, 272);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
@@ -328,62 +330,71 @@
             this.grid.Size = new System.Drawing.Size(845, 196);
             this.grid.TabIndex = 21;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
+            this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
             // 
-            // ID
+            // gridID
             // 
-            this.ID.DataPropertyName = "id";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.gridID.DataPropertyName = "id";
+            this.gridID.HeaderText = "ID";
+            this.gridID.Name = "gridID";
+            this.gridID.ReadOnly = true;
             // 
-            // EmployeeId
+            // gridEmpName
             // 
-            this.EmployeeId.DataPropertyName = "EmployeeId";
-            this.EmployeeId.HeaderText = "员工ID";
-            this.EmployeeId.Name = "EmployeeId";
-            this.EmployeeId.ReadOnly = true;
+            this.gridEmpName.DataPropertyName = "EmpName";
+            this.gridEmpName.HeaderText = "员工";
+            this.gridEmpName.Name = "gridEmpName";
+            this.gridEmpName.ReadOnly = true;
             // 
-            // StartTime
+            // gridStartTime
             // 
-            this.StartTime.DataPropertyName = "StartTime";
-            this.StartTime.HeaderText = "开始时间";
-            this.StartTime.Name = "StartTime";
-            this.StartTime.ReadOnly = true;
+            this.gridStartTime.DataPropertyName = "StartTime";
+            this.gridStartTime.HeaderText = "开始时间";
+            this.gridStartTime.Name = "gridStartTime";
+            this.gridStartTime.ReadOnly = true;
             // 
-            // EndTime
+            // gridEndTime
             // 
-            this.EndTime.DataPropertyName = "EndTime";
-            this.EndTime.HeaderText = "结束时间";
-            this.EndTime.Name = "EndTime";
-            this.EndTime.ReadOnly = true;
+            this.gridEndTime.DataPropertyName = "EndTime";
+            this.gridEndTime.HeaderText = "结束时间";
+            this.gridEndTime.Name = "gridEndTime";
+            this.gridEndTime.ReadOnly = true;
             // 
-            // Probation
+            // gridProbation
             // 
-            this.Probation.DataPropertyName = "Probation";
-            this.Probation.HeaderText = "试用期";
-            this.Probation.Name = "Probation";
-            this.Probation.ReadOnly = true;
+            this.gridProbation.DataPropertyName = "Probation";
+            this.gridProbation.HeaderText = "试用期";
+            this.gridProbation.Name = "gridProbation";
+            this.gridProbation.ReadOnly = true;
             // 
-            // ProbationSalary
+            // gridProbationSalary
             // 
-            this.ProbationSalary.DataPropertyName = "ProbationSalary";
-            this.ProbationSalary.HeaderText = "试用期工资";
-            this.ProbationSalary.Name = "ProbationSalary";
-            this.ProbationSalary.ReadOnly = true;
+            this.gridProbationSalary.DataPropertyName = "ProbationSalary";
+            this.gridProbationSalary.HeaderText = "试用期工资";
+            this.gridProbationSalary.Name = "gridProbationSalary";
+            this.gridProbationSalary.ReadOnly = true;
             // 
-            // CorrectedSalary
+            // gridCorrectedSalary
             // 
-            this.CorrectedSalary.DataPropertyName = "CorrectedSalary";
-            this.CorrectedSalary.HeaderText = "转正后工资";
-            this.CorrectedSalary.Name = "CorrectedSalary";
-            this.CorrectedSalary.ReadOnly = true;
+            this.gridCorrectedSalary.DataPropertyName = "CorrectedSalary";
+            this.gridCorrectedSalary.HeaderText = "转正后工资";
+            this.gridCorrectedSalary.Name = "gridCorrectedSalary";
+            this.gridCorrectedSalary.ReadOnly = true;
             // 
-            // ContractType
+            // gridContractType
             // 
-            this.ContractType.DataPropertyName = "ContractType";
-            this.ContractType.HeaderText = "合同类型";
-            this.ContractType.Name = "ContractType";
-            this.ContractType.ReadOnly = true;
+            this.gridContractType.DataPropertyName = "ContractType";
+            this.gridContractType.HeaderText = "合同类型";
+            this.gridContractType.Name = "gridContractType";
+            this.gridContractType.ReadOnly = true;
+            // 
+            // gridEmpID
+            // 
+            this.gridEmpID.DataPropertyName = "EmployeeId";
+            this.gridEmpID.HeaderText = "员工ID";
+            this.gridEmpID.Name = "gridEmpID";
+            this.gridEmpID.ReadOnly = true;
+            this.gridEmpID.Visible = false;
             // 
             // ContractForm
             // 
@@ -433,13 +444,14 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.DataGridView grid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Probation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProbationSalary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CorrectedSalary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContractType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridStartTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEndTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridProbation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridProbationSalary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridCorrectedSalary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridContractType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpID;
     }
 }

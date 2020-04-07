@@ -54,6 +54,37 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public List<HRContract> FindAll()
         {
+            return conn.Query<HRContract>("SELECT c.*, e.name as EMP_NAME FROM HR_CONTRACT c ,HR_EMPLOYEE e where c.EMPLOYEE_ID = e.ID").ToList();
+        }
+
+        public List<HRContract> FindByWhere(HRContract vo)
+        {
+            string whereSql = "";
+            if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and c.id=@Id";
+            if (!float.IsNaN(vo.CorrectedSalary)) whereSql += " and c.Corrected_Salary=@CorrectedSalary";
+            if (vo.Probation > 0) whereSql += " and c.Probation=@Probation";
+            if (!float.IsNaN(vo.ProbationSalary)) whereSql += " and c.Probation_Salary=@ProbationSalary";
+            if (!EmptyUtils.EmptyStr(vo.EmployeeId)) whereSql += " and c.Employee_Id=@EmployeeId";
+            if (vo.ContractType > 0) whereSql += " and c.Contract_Type=@ContractType";
+
+            string sql = "SELECT c.*, e.name as EMP_NAME FROM HR_CONTRACT c ,HR_EMPLOYEE e where c.EMPLOYEE_ID = e.ID";
+
+            return conn.Query<HRContract>(sql + whereSql, new {
+                Id = vo.Id,
+                CorrectedSalary = vo.CorrectedSalary,
+                Probation = vo.Probation,
+                ProbationSalary = vo.ProbationSalary,
+                EmployeeId = vo.EmployeeId,
+                ContractType = vo.ContractType
+            }).ToList();
+        }
+
+        /// <summary>
+        /// 查询所有
+        /// </summary>
+        /// <returns></returns>
+        public List<HRContract> FindAll2()
+        {
             return conn.Query<HRContract>("SELECT * FROM HR_CONTRACT").ToList();
         }
 

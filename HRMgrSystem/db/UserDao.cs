@@ -66,8 +66,38 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public List<HRUser> FindAll()
         {
-            return conn.Query<HRUser>("SELECT * FROM HR_USER").ToList();
+            return conn.Query<HRUser>("SELECT u.*, e.name as EMP_NAME FROM HR_USER u , HR_EMPLOYEE e where u.emp_id = e.id;").ToList();
         }
+
+        /// <summary>
+        /// 按条件查询
+        /// </summary>
+        /// <returns></returns>
+        public List<HRUser> FindByWhere(HRUser vo)
+        {
+            //o.Id = txtId.Text;
+            //vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
+            //vo.UserName = txtUserName.Text;
+            //vo.Password = txtPwd.Text;
+            //vo.Status = !EmptyUtils.EmptyObj(cboStatus.SelectedValue) ? int.Parse(cboStatus.SelectedValue.ToString()) : -1;
+            //vo.UserType = !EmptyUtils.EmptyObj(cb
+
+            string whereSql = "";
+            if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and u.id=@Id";
+            if (!EmptyUtils.EmptyStr(vo.EmpId)) whereSql += " and u.Emp_Id=@EmpId";
+            if (!EmptyUtils.EmptyStr(vo.UserName)) whereSql += " and u.UserName=@UserName";
+            if (vo.Status > 0) whereSql += " and u.User_Type=@UserType";
+
+            string baseSql = @"SELECT u.*, e.name as EMP_NAME FROM HR_USER u , HR_EMPLOYEE e where u.emp_id = e.id";
+
+            return conn.Query<HRUser>(baseSql + whereSql, new {
+                Id = vo.Id,
+                EmpId = vo.EmpId,
+                UserName = vo.UserName,
+                UserType = vo.UserType,
+            }).ToList();  
+        }
+        
 
         /// <summary>
         /// 更新

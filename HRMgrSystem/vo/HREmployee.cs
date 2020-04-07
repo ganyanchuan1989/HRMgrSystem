@@ -23,5 +23,8 @@ namespace HRMgrSystem.vo
         public string DeptId { get; set; }
         public string JobId { get; set; }
         public int Status { get; set; }
+
+        public string DeptName { get; set; }
+        public string JobName { get; set; }
     }
 }

@@ -82,14 +82,7 @@ namespace HRMgrSystem
 
             if (opration == OP_ADD)
             {
-                HRUser vo = new HRUser();
-                vo.Id = txtId.Text;
-                vo.EmpId = cboEmp.SelectedValue.ToString();
-                vo.UserName = txtUserName.Text;
-                vo.Password = txtPwd.Text;
-                vo.Status = int.Parse(cboStatus.SelectedValue.ToString());
-                vo.UserType = int.Parse(cboUserType.SelectedValue.ToString());
-
+                HRUser vo = InputToVo();
                 int ret = dao.Add(vo);
 
                 if (ret > 0)
@@ -101,12 +94,11 @@ namespace HRMgrSystem
             else if (opration == OP_UPDATE)
             {
                 HRUser vo = list[grid.CurrentRow.Index];
-                vo.Id = txtId.Text;
-                vo.EmpId = cboEmp.SelectedValue.ToString();
+                vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
                 vo.UserName = txtUserName.Text;
                 vo.Password = txtPwd.Text;
-                vo.Status = int.Parse(cboStatus.SelectedValue.ToString());
-                vo.UserType = int.Parse(cboUserType.SelectedValue.ToString());
+                vo.Status = !EmptyUtils.EmptyObj(cboStatus.SelectedValue) ? int.Parse(cboStatus.SelectedValue.ToString()) : -1;
+                vo.UserType = !EmptyUtils.EmptyObj(cboUserType.SelectedValue) ? int.Parse(cboUserType.SelectedValue.ToString()) : -1;
 
                 dao.Update(vo);
                 grid.Refresh();
@@ -131,11 +123,36 @@ namespace HRMgrSystem
         {
             btnSaveEnbaled(false);
             cleanData();
+
+            initData();
+        }
+
+        /// <summary>
+        /// 输入转VO
+        /// </summary>
+        /// <returns></returns>
+        private HRUser InputToVo()
+        {
+            HRUser vo = new HRUser();
+            vo.Id = txtId.Text;
+            vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
+            vo.UserName = txtUserName.Text;
+            vo.Password = txtPwd.Text;
+            vo.Status = !EmptyUtils.EmptyObj(cboStatus.SelectedValue) ? int.Parse(cboStatus.SelectedValue.ToString()) : -1;
+            vo.UserType = !EmptyUtils.EmptyObj(cboUserType.SelectedValue) ? int.Parse(cboUserType.SelectedValue.ToString()): -1;
+
+            return vo;
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            HRUser vo = InputToVo();
+            list = dao.FindByWhere(vo);
 
+            var bindingList = new BindingList<HRUser>(list);
+            listSource = new BindingSource(bindingList, null);
+            grid.DataSource = null;
+            grid.DataSource = listSource;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -192,6 +209,26 @@ namespace HRMgrSystem
             cboEmp.SelectedValue = vo.EmpId;
             cboStatus.SelectedValue = vo.Status;
             cboUserType.SelectedValue = vo.UserType;
+        }
+
+        private void grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataRow[] rows = null;
+
+            if (grid.Columns[e.ColumnIndex].Name.Equals("gridUserType"))
+            {
+                rows = DataDictionaryUtils.GetUserTypeDict().Select("value=" + e.Value);
+            }
+
+            if (grid.Columns[e.ColumnIndex].Name.Equals("gridStatus"))
+            {
+                rows = DataDictionaryUtils.GetUserStatusDict().Select("value=" + e.Value);
+            }
+
+            if (rows != null)
+            {
+                e.Value = rows[0]["label"];
+            }
         }
     }
 }

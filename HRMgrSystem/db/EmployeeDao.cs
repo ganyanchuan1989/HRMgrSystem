@@ -63,9 +63,53 @@ namespace HRMgrSystem.db
         /// 查询所有部门
         /// </summary>
         /// <returns></returns>
-        public List<HREmployee> FindAll()
+        public List<HREmployee> FindAll2()
         {
             return conn.Query<HREmployee>("SELECT * FROM HR_EMPLOYEE").ToList();
+        }
+
+        /// <summary>
+        /// 查询所有部门
+        /// </summary>
+        /// <returns></returns>
+        public List<HREmployee> FindAll()
+        {
+            return conn.Query<HREmployee>("SELECT e.*, d.name as DEPT_NAME, j.name as JOB_NAME  FROM HR_EMPLOYEE e, HR_DEPT d, HR_JOB j where e.Dept_Id = d.ID and e.JOB_ID = j.ID").ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<HREmployee> FindByWhere(string id, string name, string jobId, string deptId)
+        {
+            string whereSql = "";
+            if(!EmptyUtils.EmptyStr(id))
+            {
+                whereSql += " and e.id=@Id";
+            }
+
+            if (!EmptyUtils.EmptyStr(name))
+            {
+                whereSql += " and e.name=@name";
+            }
+
+            if (!EmptyUtils.EmptyStr(jobId))
+            {
+                whereSql += " and e.job_id=@jobId";
+            }
+
+            if (!EmptyUtils.EmptyStr(deptId))
+            {
+                whereSql += " and e.dept_id=@deptId";
+            }
+
+            string baseSql = @"SELECT e.*, d.name as DEPT_NAME, j.name as JOB_NAME  FROM HR_EMPLOYEE e, HR_DEPT d, HR_JOB j where e.Dept_Id = d.ID and e.JOB_ID = j.ID" ;
+            if(whereSql != "")
+            {
+                baseSql = string.Format("{0}{1}", baseSql, whereSql);
+            }
+            return conn.Query<HREmployee>(baseSql, new { Id = id, name = name, jobId= jobId, deptId=deptId }).ToList();
         }
 
         /// <summary>

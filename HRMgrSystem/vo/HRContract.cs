@@ -16,5 +16,7 @@ namespace HRMgrSystem.vo
         public float CorrectedSalary { get; set; }
         public int ContractType { get; set; }
 
+        public string EmpName { get; set; }
+
     }
 }

@@ -15,5 +15,28 @@ namespace HRMgrSystem.utils
                 return false;
             return true;
         }
+
+        public static bool EmptyStr(string str)
+        {
+            if (str == null || str == "")
+                return true;
+
+            return false;
+        }
+
+        public static bool EmptyObj(object obj)
+        {
+            return obj == null;
+        }
+
+        public static bool EmptyFloat(float num)
+        {
+            if (float.IsNaN(num))
+                return true;
+
+            return false;
+        }
+
+        
     }
 }

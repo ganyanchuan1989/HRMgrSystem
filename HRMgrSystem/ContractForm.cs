@@ -44,10 +44,12 @@ namespace HRMgrSystem
 
             var bindingList = new BindingList<HRContract>(list);
             listSource = new BindingSource(bindingList, null);
+            grid.DataSource = null;
             grid.DataSource = listSource;
             // 合同类型
             cboContractType.DataSource = DataDictionaryUtils.GetContractTypeDict();
-            
+            cboContractType.SelectedIndex = -1;
+
             cboEmp.DataSource = empList;
             cboEmp.SelectedIndex = -1;
         }
@@ -75,15 +77,7 @@ namespace HRMgrSystem
             if (opration == OP_ADD)
             {
 
-                HRContract vo = new HRContract();
-                vo.Id = txtId.Text;
-                vo.CorrectedSalary = float.Parse(txtCorSalary.Text);
-                vo.Probation = int.Parse(txtProbation.Text);
-                vo.ProbationSalary = float.Parse(txtProSalary.Text);
-                vo.EmployeeId = cboEmp.SelectedValue.ToString();
-                vo.ContractType = int.Parse(cboContractType.SelectedValue.ToString());
-                vo.EndTime = dtETime.Text;
-                vo.StartTime = dtSTime.Text;
+                HRContract vo = InputToVo();
 
                 int ret = dao.Add(vo);
 
@@ -96,11 +90,12 @@ namespace HRMgrSystem
             else if (opration == OP_UPDATE)
             {
                 HRContract vo = list[grid.CurrentRow.Index];
-                vo.CorrectedSalary = float.Parse(txtCorSalary.Text);
-                vo.Probation = int.Parse(txtProbation.Text);
-                vo.ProbationSalary = float.Parse(txtProSalary.Text);
-                vo.EmployeeId = cboEmp.SelectedValue.ToString();
-                vo.ContractType = int.Parse(cboContractType.SelectedValue.ToString());
+                vo.CorrectedSalary = !EmptyUtils.EmptyStr(txtCorSalary.Text) ? float.Parse(txtCorSalary.Text) : float.NaN;
+                vo.Probation = !EmptyUtils.EmptyStr(txtProbation.Text) ? int.Parse(txtProbation.Text) : -1;
+                vo.ProbationSalary = !EmptyUtils.EmptyStr(txtProSalary.Text) ? float.Parse(txtProSalary.Text) : float.NaN;
+                vo.EmployeeId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
+                vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
+                vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
                 vo.EndTime = dtETime.Text;
                 vo.StartTime = dtSTime.Text;
 
@@ -120,11 +115,40 @@ namespace HRMgrSystem
         {
             btnSaveEnbaled(false);
             cleanData();
+
+            initData();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
 
+            HRContract vo = InputToVo();
+
+            list = dao.FindByWhere(vo);
+            var bindingList = new BindingList<HRContract>(list);
+            listSource = new BindingSource(bindingList, null);
+            grid.DataSource = null;
+            grid.DataSource = listSource;
+        }
+
+        /// <summary>
+        /// 输入转VO
+        /// </summary>
+        /// <returns></returns>
+        private HRContract InputToVo()
+        {
+            HRContract vo = new HRContract();
+            vo.Id = txtId.Text;
+            vo.CorrectedSalary = !EmptyUtils.EmptyStr(txtCorSalary.Text) ? float.Parse(txtCorSalary.Text) : float.NaN;
+            vo.Probation = !EmptyUtils.EmptyStr(txtProbation.Text) ? int.Parse(txtProbation.Text) : -1;
+            vo.ProbationSalary = !EmptyUtils.EmptyStr(txtProSalary.Text) ? float.Parse(txtProSalary.Text) : float.NaN;
+            vo.EmployeeId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
+            vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
+            vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
+            vo.EndTime = dtETime.Text;
+            vo.StartTime = dtSTime.Text;
+
+            return vo;
         }
 
         private void btnSaveEnbaled(bool enabled)
@@ -174,6 +198,16 @@ namespace HRMgrSystem
         private void ContractForm_Load(object sender, EventArgs e)
         {
             grid.ClearSelection();
+            // grid.Columns["gridEmpID"].Visible = false;
+            grid.AutoGenerateColumns = false;
+            this.gridID.DisplayIndex = 0;
+            this.gridEmpName.DisplayIndex = 1;
+            this.gridStartTime.DisplayIndex = 2;
+            this.gridEndTime.DisplayIndex = 3;
+            this.gridProbation.DisplayIndex = 4;
+            this.gridProbationSalary.DisplayIndex = 5;
+            this.gridCorrectedSalary.DisplayIndex = 6;
+            this.gridContractType.DisplayIndex = 7;
         }
 
         private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -196,6 +230,21 @@ namespace HRMgrSystem
             dtSTime.Text = vo.StartTime;
             
             
+        }
+
+        private void grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataRow[] rows = null;
+
+            if (grid.Columns[e.ColumnIndex].Name.Equals("gridContractType"))
+            {
+                rows = DataDictionaryUtils.GetContractTypeDict().Select("value=" + e.Value);
+            }
+
+            if (rows != null)
+            {
+                e.Value = rows[0]["label"];
+            }
         }
     }
 }

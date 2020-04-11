@@ -8,7 +8,7 @@ namespace HRMgrSystem.vo
 {
     public class HRContract : BaseVo
     {
-        public string EmployeeId { get; set; }
+        public string EmpId { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public int Probation { get; set; }

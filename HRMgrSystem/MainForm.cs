@@ -50,9 +50,11 @@ namespace HRMgrSystem
             if (GlobalInfo.loginUser.UserType == 1)
             {
                 menuItemWorkLog.Visible = true;
+                GlobalInfo.IS_ADMIN = false;
             }
             else if (GlobalInfo.loginUser.UserType == 2)
             {
+                GlobalInfo.IS_ADMIN = true;
                 menuItemContract.Visible = true;
                 menuItemEmployee.Visible = true;
                 menuItemDept.Visible = true;
@@ -193,7 +195,7 @@ namespace HRMgrSystem
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Environment.Exit(0);
         }
     }
 }

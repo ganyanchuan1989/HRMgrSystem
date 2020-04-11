@@ -43,7 +43,7 @@ namespace HRMgrSystem
         {
             empList = empDao.FindAll();
 
-            if (GlobalInfo.loginUser == null)
+            if (GlobalInfo.IS_ADMIN)
                 list = dao.FindAll();
             else
                 list = dao.FindEmpId(GlobalInfo.loginUser.EmpId);
@@ -56,7 +56,7 @@ namespace HRMgrSystem
 
             cboEmp.DataSource = empList;
 
-            if (GlobalInfo.loginUser == null)
+            if (GlobalInfo.IS_ADMIN)
                 cboEmp.SelectedIndex = -1;
             else
             {
@@ -70,7 +70,7 @@ namespace HRMgrSystem
             txtId.Text = "";
             txtContent.Text = "";
 
-            if(GlobalInfo.loginUser == null)
+            if(GlobalInfo.IS_ADMIN)
             {
                 cboEmp.Text = "";
                 cboEmp.SelectedIndex = -1;
@@ -183,6 +183,7 @@ namespace HRMgrSystem
             HRWorkLog vo = new HRWorkLog();
             vo.Id = txtId.Text;
             vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
+            vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
             vo.LogDate = dtTime.Text;
             vo.Content = txtContent.Text;
 

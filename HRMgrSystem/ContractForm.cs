@@ -93,7 +93,7 @@ namespace HRMgrSystem
                 vo.CorrectedSalary = !EmptyUtils.EmptyStr(txtCorSalary.Text) ? float.Parse(txtCorSalary.Text) : float.NaN;
                 vo.Probation = !EmptyUtils.EmptyStr(txtProbation.Text) ? int.Parse(txtProbation.Text) : -1;
                 vo.ProbationSalary = !EmptyUtils.EmptyStr(txtProSalary.Text) ? float.Parse(txtProSalary.Text) : float.NaN;
-                vo.EmployeeId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
+                vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
                 vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
                 vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
                 vo.EndTime = dtETime.Text;
@@ -141,7 +141,7 @@ namespace HRMgrSystem
             vo.CorrectedSalary = !EmptyUtils.EmptyStr(txtCorSalary.Text) ? float.Parse(txtCorSalary.Text) : float.NaN;
             vo.Probation = !EmptyUtils.EmptyStr(txtProbation.Text) ? int.Parse(txtProbation.Text) : -1;
             vo.ProbationSalary = !EmptyUtils.EmptyStr(txtProSalary.Text) ? float.Parse(txtProSalary.Text) : float.NaN;
-            vo.EmployeeId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
+            vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
             vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
             vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
             vo.EndTime = dtETime.Text;
@@ -222,7 +222,7 @@ namespace HRMgrSystem
             txtProbation.Text = vo.Probation.ToString();
             txtProSalary.Text = vo.ProbationSalary.ToString();
 
-            cboEmp.SelectedValue = vo.EmployeeId;
+            cboEmp.SelectedValue = vo.EmpId;
             cboContractType.SelectedValue = vo.ContractType;
 
             dtETime.Text = vo.EndTime;

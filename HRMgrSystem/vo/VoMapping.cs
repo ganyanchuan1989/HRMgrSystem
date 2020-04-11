@@ -19,7 +19,7 @@ namespace HRMgrSystem.vo
             // HR_CONTRACT
             mappings.RegisterType<HRContract>()
                     .MapProperty(x => x.Id).ToColumn("ID")
-                    .MapProperty(x => x.EmployeeId).ToColumn("EMPLOYEE_ID")
+                    .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
                     .MapProperty(x => x.StartTime).ToColumn("START_TIME")
                     .MapProperty(x => x.EndTime).ToColumn("END_TIME")
                     .MapProperty(x => x.Probation).ToColumn("PROBATION")

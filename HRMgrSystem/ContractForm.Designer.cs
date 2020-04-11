@@ -390,7 +390,7 @@
             // 
             // gridEmpID
             // 
-            this.gridEmpID.DataPropertyName = "EmployeeId";
+            this.gridEmpID.DataPropertyName = "EmpId";
             this.gridEmpID.HeaderText = "员工ID";
             this.gridEmpID.Name = "gridEmpID";
             this.gridEmpID.ReadOnly = true;

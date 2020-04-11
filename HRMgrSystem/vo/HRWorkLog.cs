@@ -12,5 +12,7 @@ namespace HRMgrSystem.vo
         public string LogDate { get; set; }
         public string Content { get; set; }
 
+
+        public string EmpName { get; set; }
     }
 }

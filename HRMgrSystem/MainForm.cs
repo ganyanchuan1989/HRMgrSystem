@@ -28,7 +28,7 @@ namespace HRMgrSystem
         {
             InitializeComponent();
             // 菜单权限
-            // userAuthority();
+            userAuthority();
             // DBUtils.Test();
         }
 

@@ -94,10 +94,7 @@ namespace HRMgrSystem.db
                 whereSql += " and e.name=@name";
             }
 
-            if (!EmptyUtils.EmptyStr(jobId))
-            {
-                whereSql += " and e.job_id=@jobId";
-            }
+            
 
             if (!EmptyUtils.EmptyStr(deptId))
             {
@@ -113,10 +110,59 @@ namespace HRMgrSystem.db
         }
 
         /// <summary>
-        /// 更新
+        /// 
         /// </summary>
         /// <returns></returns>
-        public int Update(HREmployee vo)
+        public List<HREmployee> FindByWhere(HREmployee vo)
+        {
+            string whereSql = "";
+            if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and e.id=@Id";
+            if (!EmptyUtils.EmptyStr(vo.Name)) whereSql += " and e.Name=@Name";
+            if (vo.Sex > -1) whereSql += " and e.Sex=@Sex";
+            if (!EmptyUtils.EmptyStr(vo.IdCard)) whereSql += " and e.ID_CARD=@IdCard";
+            if (vo.Education > -1) whereSql += " and e.Education=@Education";
+            if (!EmptyUtils.EmptyStr(vo.School)) whereSql += " and e.School=@School";
+            if (!EmptyUtils.EmptyStr(vo.Profession)) whereSql += " and e.Profession=@Profession";
+            if (!EmptyUtils.EmptyStr(vo.Telephone)) whereSql += " and e.Telephone=@Telephone";
+            if (vo.PoliticalStatus > -1) whereSql += " and e.POLITICAL_STATUS=@PoliticalStatus";
+            if (!EmptyUtils.EmptyStr(vo.Address)) whereSql += " and e.Address=@Address";
+            if (!EmptyUtils.EmptyStr(vo.BankCard)) whereSql += " and e.BANK_CARD=@BankCard";
+            if (!EmptyUtils.EmptyStr(vo.Email)) whereSql += " and e.Email=@Email";
+            if (!EmptyUtils.EmptyStr(vo.JobId)) { whereSql += " and e.job_id=@jobId"; }
+            if (!EmptyUtils.EmptyStr(vo.DeptId)) { whereSql += " and e.dept_id=@deptId"; }
+            if (vo.Status > -1) whereSql += " and e.Status=@Status";
+
+            string baseSql = @"SELECT e.*, d.name as DEPT_NAME, j.name as JOB_NAME  FROM HR_EMPLOYEE e, HR_DEPT d, HR_JOB j where e.Dept_Id = d.ID and e.JOB_ID = j.ID";
+            if (whereSql != "")
+            {
+                baseSql = string.Format("{0}{1}", baseSql, whereSql);
+            }
+            return conn.Query<HREmployee>(baseSql, new {
+                Id = vo.Id,
+                Name = vo.Name,
+                Sex = vo.Sex,
+                IdCard = vo.IdCard,
+                Education = vo.Education,
+                School = vo.School,
+                GraduationTime = vo.GraduationTime,
+                Profession = vo.Profession,
+                Telephone = vo.Telephone,
+                PoliticalStatus = vo.PoliticalStatus,
+                Address = vo.Address,
+                BankCard = vo.BankCard,
+                Email = vo.Email,
+                DeptId = vo.DeptId,
+                JobId = vo.JobId,
+                Status = vo.Status
+            }).ToList();
+
+        }
+
+            /// <summary>
+            /// 更新
+            /// </summary>
+            /// <returns></returns>
+            public int Update(HREmployee vo)
         {
             return conn.Execute(@"update HR_EMPLOYEE SET NAME=@Name,SEX=@Sex,ID_CARD=@IdCard,EDUCATION=@Education,SCHOOL=@School,GRADUATION_TIME=@GraduationTime,PROFESSION=@Profession,TELEPHONE=@Telephone,POLITICAL_STATUS=@PoliticalStatus,ADDRESS=@Address,BANK_CARD=@BankCard,EMAIL=@Email,DEPT_ID=@DeptId,JOB_ID=@JobId,STATUS=@Status WHERE id = @Id",
                 new

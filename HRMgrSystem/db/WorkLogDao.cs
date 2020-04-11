@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace HRMgrSystem.db
 {
-    public class WordLogDao : BaseDao
+    public class WorkLogDao : BaseDao
     {
         // 新增
-        public void Add(HRWorkLog vo)
+        public int Add(HRWorkLog vo)
         {
             var ret = conn.Execute(@"insert HR_WORK_LOG(ID,EMP_ID,LOG_DATE,CONTENT) values (@Id,@EmpId,@LogDate,@Content)",
                 new[] { new { Id = vo.Id,
@@ -21,6 +21,7 @@ namespace HRMgrSystem.db
                     Content = vo.Content} });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
+            return ret;
         }
 
         /// <summary>
@@ -46,11 +47,16 @@ namespace HRMgrSystem.db
         /// </summary>
         /// <param name="EmpId"></param>
         /// <returns></returns>
-        public List<HRWorkLog> FindByEmpId(string EmpId)
+        /// <summary>
+        public List<HRWorkLog> FindEmpId(string empId)
         {
-            List<HRWorkLog> list = conn.Query<HRWorkLog>("SELECT * FROM HR_WORK_LOG where EMP_ID = @EmpId", new { EmpId = EmpId }).ToList();
-            return list;
+            return conn.Query<HRWorkLog>("SELECT w.*, e.name as EMP_NAME FROM HR_WORK_LOG w, HR_EMPLOYEE e where w.EMP_ID = e.Id and w.Emp_Id=@EmpId", 
+                new
+                {
+                    EmpId = empId
+                }).ToList();
         }
+
 
         /// <summary>
         /// 查询所有
@@ -58,7 +64,7 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public List<HRWorkLog> FindAll()
         {
-            return conn.Query<HRWorkLog>("SELECT * FROM HR_WORK_LOG").ToList();
+            return conn.Query<HRWorkLog>("SELECT w.*, e.name as EMP_NAME FROM HR_WORK_LOG w, HR_EMPLOYEE e where w.EMP_ID = e.Id").ToList();
         }
 
         /// <summary>

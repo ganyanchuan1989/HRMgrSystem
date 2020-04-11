@@ -36,15 +36,20 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtTime = new System.Windows.Forms.DateTimePicker();
+            this.txtContent = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cboEmp = new System.Windows.Forms.ComboBox();
+            this.gridId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridLogDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -54,12 +59,20 @@
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridId,
+            this.gridEmpId,
+            this.gridEmpName,
+            this.gridContent,
+            this.gridLogDate});
             this.grid.Location = new System.Drawing.Point(12, 291);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
             this.grid.Size = new System.Drawing.Size(744, 223);
             this.grid.TabIndex = 21;
+            this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
+            this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             // 
             // btnUpdate
             // 
@@ -69,6 +82,7 @@
             this.btnUpdate.TabIndex = 19;
             this.btnUpdate.Text = "修改";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -78,6 +92,7 @@
             this.btnAdd.TabIndex = 18;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnFind
             // 
@@ -87,6 +102,7 @@
             this.btnFind.TabIndex = 17;
             this.btnFind.Text = "查询";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnSave
             // 
@@ -96,6 +112,7 @@
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -105,6 +122,7 @@
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnClean
             // 
@@ -114,6 +132,7 @@
             this.btnClean.TabIndex = 8;
             this.btnClean.Text = "清除";
             this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // btnDelete
             // 
@@ -123,28 +142,31 @@
             this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // dateTimePicker1
+            // dtTime
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(101, 71);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(251, 25);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dtTime.CustomFormat = "yyyy-MM-dd";
+            this.dtTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtTime.Location = new System.Drawing.Point(101, 71);
+            this.dtTime.Name = "dtTime";
+            this.dtTime.Size = new System.Drawing.Size(251, 25);
+            this.dtTime.TabIndex = 7;
             // 
-            // textBox3
+            // txtContent
             // 
-            this.textBox3.Location = new System.Drawing.Point(101, 111);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(596, 51);
-            this.textBox3.TabIndex = 6;
+            this.txtContent.Location = new System.Drawing.Point(101, 111);
+            this.txtContent.Multiline = true;
+            this.txtContent.Name = "txtContent";
+            this.txtContent.Size = new System.Drawing.Size(596, 51);
+            this.txtContent.TabIndex = 6;
             // 
-            // textBox1
+            // txtId
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(251, 25);
-            this.textBox1.TabIndex = 4;
+            this.txtId.Location = new System.Drawing.Point(101, 28);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(251, 25);
+            this.txtId.TabIndex = 4;
             // 
             // label4
             // 
@@ -184,13 +206,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboEmp);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnClean);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.dtTime);
+            this.groupBox1.Controls.Add(this.txtContent);
+            this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -202,12 +224,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "日志信息";
             // 
-            // textBox2
+            // cboEmp
             // 
-            this.textBox2.Location = new System.Drawing.Point(452, 24);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(245, 25);
-            this.textBox2.TabIndex = 5;
+            this.cboEmp.DisplayMember = "Name";
+            this.cboEmp.FormattingEnabled = true;
+            this.cboEmp.Location = new System.Drawing.Point(470, 28);
+            this.cboEmp.Name = "cboEmp";
+            this.cboEmp.Size = new System.Drawing.Size(227, 23);
+            this.cboEmp.TabIndex = 11;
+            this.cboEmp.ValueMember = "Id";
+            // 
+            // gridId
+            // 
+            this.gridId.DataPropertyName = "Id";
+            this.gridId.HeaderText = "ID";
+            this.gridId.Name = "gridId";
+            this.gridId.ReadOnly = true;
+            // 
+            // gridEmpId
+            // 
+            this.gridEmpId.DataPropertyName = "EmpId";
+            this.gridEmpId.HeaderText = "员工ID";
+            this.gridEmpId.Name = "gridEmpId";
+            this.gridEmpId.ReadOnly = true;
+            this.gridEmpId.Visible = false;
+            // 
+            // gridEmpName
+            // 
+            this.gridEmpName.DataPropertyName = "EmpName";
+            this.gridEmpName.HeaderText = "员工名称";
+            this.gridEmpName.Name = "gridEmpName";
+            this.gridEmpName.ReadOnly = true;
+            // 
+            // gridContent
+            // 
+            this.gridContent.DataPropertyName = "Content";
+            this.gridContent.HeaderText = "工作内容";
+            this.gridContent.Name = "gridContent";
+            this.gridContent.ReadOnly = true;
+            // 
+            // gridLogDate
+            // 
+            this.gridLogDate.DataPropertyName = "logDate";
+            this.gridLogDate.HeaderText = "日志时间";
+            this.gridLogDate.Name = "gridLogDate";
+            this.gridLogDate.ReadOnly = true;
             // 
             // WorkLogForm
             // 
@@ -239,14 +300,19 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtTime;
+        private System.Windows.Forms.TextBox txtContent;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox cboEmp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridContent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridLogDate;
     }
 }

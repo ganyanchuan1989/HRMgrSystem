@@ -73,10 +73,8 @@ namespace HRMgrSystem
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            string jobId = cboJob.SelectedValue != null ? cboJob.SelectedValue.ToString() : null;
-            string deptId = cboDept.SelectedValue != null ? cboDept.SelectedValue.ToString() : null;
-
-            list = dao.FindByWhere(txtId.Text, txtName.Text, jobId, deptId);
+            HREmployee vo = InputToVo();
+            list = dao.FindByWhere(vo);
             // datagrid
             var bindingList = new BindingList<HREmployee>(list);
             listSource = new BindingSource(bindingList, null);
@@ -98,10 +96,10 @@ namespace HRMgrSystem
             emp.Education = !EmptyUtils.EmptyObj(cboEdu.SelectedValue) ? int.Parse(cboEdu.SelectedValue.ToString()) : -1;
             emp.Sex = !EmptyUtils.EmptyObj(cboSex.SelectedValue)? int.Parse(cboSex.SelectedValue.ToString()): -1;
             emp.Status = !EmptyUtils.EmptyObj(cboStatus.SelectedValue) ? int.Parse(cboStatus.SelectedValue.ToString()) : -1;
-            emp.DeptId = cboDept.SelectedValue.ToString();
-            emp.JobId = cboJob.SelectedValue.ToString();
+            emp.DeptId = !EmptyUtils.EmptyObj(cboDept.SelectedValue) ? cboDept.SelectedValue.ToString() : "";
+            emp.JobId = !EmptyUtils.EmptyObj(cboJob.SelectedValue) ? cboJob.SelectedValue.ToString() : "";
             emp.GraduationTime = dtTime.Text;
-            emp.PoliticalStatus = int.Parse(cboPo.SelectedValue.ToString());
+            emp.PoliticalStatus = !EmptyUtils.EmptyObj(cboPo.SelectedValue) ? int.Parse(cboPo.SelectedValue.ToString()) : -1;
 
             return emp;
         }

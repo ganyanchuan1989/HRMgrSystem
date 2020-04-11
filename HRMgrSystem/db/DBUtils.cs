@@ -68,7 +68,7 @@ namespace HRMgrSystem.db
             new JobDao().FindAll();
             new RewardsPunishmentsDao().FindAll();
             new UserDao().FindAll();
-            new WordLogDao().FindAll();
+            new WorkLogDao().FindAll();
         }
     }
 }

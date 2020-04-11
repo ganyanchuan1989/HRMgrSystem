@@ -121,7 +121,6 @@ namespace HRMgrSystem
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-
             HRContract vo = InputToVo();
 
             list = dao.FindByWhere(vo);

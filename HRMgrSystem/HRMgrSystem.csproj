@@ -83,7 +83,7 @@
     <Compile Include="db\JobDao.cs" />
     <Compile Include="db\RewardsPunishmentsDao.cs" />
     <Compile Include="db\UserDao.cs" />
-    <Compile Include="db\WordLogDao.cs" />
+    <Compile Include="db\WorkLogDao.cs" />
     <Compile Include="DeptForm.cs">
       <SubType>Form</SubType>
     </Compile>

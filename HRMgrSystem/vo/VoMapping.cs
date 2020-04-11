@@ -86,7 +86,8 @@ namespace HRMgrSystem.vo
                    .MapProperty(x => x.Id).ToColumn("ID")
                    .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
                    .MapProperty(x => x.LogDate).ToColumn("LOG_DATE")
-                   .MapProperty(x => x.Content).ToColumn("CONTENT");
+                   .MapProperty(x => x.Content).ToColumn("CONTENT")
+                   .MapProperty(x => x.EmpName).ToColumn("EMP_NAME");
 
 
             // Tell Dapper to use our custom mappings

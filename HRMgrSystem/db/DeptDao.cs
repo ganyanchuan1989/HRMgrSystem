@@ -18,8 +18,8 @@ namespace HRMgrSystem.db
         /// <param name="deptVo"></param>
         public int Add(HRDept deptVo)
         {
-            int ret = conn.Execute(@"insert HR_DEPT(ID, NAME ) values (@id, @name)", 
-                new[] { new { id = deptVo.Id, name = deptVo.Name } });
+            int ret = conn.Execute(@"insert HR_DEPT(ID, NAME, HEADER_ID ) values (@id, @name, @headerId)", 
+                new[] { new { id = deptVo.Id, name = deptVo.Name, headerId= deptVo.HeaderId } });
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
             return ret;
         }
@@ -48,7 +48,7 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public List<HRDept> FindAll()
         {
-            return conn.Query<HRDept>("SELECT * FROM HR_DEPT").ToList();
+            return conn.Query<HRDept>("SELECT d.*, e.name as EMP_NAME FROM HR_DEPT d ,HR_EMPLOYEE e where d.HEADER_ID = e.ID").ToList();
         }
 
         public List<HRDept> FindByWhere(HRDept vo)
@@ -56,10 +56,12 @@ namespace HRMgrSystem.db
             string whereSql = "";
             if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and id=@Id";
             if (!EmptyUtils.EmptyStr(vo.Name)) whereSql += " and Name=@Name";
+            if (!EmptyUtils.EmptyStr(vo.HeaderId)) whereSql += " and HEADER_ID=@HeaderId";
 
-            return conn.Query<HRDept>("SELECT * FROM HR_DEPT where 1=1 " + whereSql, new {
+            return conn.Query<HRDept>("SELECT d.*, e.name as EMP_NAME FROM HR_DEPT d ,HR_EMPLOYEE e where d.HEADER_ID = e.ID " + whereSql, new {
                 Id = vo.Id,
                 Name = vo.Name,
+                HeaderId = vo.HeaderId
             }).ToList();
         }
 
@@ -71,8 +73,8 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public int Update(HRDept deptVo)
         {
-            return conn.Execute(@"update HR_DEPT SET NAME=@name WHERE id =@id",
-                new { id = deptVo.Id, name = deptVo.Name}); 
+            return conn.Execute(@"update HR_DEPT SET NAME=@name, HEADER_ID=@headerId WHERE id =@id",
+                new { id = deptVo.Id, name = deptVo.Name, headerId = deptVo.HeaderId}); 
         }
 
         /// <summary>

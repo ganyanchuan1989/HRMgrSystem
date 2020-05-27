@@ -192,6 +192,77 @@ namespace HRMgrSystem.utils
             return dt;
         }
 
+        /// <summary>
+        /// 1：年假，2：病假，3：婚假，4：产假，5：事假
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetLeaveDict()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("value");
+            dt.Columns.Add("label");
+
+            DataRow dr = dt.NewRow();
+            dr["value"] = 1;
+            dr["label"] = "年假";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 2;
+            dr["label"] = "病假";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 3;
+            dr["label"] = "婚假";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 4;
+            dr["label"] = "产假";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 5;
+            dr["label"] = "事假";
+            dt.Rows.Add(dr);
+
+            return dt;
+        }
+
+        /// <summary>
+        /// 审批状态（1：保存，2：提交申请，3：审批通过，4：驳回）
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetLeaveStatusDict()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("value");
+            dt.Columns.Add("label");
+
+            DataRow dr = dt.NewRow();
+            dr["value"] = 1;
+            dr["label"] = "保存";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 2;
+            dr["label"] = "提交申请";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 3;
+            dr["label"] = "审批通过";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 4;
+            dr["label"] = "驳回";
+            dt.Rows.Add(dr);
+
+            return dt;
+        }
+
 
     }
 }

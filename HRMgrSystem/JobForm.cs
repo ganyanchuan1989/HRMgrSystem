@@ -106,7 +106,6 @@ namespace HRMgrSystem
                 HRJob job = new HRJob();
                 job.Id = txtId.Text;
                 job.Name = txtName.Text;
-                job.CreateTime = dateCreate.Text;
                 int ret = dao.Add(job);
                 if(ret>0)
                 {
@@ -118,7 +117,6 @@ namespace HRMgrSystem
             {
                 HRJob job = jobList[grid.CurrentRow.Index];
                 job.Name = txtName.Text;
-                job.CreateTime = dateCreate.Text;
                 dao.Update(job);
                 grid.Refresh();
             }
@@ -133,7 +131,6 @@ namespace HRMgrSystem
         {
             txtId.Text = "";
             txtName.Text = "";
-            dateCreate.Text = "";
             grid.ClearSelection();
             grid.CurrentCell = null;
             initData();
@@ -155,7 +152,6 @@ namespace HRMgrSystem
             Console.WriteLine(job.Id);
             txtId.Text = job.Id;
             txtName.Text = job.Name;
-            dateCreate.Text = job.CreateTime;
             // dataGridJob.dat;
         }
 

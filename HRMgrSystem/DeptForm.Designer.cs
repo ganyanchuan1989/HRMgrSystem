@@ -41,14 +41,19 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
+            this.cboEmp = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridHeaderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cboEmp);
             this.groupBox1.Controls.Add(this.btnClean);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnSave);
@@ -58,14 +63,14 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(27, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(703, 125);
+            this.groupBox1.Size = new System.Drawing.Size(703, 190);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "信息";
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(307, 73);
+            this.btnClean.Location = new System.Drawing.Point(307, 149);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(75, 23);
             this.btnClean.TabIndex = 8;
@@ -76,7 +81,7 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(192, 73);
+            this.btnCancel.Location = new System.Drawing.Point(192, 149);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -87,7 +92,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(75, 73);
+            this.btnSave.Location = new System.Drawing.Point(75, 149);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -113,7 +118,7 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(75, 25);
+            this.txtId.Location = new System.Drawing.Point(97, 25);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(205, 25);
             this.txtId.TabIndex = 1;
@@ -121,7 +126,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 25);
+            this.label1.Location = new System.Drawing.Point(52, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 15);
             this.label1.TabIndex = 0;
@@ -134,8 +139,9 @@
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.deptName});
-            this.grid.Location = new System.Drawing.Point(27, 204);
+            this.deptName,
+            this.gridHeaderId});
+            this.grid.Location = new System.Drawing.Point(27, 338);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
@@ -145,7 +151,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(124, 161);
+            this.btnAdd.Location = new System.Drawing.Point(124, 299);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -155,7 +161,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(334, 161);
+            this.btnDelete.Location = new System.Drawing.Point(334, 299);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 3;
@@ -165,7 +171,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(232, 161);
+            this.btnUpdate.Location = new System.Drawing.Point(232, 299);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 4;
@@ -175,13 +181,32 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(27, 161);
+            this.btnFind.Location = new System.Drawing.Point(27, 299);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
             this.btnFind.TabIndex = 5;
             this.btnFind.Text = "查询";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // cboEmp
+            // 
+            this.cboEmp.DisplayMember = "Name";
+            this.cboEmp.FormattingEnabled = true;
+            this.cboEmp.Location = new System.Drawing.Point(99, 83);
+            this.cboEmp.Name = "cboEmp";
+            this.cboEmp.Size = new System.Drawing.Size(203, 23);
+            this.cboEmp.TabIndex = 9;
+            this.cboEmp.ValueMember = "Id";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "部门主管";
             // 
             // ID
             // 
@@ -199,11 +224,18 @@
             this.deptName.ReadOnly = true;
             this.deptName.Width = 150;
             // 
+            // gridHeaderId
+            // 
+            this.gridHeaderId.DataPropertyName = "EmpName";
+            this.gridHeaderId.HeaderText = "部门主管";
+            this.gridHeaderId.Name = "gridHeaderId";
+            this.gridHeaderId.ReadOnly = true;
+            // 
             // DeptForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 491);
+            this.ClientSize = new System.Drawing.Size(778, 600);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
@@ -235,7 +267,10 @@
         private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboEmp;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn deptName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridHeaderId;
     }
 }

@@ -57,9 +57,8 @@ namespace HRMgrSystem
         private void cleanData()
         {
             txtId.Text = "";
-            txtCorSalary.Text = "";
             txtProbation.Text = "";
-            txtProSalary.Text = "";
+            txtSalary.Text = "";
 
             cboContractType.SelectedIndex = -1;
             cboEmp.SelectedIndex = -1;
@@ -90,9 +89,8 @@ namespace HRMgrSystem
             else if (opration == OP_UPDATE)
             {
                 HRContract vo = list[grid.CurrentRow.Index];
-                vo.CorrectedSalary = !EmptyUtils.EmptyStr(txtCorSalary.Text) ? float.Parse(txtCorSalary.Text) : float.NaN;
                 vo.Probation = !EmptyUtils.EmptyStr(txtProbation.Text) ? int.Parse(txtProbation.Text) : -1;
-                vo.ProbationSalary = !EmptyUtils.EmptyStr(txtProSalary.Text) ? float.Parse(txtProSalary.Text) : float.NaN;
+                vo.Salary = !EmptyUtils.EmptyStr(txtSalary.Text) ? float.Parse(txtSalary.Text) : -1;
                 vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
                 vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
                 vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
@@ -138,9 +136,8 @@ namespace HRMgrSystem
         {
             HRContract vo = new HRContract();
             vo.Id = txtId.Text;
-            vo.CorrectedSalary = !EmptyUtils.EmptyStr(txtCorSalary.Text) ? float.Parse(txtCorSalary.Text) : float.NaN;
             vo.Probation = !EmptyUtils.EmptyStr(txtProbation.Text) ? int.Parse(txtProbation.Text) : -1;
-            vo.ProbationSalary = !EmptyUtils.EmptyStr(txtProSalary.Text) ? float.Parse(txtProSalary.Text) : float.NaN;
+            vo.Salary = !EmptyUtils.EmptyStr(txtSalary.Text) ? float.Parse(txtSalary.Text) : -1;
             vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
             vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
             vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
@@ -218,9 +215,8 @@ namespace HRMgrSystem
 
             HRContract vo = list[e.RowIndex];
             txtId.Text = vo.Id;
-            txtCorSalary.Text = vo.CorrectedSalary.ToString();
             txtProbation.Text = vo.Probation.ToString();
-            txtProSalary.Text = vo.ProbationSalary.ToString();
+            txtSalary.Text = vo.Salary.ToString();
 
             cboEmp.SelectedValue = vo.EmpId;
             cboContractType.SelectedValue = vo.ContractType;

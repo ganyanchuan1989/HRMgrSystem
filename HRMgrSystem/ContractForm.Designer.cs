@@ -32,13 +32,9 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtProSalary = new System.Windows.Forms.TextBox();
-            this.txtCorSalary = new System.Windows.Forms.TextBox();
             this.txtProbation = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.dtETime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.dtSTime = new System.Windows.Forms.DateTimePicker();
             this.cboContractType = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -62,22 +58,22 @@
             this.gridCorrectedSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridEmpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSalary = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtSalary);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnClean);
             this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.txtProSalary);
-            this.groupBox1.Controls.Add(this.txtCorSalary);
             this.groupBox1.Controls.Add(this.txtProbation);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtETime);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.dtSTime);
             this.groupBox1.Controls.Add(this.cboContractType);
             this.groupBox1.Controls.Add(this.label8);
@@ -87,9 +83,11 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(829, 212);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(622, 170);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "合同信息";
@@ -97,9 +95,10 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(137, 173);
+            this.btnCancel.Location = new System.Drawing.Point(103, 138);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(56, 18);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -107,9 +106,10 @@
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(243, 173);
+            this.btnClean.Location = new System.Drawing.Point(182, 138);
+            this.btnClean.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(75, 23);
+            this.btnClean.Size = new System.Drawing.Size(56, 18);
             this.btnClean.TabIndex = 15;
             this.btnClean.Text = "清除";
             this.btnClean.UseVisualStyleBackColor = true;
@@ -118,96 +118,71 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(32, 173);
+            this.btnSave.Location = new System.Drawing.Point(24, 138);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(56, 18);
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtProSalary
-            // 
-            this.txtProSalary.Location = new System.Drawing.Point(97, 131);
-            this.txtProSalary.Name = "txtProSalary";
-            this.txtProSalary.Size = new System.Drawing.Size(168, 25);
-            this.txtProSalary.TabIndex = 13;
-            // 
-            // txtCorSalary
-            // 
-            this.txtCorSalary.Location = new System.Drawing.Point(379, 131);
-            this.txtCorSalary.Name = "txtCorSalary";
-            this.txtCorSalary.Size = new System.Drawing.Size(168, 25);
-            this.txtCorSalary.TabIndex = 12;
-            // 
             // txtProbation
             // 
-            this.txtProbation.Location = new System.Drawing.Point(639, 81);
+            this.txtProbation.Location = new System.Drawing.Point(479, 65);
+            this.txtProbation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtProbation.Name = "txtProbation";
-            this.txtProbation.Size = new System.Drawing.Size(160, 25);
+            this.txtProbation.Size = new System.Drawing.Size(121, 21);
             this.txtProbation.TabIndex = 11;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 136);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "试用期工资";
             // 
             // dtETime
             // 
             this.dtETime.CustomFormat = "yyyy-MM-dd";
             this.dtETime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtETime.Location = new System.Drawing.Point(379, 81);
+            this.dtETime.Location = new System.Drawing.Point(284, 65);
+            this.dtETime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtETime.Name = "dtETime";
-            this.dtETime.Size = new System.Drawing.Size(168, 25);
+            this.dtETime.Size = new System.Drawing.Size(127, 21);
             this.dtETime.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(581, 86);
+            this.label3.Location = new System.Drawing.Point(436, 69);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
+            this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 2;
             this.label3.Text = "试用期";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(286, 136);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 15);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "转正后工资";
             // 
             // dtSTime
             // 
             this.dtSTime.CustomFormat = "yyyy-MM-dd";
             this.dtSTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtSTime.Location = new System.Drawing.Point(97, 81);
+            this.dtSTime.Location = new System.Drawing.Point(73, 65);
+            this.dtSTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtSTime.Name = "dtSTime";
-            this.dtSTime.Size = new System.Drawing.Size(168, 25);
+            this.dtSTime.Size = new System.Drawing.Size(127, 21);
             this.dtSTime.TabIndex = 9;
             // 
             // cboContractType
             // 
             this.cboContractType.DisplayMember = "label";
             this.cboContractType.FormattingEnabled = true;
-            this.cboContractType.Location = new System.Drawing.Point(639, 36);
+            this.cboContractType.Location = new System.Drawing.Point(479, 29);
+            this.cboContractType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboContractType.Name = "cboContractType";
-            this.cboContractType.Size = new System.Drawing.Size(160, 23);
+            this.cboContractType.Size = new System.Drawing.Size(121, 20);
             this.cboContractType.TabIndex = 8;
             this.cboContractType.ValueMember = "value";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(566, 40);
+            this.label8.Location = new System.Drawing.Point(424, 32);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 15);
+            this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 7;
             this.label8.Text = "合同类型";
             // 
@@ -215,61 +190,68 @@
             // 
             this.cboEmp.DisplayMember = "Name";
             this.cboEmp.FormattingEnabled = true;
-            this.cboEmp.Location = new System.Drawing.Point(379, 36);
+            this.cboEmp.Location = new System.Drawing.Point(284, 29);
+            this.cboEmp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEmp.Name = "cboEmp";
-            this.cboEmp.Size = new System.Drawing.Size(168, 23);
+            this.cboEmp.Size = new System.Drawing.Size(127, 20);
             this.cboEmp.TabIndex = 6;
             this.cboEmp.ValueMember = "Id";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 86);
+            this.label5.Location = new System.Drawing.Point(13, 69);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
+            this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 4;
             this.label5.Text = "开始时间";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(97, 35);
+            this.txtId.Location = new System.Drawing.Point(73, 28);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(168, 25);
+            this.txtId.Size = new System.Drawing.Size(127, 21);
             this.txtId.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 40);
+            this.label1.Location = new System.Drawing.Point(46, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 15);
+            this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(301, 86);
+            this.label4.Location = new System.Drawing.Point(226, 69);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 3;
             this.label4.Text = "结束时间";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(301, 40);
+            this.label6.Location = new System.Drawing.Point(226, 32);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 15);
+            this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 5;
             this.label6.Text = "关联员工";
             // 
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(292, 242);
+            this.btnDelete.Location = new System.Drawing.Point(219, 194);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(56, 18);
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -278,9 +260,10 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(196, 242);
+            this.btnUpdate.Location = new System.Drawing.Point(147, 194);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(56, 18);
             this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "修改";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -288,9 +271,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(103, 242);
+            this.btnAdd.Location = new System.Drawing.Point(77, 194);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(56, 18);
             this.btnAdd.TabIndex = 19;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -298,9 +282,10 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(12, 242);
+            this.btnFind.Location = new System.Drawing.Point(9, 194);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.Size = new System.Drawing.Size(56, 18);
             this.btnFind.TabIndex = 20;
             this.btnFind.Text = "查询";
             this.btnFind.UseVisualStyleBackColor = true;
@@ -323,11 +308,12 @@
             this.gridCorrectedSalary,
             this.gridContractType,
             this.gridEmpID});
-            this.grid.Location = new System.Drawing.Point(13, 272);
+            this.grid.Location = new System.Drawing.Point(10, 218);
+            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
-            this.grid.Size = new System.Drawing.Size(845, 196);
+            this.grid.Size = new System.Drawing.Size(634, 157);
             this.grid.TabIndex = 21;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
@@ -396,17 +382,36 @@
             this.gridEmpID.ReadOnly = true;
             this.gridEmpID.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 104);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "工资";
+            // 
+            // txtSalary
+            // 
+            this.txtSalary.Location = new System.Drawing.Point(73, 101);
+            this.txtSalary.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSalary.Name = "txtSalary";
+            this.txtSalary.Size = new System.Drawing.Size(121, 21);
+            this.txtSalary.TabIndex = 18;
+            // 
             // ContractForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 480);
+            this.ClientSize = new System.Drawing.Size(655, 384);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ContractForm";
             this.Text = "合同管理";
             this.Load += new System.EventHandler(this.ContractForm_Load);
@@ -420,13 +425,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtProSalary;
-        private System.Windows.Forms.TextBox txtCorSalary;
         private System.Windows.Forms.TextBox txtProbation;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtETime;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtSTime;
         private System.Windows.Forms.ComboBox cboContractType;
         private System.Windows.Forms.Label label8;
@@ -453,5 +454,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gridCorrectedSalary;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridContractType;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpID;
+        private System.Windows.Forms.TextBox txtSalary;
+        private System.Windows.Forms.Label label2;
     }
 }

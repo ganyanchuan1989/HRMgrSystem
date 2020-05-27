@@ -17,6 +17,8 @@ namespace HRMgrSystem
     {
         private DeptDao dao = new DeptDao();
 
+        private EmployeeDao empDao = new EmployeeDao();
+
         public const string PREFIX = "DEPT-";
 
         public const int OP_FIND = 1;
@@ -27,7 +29,8 @@ namespace HRMgrSystem
 
         private BindingSource listSource;
         private List<HRDept> list = null;
-        
+        private List<HREmployee> empList = null;
+
         public DeptForm1()
         {
             InitializeComponent();
@@ -38,10 +41,25 @@ namespace HRMgrSystem
         private void initData()
         {
             list = dao.FindAll();
+            empList = empDao.FindAll();
 
             var bindingList = new BindingList<HRDept>(list);
             listSource = new BindingSource(bindingList, null);
             grid.DataSource = listSource;
+
+            cboEmp.DataSource = empList;
+            cboEmp.SelectedIndex = -1;
+        }
+
+        private void cleanData()
+        {
+            txtId.Text = "";
+            txtName.Text = "";
+
+            cboEmp.SelectedIndex = -1;
+
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         private void DeptForm_Load(object sender, EventArgs e)
@@ -113,6 +131,7 @@ namespace HRMgrSystem
             HRDept dept = list[e.RowIndex];
             txtId.Text = dept.Id;
             txtName.Text = dept.Name;
+            cboEmp.SelectedValue = dept.HeaderId;
         }
 
         private void btnClean_Click(object sender, EventArgs e)

@@ -23,15 +23,15 @@ namespace HRMgrSystem.vo
                     .MapProperty(x => x.StartTime).ToColumn("START_TIME")
                     .MapProperty(x => x.EndTime).ToColumn("END_TIME")
                     .MapProperty(x => x.Probation).ToColumn("PROBATION")
-                    .MapProperty(x => x.ProbationSalary).ToColumn("PROBATION_SALARY")
-                    .MapProperty(x => x.CorrectedSalary).ToColumn("CORRECTED_SALARY")
-                    .MapProperty(x => x.ContractType).ToColumn("CONTRACT_TYPE")
+                    .MapProperty(x => x.Salary).ToColumn("SALARY")
                     .MapProperty(x => x.EmpName).ToColumn("EMP_NAME"); // 
 
             // HRDept
             mappings.RegisterType<HRDept>()
                     .MapProperty(x => x.Id).ToColumn("ID")
-                    .MapProperty(x => x.Name).ToColumn("NAME");
+                    .MapProperty(x => x.Name).ToColumn("NAME")
+                    .MapProperty(x => x.HeaderId).ToColumn("HEADER_ID")
+                    .MapProperty(x => x.EmpName).ToColumn("EMP_NAME");
 
             // HREmployee
             mappings.RegisterType<HREmployee>()
@@ -58,8 +58,7 @@ namespace HRMgrSystem.vo
             // HRJob
             mappings.RegisterType<HRJob>()
                     .MapProperty(x => x.Id).ToColumn("ID")
-                    .MapProperty(x => x.Name).ToColumn("NAME")
-                    .MapProperty(x => x.CreateTime).ToColumn("CREATE_TIME");
+                    .MapProperty(x => x.Name).ToColumn("NAME");
 
 
             // HRRewardsPunishments
@@ -88,6 +87,17 @@ namespace HRMgrSystem.vo
                    .MapProperty(x => x.LogDate).ToColumn("LOG_DATE")
                    .MapProperty(x => x.Content).ToColumn("CONTENT")
                    .MapProperty(x => x.EmpName).ToColumn("EMP_NAME");
+
+
+            // HR_LEAVE 
+            mappings.RegisterType<HRLeave>()
+                   .MapProperty(x => x.Id).ToColumn("ID")
+                   .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
+                   .MapProperty(x => x.StartDate).ToColumn("START_DATE")
+                   .MapProperty(x => x.StartTime).ToColumn("START_TIME")
+                   .MapProperty(x => x.EndDate).ToColumn("END_DATE")
+                   .MapProperty(x => x.EndTime).ToColumn("END_TIME")
+                   .MapProperty(x => x.Cause).ToColumn("CAUSE");
 
 
             // Tell Dapper to use our custom mappings

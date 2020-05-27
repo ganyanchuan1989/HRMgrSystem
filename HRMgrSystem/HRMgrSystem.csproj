@@ -99,6 +99,7 @@
     <Compile Include="db\DeptDao.cs" />
     <Compile Include="db\EmployeeDao.cs" />
     <Compile Include="db\JobDao.cs" />
+    <Compile Include="db\LeaveDao.cs" />
     <Compile Include="db\RewardsPunishmentsDao.cs" />
     <Compile Include="db\UserDao.cs" />
     <Compile Include="db\WorkLogDao.cs" />
@@ -121,6 +122,12 @@
     <Compile Include="JobForm.Designer.cs">
       <DependentUpon>JobForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LeaveApplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveApplyForm.Designer.cs">
+      <DependentUpon>LeaveApplyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +139,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalLeaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonalLeaveForm.Designer.cs">
+      <DependentUpon>PersonalLeaveForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +171,7 @@
     <Compile Include="vo\HRRewardsPunishments.cs" />
     <Compile Include="vo\HRUser.cs" />
     <Compile Include="vo\HRWorkLog.cs" />
+    <Compile Include="vo\HRLeave.cs" />
     <Compile Include="vo\VoMapping.cs" />
     <Compile Include="WorkLogForm.cs">
       <SubType>Form</SubType>
@@ -180,11 +194,17 @@
     <EmbeddedResource Include="JobForm.resx">
       <DependentUpon>JobForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LeaveApplyForm.resx">
+      <DependentUpon>LeaveApplyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonalLeaveForm.resx">
+      <DependentUpon>PersonalLeaveForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -205,7 +225,9 @@
     <EmbeddedResource Include="WorkLogForm.resx">
       <DependentUpon>WorkLogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

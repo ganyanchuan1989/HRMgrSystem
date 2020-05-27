@@ -14,10 +14,9 @@ namespace HRMgrSystem.db
         // 新增
         public int Add(HRJob vo)
         {
-            int ret = conn.Execute(@"insert HR_JOB(ID,NAME,CREATE_TIME) values (@Id,@Name,@CreateTime)" ,
+            int ret = conn.Execute(@"insert HR_JOB(ID,NAME) values (@Id,@Name,@CreateTime)" ,
                 new[] { new { Id = vo.Id,
-                    Name = vo.Name,
-                    CreateTime = vo.CreateTime} });
+                    Name = vo.Name} });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
 
@@ -57,12 +56,11 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public int Update(HRJob vo)
         {
-            return conn.Execute(@"update HR_JOB SET NAME=@Name,CREATE_TIME=@CreateTime WHERE id = @Id",
+            return conn.Execute(@"update HR_JOB SET NAME=@Name WHERE id = @Id",
                 new
                 {
                     Id = vo.Id,
-                    Name = vo.Name,
-                    CreateTime = vo.CreateTime
+                    Name = vo.Name
                 });
         }
 

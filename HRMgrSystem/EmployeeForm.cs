@@ -123,7 +123,7 @@ namespace HRMgrSystem
                 emp.Education = int.Parse(cboEdu.SelectedValue.ToString());
                 emp.Sex = int.Parse(cboSex.SelectedValue.ToString());
                 emp.Status = int.Parse(cboStatus.SelectedValue.ToString());
-                emp.DeptId = cboDept.SelectedValue.ToString();
+                emp.DeptId = cboDept.SelectedValue != null ? cboDept.SelectedValue.ToString(): "";
                 emp.JobId = cboJob.SelectedValue.ToString();
                 emp.GraduationTime = dtTime.Text;
                 emp.PoliticalStatus = int.Parse(cboPo.SelectedValue.ToString());

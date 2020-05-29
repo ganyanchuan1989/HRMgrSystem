@@ -62,15 +62,21 @@
     <Reference Include="Dapper.FluentColumnMapping, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.FluentColumnMapping.1.1.0\lib\net451\Dapper.FluentColumnMapping.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.10.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.9\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -100,6 +106,7 @@
     <Compile Include="db\EmployeeDao.cs" />
     <Compile Include="db\JobDao.cs" />
     <Compile Include="db\LeaveDao.cs" />
+    <Compile Include="db\PayrollDao.cs" />
     <Compile Include="db\RewardsPunishmentsDao.cs" />
     <Compile Include="db\UserDao.cs" />
     <Compile Include="db\WorkLogDao.cs" />
@@ -116,6 +123,12 @@
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalInfo.cs" />
+    <Compile Include="HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="JobForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +140,18 @@
     </Compile>
     <Compile Include="LeaveApplyForm.Designer.cs">
       <DependentUpon>LeaveApplyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveApproveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveApproveForm.Designer.cs">
+      <DependentUpon>LeaveApproveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyLeaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyLeaveForm.Designer.cs">
+      <DependentUpon>MyLeaveForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -140,20 +165,26 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersonalLeaveForm.cs">
+    <Compile Include="MyContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PersonalLeaveForm.Designer.cs">
-      <DependentUpon>PersonalLeaveForm.cs</DependentUpon>
+    <Compile Include="MyContractForm.Designer.cs">
+      <DependentUpon>MyContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyPayrollForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyPayrollForm.Designer.cs">
+      <DependentUpon>MyPayrollForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PayrollForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayrollForm.Designer.cs">
+      <DependentUpon>PayrollForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RewardsPunishmentsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RewardsPunishmentsForm.Designer.cs">
-      <DependentUpon>RewardsPunishmentsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,17 +199,12 @@
     <Compile Include="vo\HRDept.cs" />
     <Compile Include="vo\HREmployee.cs" />
     <Compile Include="vo\HRJob.cs" />
+    <Compile Include="vo\HRPayroll.cs" />
     <Compile Include="vo\HRRewardsPunishments.cs" />
     <Compile Include="vo\HRUser.cs" />
     <Compile Include="vo\HRWorkLog.cs" />
     <Compile Include="vo\HRLeave.cs" />
     <Compile Include="vo\VoMapping.cs" />
-    <Compile Include="WorkLogForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WorkLogForm.Designer.cs">
-      <DependentUpon>WorkLogForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,11 +217,20 @@
     <EmbeddedResource Include="EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JobForm.resx">
       <DependentUpon>JobForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LeaveApplyForm.resx">
       <DependentUpon>LeaveApplyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveApproveForm.resx">
+      <DependentUpon>LeaveApproveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyLeaveForm.resx">
+      <DependentUpon>MyLeaveForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -203,8 +238,14 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersonalLeaveForm.resx">
-      <DependentUpon>PersonalLeaveForm.cs</DependentUpon>
+    <EmbeddedResource Include="MyContractForm.resx">
+      <DependentUpon>MyContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyPayrollForm.resx">
+      <DependentUpon>MyPayrollForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PayrollForm.resx">
+      <DependentUpon>PayrollForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -216,14 +257,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RewardsPunishmentsForm.resx">
-      <DependentUpon>RewardsPunishmentsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkLogForm.resx">
-      <DependentUpon>WorkLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -238,6 +273,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2020-05-28_185717.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

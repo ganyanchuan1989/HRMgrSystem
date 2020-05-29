@@ -14,7 +14,7 @@ namespace HRMgrSystem
     /// 请假申请表单
     /// </summary>
     public partial class LeaveApplyForm : Form
-    {
+    { 
         public LeaveApplyForm()
         {
             InitializeComponent();
@@ -26,6 +26,16 @@ namespace HRMgrSystem
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }

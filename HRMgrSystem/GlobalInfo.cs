@@ -10,6 +10,7 @@ namespace HRMgrSystem
     public class GlobalInfo
     {
         public static HRUser loginUser;
+        public static HREmployee loginEmp;
         public static bool IS_ADMIN = false;
         
     }

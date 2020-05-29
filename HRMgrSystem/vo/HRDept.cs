@@ -11,11 +11,6 @@ namespace HRMgrSystem.vo
     public class HRDept : BaseVo
     {
         public string Name { get; set; }
-
-        // 部门主管
-        public string HeaderId { get; set; }
-        // 部门主管名称
-        public string EmpName { get; set; }
     }
 
     

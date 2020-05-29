@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace HRMgrSystem.vo
 {
-    public class HRLeave : BaseVo
+    public class HRPayroll : BaseVo
     {
         public string EmpId { get; set; }
-        public int Type { get; set; }
-        public string LeaveDate { get; set; }
+        public string PayrollDate { get; set; }
+        public int ProbationStatus { get; set; }
+        public int SickLeaveDay { get; set; }
         public int LeaveDay { get; set; }
-        public string Cause { get; set; }
-        public int Status { get; set; }
+        public float RealSalary { get; set; }
 
         public string EmpName { get; set; }
     }

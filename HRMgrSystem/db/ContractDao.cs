@@ -14,7 +14,7 @@ namespace HRMgrSystem.db
         // 新增
         public int Add(HRContract vo)
         {
-            var ret = conn.Execute(@"insert HR_CONTRACT(ID,EMP_ID,START_TIME,END_TIME,PROBATION,PROBATION_SALARY,CORRECTED_SALARY,CONTRACT_TYPE) " +
+            var ret = conn.Execute(@"insert HR_CONTRACT(ID,EMP_ID,START_TIME,END_TIME,PROBATION,SALARY,CONTRACT_TYPE) " +
                     "values (@Id,@EmpId,@StartTime,@EndTime,@Probation,@Salary,@ContractType)",
                 new[] { new { Id = vo.Id,
                     EmpId = vo.EmpId,
@@ -56,6 +56,24 @@ namespace HRMgrSystem.db
             return conn.Query<HRContract>("SELECT c.*, e.name as EMP_NAME FROM HR_CONTRACT c ,HR_EMPLOYEE e where c.EMP_ID = e.ID").ToList();
         }
 
+        public HRContract FindByEmpId(string EmpId)
+        {
+            string sql = "SELECT c.*, e.name as EMP_NAME FROM HR_CONTRACT c ,HR_EMPLOYEE e where c.EMP_ID = e.ID and c.EMP_ID = @EmpId";
+            List<HRContract> list = conn.Query<HRContract>(sql, new
+            {
+                EmpId = EmpId
+            }).ToList();
+
+            if (EmptyUtils.EmptyList(list))
+            {
+                return null;
+            }
+            else
+            {
+                return list[0];
+            }
+
+        }
         public List<HRContract> FindByWhere(HRContract vo)
         {
             string whereSql = "";

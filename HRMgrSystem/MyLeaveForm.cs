@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HRMgrSystem
 {
-    public partial class PersonalLeaveForm : Form
+    public partial class MyLeaveForm : Form
     {
-        public PersonalLeaveForm()
+        public MyLeaveForm()
         {
             InitializeComponent();
         }

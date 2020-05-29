@@ -20,8 +20,9 @@ namespace HRMgrSystem
             // 数据库字段映射
             VoMapping.Mapping();
 
-            Application.Run(new MainForm());
-            // Application.Run(new LoginForm());
+            // Application.Run(new MainForm());
+            Application.Run(new LoginForm());
+            // Application.Run(new HomeForm());
         }
     }
 }

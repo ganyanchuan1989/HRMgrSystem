@@ -42,5 +42,10 @@ namespace HRMgrSystem
                 }
             }
         }
+
+        private void ChangePwdForm_Load(object sender, EventArgs e)
+        {
+            this.StartPosition = FormStartPosition.CenterParent;
+        }
     }
 }

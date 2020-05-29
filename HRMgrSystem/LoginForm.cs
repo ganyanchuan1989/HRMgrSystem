@@ -16,6 +16,7 @@ namespace HRMgrSystem
     public partial class LoginForm : Form
     {
         private UserDao dao = new UserDao();
+        private EmployeeDao empDao = new EmployeeDao();
 
         public LoginForm()
         {
@@ -43,9 +44,12 @@ namespace HRMgrSystem
                     this.Hide();
 
                     GlobalInfo.loginUser = user;
+                    GlobalInfo.loginEmp = empDao.FindById(user.EmpId);
 
                     MainForm main = new MainForm();
                     main.Show();
+                    // HomeForm home = new HomeForm();
+                    // home.Show();
                 }
             }
         }

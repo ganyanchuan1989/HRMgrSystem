@@ -15,14 +15,12 @@ namespace HRMgrSystem.db
         // 新增
         public int Add(HRLeave vo)
         {
-            int ret = conn.Execute(@"insert HR_LEAVE(ID,EMP_ID,TYPE,START_DATE,START_TIME,END_DATE,END_TIME,CAUSE,STATUS) values (@Id,@EmpId,@Type, @StartDate, @StartTime, @EndDate, @EndTime, @Cause,@Status)",
+            int ret = conn.Execute(@"insert HR_LEAVE(ID,EMP_ID,TYPE,LEAVE_DATE,LEAVE_DAY,CAUSE,STATUS) values (@Id,@EmpId,@Type, @LeaveDate, @LeaveDay @Cause,@Status)",
                 new[] { new { Id = vo.Id,
                     EmpId = vo.EmpId,
                     Type = vo.Type,
-                    StartDate = vo.StartDate,
-                    StartTime = vo.StartTime,
-                    EndDate = vo.EndDate,
-                    EndTime = vo.EndTime,
+                    LeaveDate = vo.LeaveDate,
+                    LeaveDay = vo.LeaveDay,
                     Cause = vo.Cause,
                     Status = vo.Status
                 } });

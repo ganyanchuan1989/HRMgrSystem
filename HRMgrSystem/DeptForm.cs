@@ -13,7 +13,7 @@ using HRMgrSystem.utils;
 
 namespace HRMgrSystem
 {
-    public partial class DeptForm1 : Form
+    public partial class DeptForm : Form
     {
         private DeptDao dao = new DeptDao();
 
@@ -31,7 +31,7 @@ namespace HRMgrSystem
         private List<HRDept> list = null;
         private List<HREmployee> empList = null;
 
-        public DeptForm1()
+        public DeptForm()
         {
             InitializeComponent();
 
@@ -46,17 +46,12 @@ namespace HRMgrSystem
             var bindingList = new BindingList<HRDept>(list);
             listSource = new BindingSource(bindingList, null);
             grid.DataSource = listSource;
-
-            cboEmp.DataSource = empList;
-            cboEmp.SelectedIndex = -1;
         }
 
         private void cleanData()
         {
             txtId.Text = "";
             txtName.Text = "";
-
-            cboEmp.SelectedIndex = -1;
 
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
@@ -131,7 +126,6 @@ namespace HRMgrSystem
             HRDept dept = list[e.RowIndex];
             txtId.Text = dept.Id;
             txtName.Text = dept.Name;
-            cboEmp.SelectedValue = dept.HeaderId;
         }
 
         private void btnClean_Click(object sender, EventArgs e)

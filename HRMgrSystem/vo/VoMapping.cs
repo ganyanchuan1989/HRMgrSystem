@@ -29,9 +29,7 @@ namespace HRMgrSystem.vo
             // HRDept
             mappings.RegisterType<HRDept>()
                     .MapProperty(x => x.Id).ToColumn("ID")
-                    .MapProperty(x => x.Name).ToColumn("NAME")
-                    .MapProperty(x => x.HeaderId).ToColumn("HEADER_ID")
-                    .MapProperty(x => x.EmpName).ToColumn("EMP_NAME");
+                    .MapProperty(x => x.Name).ToColumn("NAME");
 
             // HREmployee
             mappings.RegisterType<HREmployee>()
@@ -93,11 +91,19 @@ namespace HRMgrSystem.vo
             mappings.RegisterType<HRLeave>()
                    .MapProperty(x => x.Id).ToColumn("ID")
                    .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
-                   .MapProperty(x => x.StartDate).ToColumn("START_DATE")
-                   .MapProperty(x => x.StartTime).ToColumn("START_TIME")
-                   .MapProperty(x => x.EndDate).ToColumn("END_DATE")
-                   .MapProperty(x => x.EndTime).ToColumn("END_TIME")
+                   .MapProperty(x => x.LeaveDate).ToColumn("LEAVE_DATE")
+                   .MapProperty(x => x.LeaveDay).ToColumn("LEAVE_DAY")
                    .MapProperty(x => x.Cause).ToColumn("CAUSE");
+
+            // HR_PAYROLL
+            mappings.RegisterType<HRPayroll>()
+                       .MapProperty(x => x.Id).ToColumn("ID")
+                       .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
+                       .MapProperty(x => x.PayrollDate).ToColumn("PAYROLL_DATE")
+                       .MapProperty(x => x.ProbationStatus).ToColumn("PROBATION_STATUS")
+                       .MapProperty(x => x.SickLeaveDay).ToColumn("SICK_LEAVE_DAY")
+                       .MapProperty(x => x.LeaveDay).ToColumn("LEAVE_DAY")
+                       .MapProperty(x => x.RealSalary).ToColumn("REAL_SALARY");
 
 
             // Tell Dapper to use our custom mappings

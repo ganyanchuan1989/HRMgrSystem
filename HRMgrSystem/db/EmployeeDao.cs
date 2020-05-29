@@ -48,7 +48,7 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public HREmployee FindById(string id)
         {
-            List<HREmployee> list = conn.Query<HREmployee>("SELECT * FROM HR_EMPLOYEE where Id = @Id", new { Id = id }).ToList();
+            List<HREmployee> list = conn.Query<HREmployee>("SELECT e.*, d.name as DEPT_NAME, j.name as JOB_NAME  FROM HR_EMPLOYEE e, HR_DEPT d, HR_JOB j where e.Dept_Id = d.ID and e.JOB_ID = j.ID and e.Id = @Id", new { Id = id }).ToList();
             if (EmptyUtils.EmptyList(list))
             {
                 return null;

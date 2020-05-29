@@ -65,10 +65,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.gridId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridIdCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +83,10 @@
             this.gridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridJobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridDeptId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -128,9 +128,11 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 15);
+            this.groupBox1.Location = new System.Drawing.Point(10, 12);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1132, 273);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(849, 242);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "员工信息";
@@ -139,9 +141,10 @@
             // 
             this.cboEdu.DisplayMember = "label";
             this.cboEdu.FormattingEnabled = true;
-            this.cboEdu.Location = new System.Drawing.Point(58, 78);
+            this.cboEdu.Location = new System.Drawing.Point(44, 62);
+            this.cboEdu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboEdu.Name = "cboEdu";
-            this.cboEdu.Size = new System.Drawing.Size(194, 23);
+            this.cboEdu.Size = new System.Drawing.Size(146, 20);
             this.cboEdu.TabIndex = 6;
             this.cboEdu.ValueMember = "value";
             // 
@@ -149,16 +152,18 @@
             // 
             this.dtTime.CustomFormat = "yyyy-MM-dd";
             this.dtTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTime.Location = new System.Drawing.Point(899, 71);
+            this.dtTime.Location = new System.Drawing.Point(674, 57);
+            this.dtTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtTime.Name = "dtTime";
-            this.dtTime.Size = new System.Drawing.Size(219, 25);
+            this.dtTime.Size = new System.Drawing.Size(165, 21);
             this.dtTime.TabIndex = 9;
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(295, 236);
+            this.btnClean.Location = new System.Drawing.Point(222, 195);
+            this.btnClean.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(75, 23);
+            this.btnClean.Size = new System.Drawing.Size(56, 30);
             this.btnClean.TabIndex = 36;
             this.btnClean.Text = "清除";
             this.btnClean.UseVisualStyleBackColor = true;
@@ -167,9 +172,10 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(177, 236);
+            this.btnCancel.Location = new System.Drawing.Point(134, 195);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(56, 30);
             this.btnCancel.TabIndex = 35;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -178,9 +184,10 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(58, 236);
+            this.btnSave.Location = new System.Drawing.Point(45, 195);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(56, 30);
             this.btnSave.TabIndex = 34;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -190,9 +197,10 @@
             // 
             this.cboJob.DisplayMember = "Name";
             this.cboJob.FormattingEnabled = true;
-            this.cboJob.Location = new System.Drawing.Point(323, 153);
+            this.cboJob.Location = new System.Drawing.Point(242, 122);
+            this.cboJob.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboJob.Name = "cboJob";
-            this.cboJob.Size = new System.Drawing.Size(181, 23);
+            this.cboJob.Size = new System.Drawing.Size(137, 20);
             this.cboJob.TabIndex = 15;
             this.cboJob.ValueMember = "Id";
             // 
@@ -200,9 +208,10 @@
             // 
             this.cboDept.DisplayMember = "Name";
             this.cboDept.FormattingEnabled = true;
-            this.cboDept.Location = new System.Drawing.Point(58, 157);
+            this.cboDept.Location = new System.Drawing.Point(44, 126);
+            this.cboDept.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboDept.Name = "cboDept";
-            this.cboDept.Size = new System.Drawing.Size(194, 23);
+            this.cboDept.Size = new System.Drawing.Size(146, 20);
             this.cboDept.TabIndex = 14;
             this.cboDept.ValueMember = "id";
             // 
@@ -210,9 +219,10 @@
             // 
             this.cboStatus.DisplayMember = "label";
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(58, 197);
+            this.cboStatus.Location = new System.Drawing.Point(44, 158);
+            this.cboStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(121, 23);
+            this.cboStatus.Size = new System.Drawing.Size(92, 20);
             this.cboStatus.TabIndex = 17;
             this.cboStatus.ValueMember = "value";
             // 
@@ -220,9 +230,10 @@
             // 
             this.cboPo.DisplayMember = "label";
             this.cboPo.FormattingEnabled = true;
-            this.cboPo.Location = new System.Drawing.Point(899, 31);
+            this.cboPo.Location = new System.Drawing.Point(674, 25);
+            this.cboPo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboPo.Name = "cboPo";
-            this.cboPo.Size = new System.Drawing.Size(219, 23);
+            this.cboPo.Size = new System.Drawing.Size(165, 20);
             this.cboPo.TabIndex = 5;
             this.cboPo.ValueMember = "value";
             // 
@@ -230,216 +241,242 @@
             // 
             this.cboSex.DisplayMember = "label";
             this.cboSex.FormattingEnabled = true;
-            this.cboSex.Location = new System.Drawing.Point(588, 31);
+            this.cboSex.Location = new System.Drawing.Point(441, 25);
+            this.cboSex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboSex.Name = "cboSex";
-            this.cboSex.Size = new System.Drawing.Size(209, 23);
+            this.cboSex.Size = new System.Drawing.Size(158, 20);
             this.cboSex.TabIndex = 4;
             this.cboSex.ValueMember = "value";
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(58, 114);
+            this.txtPhone.Location = new System.Drawing.Point(44, 91);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(194, 25);
+            this.txtPhone.Size = new System.Drawing.Size(146, 21);
             this.txtPhone.TabIndex = 10;
             // 
             // txtBank
             // 
-            this.txtBank.Location = new System.Drawing.Point(323, 114);
+            this.txtBank.Location = new System.Drawing.Point(242, 91);
+            this.txtBank.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(181, 25);
+            this.txtBank.Size = new System.Drawing.Size(137, 21);
             this.txtBank.TabIndex = 11;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(588, 155);
+            this.txtAddress.Location = new System.Drawing.Point(441, 124);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(530, 25);
+            this.txtAddress.Size = new System.Drawing.Size(398, 21);
             this.txtAddress.TabIndex = 16;
             // 
             // txtIdCard
             // 
-            this.txtIdCard.Location = new System.Drawing.Point(588, 114);
+            this.txtIdCard.Location = new System.Drawing.Point(441, 91);
+            this.txtIdCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtIdCard.Name = "txtIdCard";
-            this.txtIdCard.Size = new System.Drawing.Size(209, 25);
+            this.txtIdCard.Size = new System.Drawing.Size(158, 21);
             this.txtIdCard.TabIndex = 12;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(899, 114);
+            this.txtEmail.Location = new System.Drawing.Point(674, 91);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(219, 25);
+            this.txtEmail.Size = new System.Drawing.Size(165, 21);
             this.txtEmail.TabIndex = 13;
             // 
             // txtPro
             // 
-            this.txtPro.Location = new System.Drawing.Point(588, 74);
+            this.txtPro.Location = new System.Drawing.Point(441, 59);
+            this.txtPro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPro.Name = "txtPro";
-            this.txtPro.Size = new System.Drawing.Size(209, 25);
+            this.txtPro.Size = new System.Drawing.Size(158, 21);
             this.txtPro.TabIndex = 8;
             // 
             // txtSchool
             // 
-            this.txtSchool.Location = new System.Drawing.Point(323, 73);
+            this.txtSchool.Location = new System.Drawing.Point(242, 58);
+            this.txtSchool.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSchool.Name = "txtSchool";
-            this.txtSchool.Size = new System.Drawing.Size(181, 25);
+            this.txtSchool.Size = new System.Drawing.Size(137, 21);
             this.txtSchool.TabIndex = 7;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(323, 31);
+            this.txtName.Location = new System.Drawing.Point(242, 25);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(181, 25);
+            this.txtName.Size = new System.Drawing.Size(137, 21);
             this.txtName.TabIndex = 2;
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(58, 33);
+            this.txtId.Location = new System.Drawing.Point(44, 26);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(194, 25);
+            this.txtId.Size = new System.Drawing.Size(146, 21);
             this.txtId.TabIndex = 1;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 202);
+            this.label16.Location = new System.Drawing.Point(9, 162);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 15);
+            this.label16.Size = new System.Drawing.Size(29, 12);
             this.label16.TabIndex = 15;
             this.label16.Text = "状态";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(280, 158);
+            this.label15.Location = new System.Drawing.Point(210, 126);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 15);
+            this.label15.Size = new System.Drawing.Size(29, 12);
             this.label15.TabIndex = 14;
             this.label15.Text = "职位";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(515, 160);
+            this.label14.Location = new System.Drawing.Point(386, 128);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(67, 15);
+            this.label14.Size = new System.Drawing.Size(53, 12);
             this.label14.TabIndex = 13;
             this.label14.Text = "通讯地址";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(826, 34);
+            this.label13.Location = new System.Drawing.Point(620, 27);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 15);
+            this.label13.Size = new System.Drawing.Size(53, 12);
             this.label13.TabIndex = 12;
             this.label13.Text = "政治面貌";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(265, 119);
+            this.label12.Location = new System.Drawing.Point(199, 95);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(52, 15);
+            this.label12.Size = new System.Drawing.Size(41, 12);
             this.label12.TabIndex = 11;
             this.label12.Text = "银行卡";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(826, 119);
+            this.label11.Location = new System.Drawing.Point(620, 95);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 15);
+            this.label11.Size = new System.Drawing.Size(53, 12);
             this.label11.TabIndex = 10;
             this.label11.Text = "电子邮箱";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 160);
+            this.label10.Location = new System.Drawing.Point(11, 128);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 15);
+            this.label10.Size = new System.Drawing.Size(29, 12);
             this.label10.TabIndex = 9;
             this.label10.Text = "部门";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(545, 34);
+            this.label9.Location = new System.Drawing.Point(409, 27);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 15);
+            this.label9.Size = new System.Drawing.Size(29, 12);
             this.label9.TabIndex = 8;
             this.label9.Text = "性别";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(530, 119);
+            this.label8.Location = new System.Drawing.Point(398, 95);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 15);
+            this.label8.Size = new System.Drawing.Size(41, 12);
             this.label8.TabIndex = 7;
             this.label8.Text = "身份证";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 81);
+            this.label7.Location = new System.Drawing.Point(11, 65);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 6;
             this.label7.Text = "学历";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(280, 78);
+            this.label6.Location = new System.Drawing.Point(210, 62);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 15);
+            this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 5;
             this.label6.Text = "学校";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(826, 79);
+            this.label5.Location = new System.Drawing.Point(620, 63);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
+            this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 4;
             this.label5.Text = "毕业时间";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(545, 76);
+            this.label4.Location = new System.Drawing.Point(409, 61);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 15);
+            this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 3;
             this.label4.Text = "专业";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 119);
+            this.label3.Location = new System.Drawing.Point(11, 95);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 2;
             this.label3.Text = "电话";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 36);
+            this.label2.Location = new System.Drawing.Point(210, 29);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "姓名";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 36);
+            this.label1.Location = new System.Drawing.Point(22, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 15);
+            this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Id";
             // 
@@ -469,56 +506,15 @@
             this.gridStatus,
             this.gridJobId,
             this.gridDeptId});
-            this.grid.Location = new System.Drawing.Point(13, 332);
+            this.grid.Location = new System.Drawing.Point(11, 303);
+            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
-            this.grid.Size = new System.Drawing.Size(1132, 254);
+            this.grid.Size = new System.Drawing.Size(849, 203);
             this.grid.TabIndex = 1;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
-            // 
-            // btnFind
-            // 
-            this.btnFind.Location = new System.Drawing.Point(13, 299);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 37;
-            this.btnFind.Text = "查询";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(117, 299);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 38;
-            this.btnAdd.Text = "新增";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(215, 299);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 39;
-            this.btnUpdate.Text = "修改";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(308, 299);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 40;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gridId
             // 
@@ -646,17 +642,64 @@
             this.gridDeptId.ReadOnly = true;
             this.gridDeptId.Visible = false;
             // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(11, 269);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(56, 30);
+            this.btnFind.TabIndex = 37;
+            this.btnFind.Text = "查询";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(89, 269);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(56, 30);
+            this.btnAdd.TabIndex = 38;
+            this.btnAdd.Text = "新增";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Location = new System.Drawing.Point(162, 269);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(56, 30);
+            this.btnUpdate.TabIndex = 39;
+            this.btnUpdate.Text = "修改";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(232, 269);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(56, 30);
+            this.btnDelete.TabIndex = 40;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // EmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 592);
+            this.ClientSize = new System.Drawing.Size(872, 517);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EmployeeForm";
             this.Text = "员工管理";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);

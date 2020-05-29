@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSalary = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -58,8 +60,6 @@
             this.gridCorrectedSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridEmpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSalary = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -84,21 +84,39 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(9, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(622, 170);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "合同信息";
             // 
+            // txtSalary
+            // 
+            this.txtSalary.Location = new System.Drawing.Point(73, 101);
+            this.txtSalary.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSalary.Name = "txtSalary";
+            this.txtSalary.Size = new System.Drawing.Size(121, 21);
+            this.txtSalary.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 104);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "工资";
+            // 
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(103, 138);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Location = new System.Drawing.Point(103, 126);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(56, 18);
+            this.btnCancel.Size = new System.Drawing.Size(56, 30);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -106,10 +124,10 @@
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(182, 138);
-            this.btnClean.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClean.Location = new System.Drawing.Point(182, 126);
+            this.btnClean.Margin = new System.Windows.Forms.Padding(2);
             this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(56, 18);
+            this.btnClean.Size = new System.Drawing.Size(56, 30);
             this.btnClean.TabIndex = 15;
             this.btnClean.Text = "清除";
             this.btnClean.UseVisualStyleBackColor = true;
@@ -118,10 +136,10 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(24, 138);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(24, 126);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(56, 18);
+            this.btnSave.Size = new System.Drawing.Size(56, 30);
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -130,7 +148,7 @@
             // txtProbation
             // 
             this.txtProbation.Location = new System.Drawing.Point(479, 65);
-            this.txtProbation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProbation.Margin = new System.Windows.Forms.Padding(2);
             this.txtProbation.Name = "txtProbation";
             this.txtProbation.Size = new System.Drawing.Size(121, 21);
             this.txtProbation.TabIndex = 11;
@@ -140,7 +158,7 @@
             this.dtETime.CustomFormat = "yyyy-MM-dd";
             this.dtETime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtETime.Location = new System.Drawing.Point(284, 65);
-            this.dtETime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtETime.Margin = new System.Windows.Forms.Padding(2);
             this.dtETime.Name = "dtETime";
             this.dtETime.Size = new System.Drawing.Size(127, 21);
             this.dtETime.TabIndex = 10;
@@ -160,7 +178,7 @@
             this.dtSTime.CustomFormat = "yyyy-MM-dd";
             this.dtSTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtSTime.Location = new System.Drawing.Point(73, 65);
-            this.dtSTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtSTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtSTime.Name = "dtSTime";
             this.dtSTime.Size = new System.Drawing.Size(127, 21);
             this.dtSTime.TabIndex = 9;
@@ -170,7 +188,7 @@
             this.cboContractType.DisplayMember = "label";
             this.cboContractType.FormattingEnabled = true;
             this.cboContractType.Location = new System.Drawing.Point(479, 29);
-            this.cboContractType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboContractType.Margin = new System.Windows.Forms.Padding(2);
             this.cboContractType.Name = "cboContractType";
             this.cboContractType.Size = new System.Drawing.Size(121, 20);
             this.cboContractType.TabIndex = 8;
@@ -191,7 +209,7 @@
             this.cboEmp.DisplayMember = "Name";
             this.cboEmp.FormattingEnabled = true;
             this.cboEmp.Location = new System.Drawing.Point(284, 29);
-            this.cboEmp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboEmp.Margin = new System.Windows.Forms.Padding(2);
             this.cboEmp.Name = "cboEmp";
             this.cboEmp.Size = new System.Drawing.Size(127, 20);
             this.cboEmp.TabIndex = 6;
@@ -210,7 +228,7 @@
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(73, 28);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(127, 21);
             this.txtId.TabIndex = 1;
@@ -248,10 +266,10 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(219, 194);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Location = new System.Drawing.Point(219, 184);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(56, 18);
+            this.btnDelete.Size = new System.Drawing.Size(56, 30);
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -260,10 +278,10 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(147, 194);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdate.Location = new System.Drawing.Point(147, 184);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(56, 18);
+            this.btnUpdate.Size = new System.Drawing.Size(56, 30);
             this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "修改";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -271,10 +289,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(77, 194);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.Location = new System.Drawing.Point(77, 184);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(56, 18);
+            this.btnAdd.Size = new System.Drawing.Size(56, 30);
             this.btnAdd.TabIndex = 19;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -282,10 +300,10 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(9, 194);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFind.Location = new System.Drawing.Point(9, 184);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(2);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(56, 18);
+            this.btnFind.Size = new System.Drawing.Size(56, 30);
             this.btnFind.TabIndex = 20;
             this.btnFind.Text = "查询";
             this.btnFind.UseVisualStyleBackColor = true;
@@ -309,7 +327,7 @@
             this.gridContractType,
             this.gridEmpID});
             this.grid.Location = new System.Drawing.Point(10, 218);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
@@ -382,24 +400,6 @@
             this.gridEmpID.ReadOnly = true;
             this.gridEmpID.Visible = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 104);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "工资";
-            // 
-            // txtSalary
-            // 
-            this.txtSalary.Location = new System.Drawing.Point(73, 101);
-            this.txtSalary.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSalary.Name = "txtSalary";
-            this.txtSalary.Size = new System.Drawing.Size(121, 21);
-            this.txtSalary.TabIndex = 18;
-            // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -411,7 +411,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ContractForm";
             this.Text = "合同管理";
             this.Load += new System.EventHandler(this.ContractForm_Load);

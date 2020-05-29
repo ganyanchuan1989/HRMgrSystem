@@ -58,6 +58,7 @@ namespace HRMgrSystem
 
             txtId.Enabled = false;
             txtId.Text = UidUtils.GGuidPrefix(PREFIX);
+            txtName.Text = "";
 
             btnSaveEnbaled(true);
 

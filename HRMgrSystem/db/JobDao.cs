@@ -14,7 +14,7 @@ namespace HRMgrSystem.db
         // 新增
         public int Add(HRJob vo)
         {
-            int ret = conn.Execute(@"insert HR_JOB(ID,NAME) values (@Id,@Name,@CreateTime)" ,
+            int ret = conn.Execute(@"insert HR_JOB(ID,NAME) values (@Id,@Name)" ,
                 new[] { new { Id = vo.Id,
                     Name = vo.Name} });
 

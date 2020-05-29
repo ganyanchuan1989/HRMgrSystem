@@ -18,11 +18,18 @@ namespace HRMgrSystem
         private JobForm jobForm;
         private EmployeeForm empForm ;
         private ContractForm contractForm ;
-        private DeptForm1 deptForm ;
-        private WorkLogForm wlForm ;
-        private RewardsPunishmentsForm rpForm ;
+        private DeptForm deptForm ;
         private UserForm userForm;
         private ChangePwdForm cpForm;
+
+        private LeaveApplyForm leaveApplyForm;
+        private MyLeaveForm myLeaveForm;
+        private MyContractForm myContractForm;
+        private MyPayrollForm myPayrollForm;
+
+        private PayrollForm payrollForm;
+        private LeaveApproveForm leaveApproveForm;
+
 
         public MainForm()
         {
@@ -30,6 +37,29 @@ namespace HRMgrSystem
             // 菜单权限
             // userAuthority();
             // DBUtils.Test();
+
+            HomeForm homeForm = new HomeForm(
+                () => {
+                    this.请假申请ToolStripMenuItem_Click(null, null);
+                }, 
+                () => {
+                    this.请假审批ToolStripMenuItem_Click(null, null);
+                }, 
+                () => {
+                    this.我的请假ToolStripMenuItem_Click(null, null);
+                }, 
+                () => {
+                    this.我的合同ToolStripMenuItem_Click(null, null);
+                }, 
+                () => {
+                    this.我的工资单ToolStripMenuItem_Click(null, null);
+                }, 
+                () => {
+                    this.修改密码ToolStripMenuItem_Click(null, null);
+                });
+
+            homeForm.MdiParent = this;
+            homeForm.Show();
         }
 
         /// <summary>
@@ -41,15 +71,11 @@ namespace HRMgrSystem
             menuItemEmployee.Visible = false;
             menuItemDept.Visible = false;
             menuItemJob.Visible = false;
-            menuItemWorkLog.Visible = false;
-            menuItemJC.Visible = false;
-            menuItemMgr.Visible = false;
 
 
             // 1: 普通用户;2: 管理员
             if (GlobalInfo.loginUser.UserType == 1)
             {
-                menuItemWorkLog.Visible = true;
                 GlobalInfo.IS_ADMIN = false;
             }
             else if (GlobalInfo.loginUser.UserType == 2)
@@ -59,21 +85,16 @@ namespace HRMgrSystem
                 menuItemEmployee.Visible = true;
                 menuItemDept.Visible = true;
                 menuItemJob.Visible = true;
-                menuItemWorkLog.Visible = true;
-                menuItemJC.Visible = true;
-                menuItemMgr.Visible = true;
             }
         }
 
         
         private void menuItemDeptJob_Click(object sender, EventArgs e)
         {
-            if(jobForm == null)
+            if (jobForm == null || jobForm.IsDisposed)
             {
                 jobForm = new JobForm();
-                jobForm.FormClosed += JobForm_FormClosed;
             }
-
             ShowChildForm(jobForm);            ;
         }
 
@@ -84,39 +105,26 @@ namespace HRMgrSystem
 
         private void menuItemDeptEmployee_Click(object sender, EventArgs e)
         {
-            if(empForm == null)
+            if (empForm == null || empForm.IsDisposed)
             {
                 empForm = new EmployeeForm();
-                empForm.FormClosed += EmployeeForm_FormClosed;
             }
             ShowChildForm(empForm);
         }
 
-        private void EmployeeForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            empForm = null;
-        }
-
         private void menuItemDeptContract_Click(object sender, EventArgs e)
         {
-            if(contractForm == null)
+            if (contractForm == null || contractForm.IsDisposed)
             {
                 contractForm = new ContractForm();
-                contractForm.FormClosed += ContractForm_FormClosed;
             }
             ShowChildForm(contractForm);
         }
-        private void ContractForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            contractForm = null;
-        }
-
         private void menuItemDept_Click(object sender, EventArgs e)
         {
-            if(deptForm == null)
+            if (deptForm == null || deptForm.IsDisposed)
             {
-                deptForm = new DeptForm1();
-                deptForm.FormClosed += DeptForm1Form_FormClosed;
+                deptForm = new DeptForm();
             }
             ShowChildForm(deptForm);
         }
@@ -126,76 +134,105 @@ namespace HRMgrSystem
             deptForm = null;
         }
 
-        private void menuItemDeptWorkLog_Click(object sender, EventArgs e)
+        private void ShowChildForm(Form f)
         {
-            if(wlForm == null)
-            {
-                wlForm = new WorkLogForm();
-                wlForm.FormClosed += WorkLogForm_FormClosed;
-            }
-            ShowChildForm(wlForm);
+            f.FormClosed += ChildForm_FormClosed;
+            f.MdiParent = this;
+            f.Show(); ;
+            f.BringToFront();
         }
 
-        private void WorkLogForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            wlForm = null;
-        }
-
-        private void ShowChildForm(Form form)
-        {
-            form.MdiParent = this;
-            form.Show();
-            form.BringToFront();
-        }
-
-        private void 奖惩管理ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if(rpForm == null)
-            {
-                rpForm = new RewardsPunishmentsForm();
-                rpForm.FormClosed += RewardsPunishmentsForm_FormClosed;
-            } 
-            ShowChildForm(rpForm);
-        }
-
-        private void RewardsPunishmentsForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            rpForm = null;
+            Form f = sender as Form;
+            f.Dispose();
+            f = null;
         }
 
         private void 管理员ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(userForm == null)
+            if (userForm == null || userForm.IsDisposed)
             {
                 userForm = new UserForm();
-                userForm.FormClosed += UserForm_FormClosed;
             }
             ShowChildForm(userForm);
-        }
-
-        private void UserForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            userForm = null;
-        }
-
-        private void menuItemChangePwd_Click(object sender, EventArgs e)
-        {
-            if(cpForm == null)
-            {
-                cpForm = new ChangePwdForm();
-                cpForm.FormClosed += ChangePwdForm_FormClosed;
-            }
-            ShowChildForm(cpForm);
-        }
-
-        private void ChangePwdForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            cpForm = null;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void menuItemUser_Click(object sender, EventArgs e)
+        {
+            if(userForm == null || userForm.IsDisposed)
+            {
+                userForm = new UserForm();
+            }
+            ShowChildForm(userForm);
+        }
+
+        private void 请假申请ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (leaveApplyForm == null || leaveApplyForm.IsDisposed)
+            {
+                leaveApplyForm = new LeaveApplyForm();
+            }
+            ShowChildForm(leaveApplyForm);
+        }
+
+        private void 请假审批ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (leaveApproveForm == null || leaveApproveForm.IsDisposed)
+            {
+                leaveApproveForm = new LeaveApproveForm();
+            }
+            ShowChildForm(leaveApproveForm);
+        }
+
+        private void 我的请假ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (myLeaveForm == null || myLeaveForm.IsDisposed)
+            {
+                myLeaveForm = new MyLeaveForm();
+            }
+            ShowChildForm(myLeaveForm);
+        }
+
+        private void 我的合同ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (myContractForm == null || myContractForm.IsDisposed)
+            {
+                myContractForm = new MyContractForm();
+            }
+            ShowChildForm(myContractForm);
+        }
+
+        private void 我的工资单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (myPayrollForm == null || myPayrollForm.IsDisposed)
+            {
+                myPayrollForm = new MyPayrollForm();
+            }
+            ShowChildForm(myPayrollForm);
+        }
+
+        private void 修改密码ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cpForm == null || cpForm.IsDisposed)
+            {
+                cpForm = new ChangePwdForm();
+            }
+            ShowChildForm(cpForm);
+        }
+
+        private void 薪资管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (payrollForm == null || payrollForm.IsDisposed)
+            {
+                payrollForm = new PayrollForm();
+            }
+            ShowChildForm(payrollForm);
         }
     }
 }

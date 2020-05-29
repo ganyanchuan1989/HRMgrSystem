@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HRMgrSystem
 {
-    public partial class RewardsPunishmentsForm : Form
+    public partial class MyPayrollForm : Form
     {
-        public RewardsPunishmentsForm()
+        public MyPayrollForm()
         {
             InitializeComponent();
         }

@@ -41,16 +41,14 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.gridId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnClean);
             this.groupBox1.Controls.Add(this.btnSave);
@@ -62,7 +60,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(554, 170);
+            this.groupBox1.Size = new System.Drawing.Size(554, 126);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "职位信息";
@@ -70,7 +68,7 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(105, 121);
+            this.btnCancel.Location = new System.Drawing.Point(105, 84);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(56, 30);
@@ -81,7 +79,7 @@
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(177, 121);
+            this.btnClean.Location = new System.Drawing.Point(177, 84);
             this.btnClean.Margin = new System.Windows.Forms.Padding(2);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(56, 30);
@@ -93,7 +91,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(31, 121);
+            this.btnSave.Location = new System.Drawing.Point(31, 84);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(56, 30);
@@ -140,7 +138,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(22, 209);
+            this.btnFind.Location = new System.Drawing.Point(22, 163);
             this.btnFind.Margin = new System.Windows.Forms.Padding(2);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(56, 30);
@@ -151,7 +149,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(104, 209);
+            this.btnAdd.Location = new System.Drawing.Point(104, 163);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(56, 30);
@@ -162,7 +160,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(184, 209);
+            this.btnUpdate.Location = new System.Drawing.Point(184, 163);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(56, 30);
@@ -173,7 +171,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(261, 209);
+            this.btnDelete.Location = new System.Drawing.Point(261, 163);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(56, 30);
@@ -186,39 +184,41 @@
             // 
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(22, 243);
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridId,
+            this.gridName});
+            this.grid.Location = new System.Drawing.Point(22, 197);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
+            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid.Size = new System.Drawing.Size(554, 194);
             this.grid.TabIndex = 12;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridJob_CellClick);
             // 
-            // label3
+            // gridId
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 86);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "角色";
+            this.gridId.DataPropertyName = "id";
+            this.gridId.HeaderText = "ID";
+            this.gridId.Name = "gridId";
+            this.gridId.ReadOnly = true;
             // 
-            // comboBox1
+            // gridName
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(91, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 20);
-            this.comboBox1.TabIndex = 10;
+            this.gridName.DataPropertyName = "name";
+            this.gridName.HeaderText = "Name";
+            this.gridName.Name = "gridName";
+            this.gridName.ReadOnly = true;
             // 
             // JobForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 450);
+            this.ClientSize = new System.Drawing.Size(592, 407);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -251,7 +251,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridName;
     }
 }

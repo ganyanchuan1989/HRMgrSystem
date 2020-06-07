@@ -53,6 +53,15 @@ namespace HRMgrSystem
             }
 
             cboEmp.DataSource = empList;
+
+
+            HRPayroll vo = new HRPayroll();
+            vo.EmpId = GlobalInfo.loginEmp.Id;
+            list = dao.FindByWhere(vo);
+
+            var bindingList = new BindingList<HRPayroll>(list);
+            listSource = new BindingSource(bindingList, null);
+            grid.DataSource = listSource;
         }
 
         /// <summary>

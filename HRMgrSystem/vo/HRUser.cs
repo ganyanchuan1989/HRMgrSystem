@@ -11,7 +11,6 @@ namespace HRMgrSystem.vo
         public string EmpId { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
-        public int Status { get; set; }
         public int UserType { get; set; }
 
         public string EmpName { get; set; }

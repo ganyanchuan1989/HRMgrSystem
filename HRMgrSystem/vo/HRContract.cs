@@ -13,7 +13,6 @@ namespace HRMgrSystem.vo
         public string EndTime { get; set; }
         public int Probation { get; set; }
         public float Salary { get; set; }
-        public int ContractType { get; set; }
 
         public string EmpName { get; set; }
 

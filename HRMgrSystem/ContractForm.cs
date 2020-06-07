@@ -34,10 +34,12 @@ namespace HRMgrSystem
         {
             InitializeComponent();
 
-            initData();
+            CleanData();
+
+            InitData();
         }
 
-        private void initData()
+        private void InitData()
         {
             list = dao.FindAll();
             empList = empDao.FindAll();
@@ -46,31 +48,32 @@ namespace HRMgrSystem
             listSource = new BindingSource(bindingList, null);
             grid.DataSource = null;
             grid.DataSource = listSource;
-            // 合同类型
-            cboContractType.DataSource = DataDictionaryUtils.GetContractTypeDict();
-            cboContractType.SelectedIndex = -1;
 
             cboEmp.DataSource = empList;
             cboEmp.SelectedIndex = -1;
         }
 
-        private void cleanData()
+        private void CleanData()
         {
             txtId.Text = "";
             txtProbation.Text = "";
             txtSalary.Text = "";
-
-            cboContractType.SelectedIndex = -1;
+            
             cboEmp.SelectedIndex = -1;
             dtETime.Text = "";
             dtSTime.Text = "";
 
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
+
+            dtSTime.CustomFormat = " ";
+            dtETime.CustomFormat = " ";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!validateInput()) return;
+
             btnSaveEnbaled(false);
 
             if (opration == OP_ADD)
@@ -93,7 +96,6 @@ namespace HRMgrSystem
                 vo.Salary = !EmptyUtils.EmptyStr(txtSalary.Text) ? float.Parse(txtSalary.Text) : -1;
                 vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
                 vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
-                vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
                 vo.EndTime = dtETime.Text;
                 vo.StartTime = dtSTime.Text;
 
@@ -101,7 +103,7 @@ namespace HRMgrSystem
                 grid.Refresh();
             }
 
-            cleanData();
+            CleanData();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -112,9 +114,9 @@ namespace HRMgrSystem
         private void btnClean_Click(object sender, EventArgs e)
         {
             btnSaveEnbaled(false);
-            cleanData();
+            CleanData();
 
-            initData();
+            InitData();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -140,7 +142,6 @@ namespace HRMgrSystem
             vo.Salary = !EmptyUtils.EmptyStr(txtSalary.Text) ? float.Parse(txtSalary.Text) : -1;
             vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
             vo.EmpName = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? ((HREmployee)cboEmp.SelectedItem).Name : "";
-            vo.ContractType = !EmptyUtils.EmptyObj(cboContractType.SelectedValue) ? int.Parse(cboContractType.SelectedValue.ToString()) : -1;
             vo.EndTime = dtETime.Text;
             vo.StartTime = dtSTime.Text;
 
@@ -152,11 +153,15 @@ namespace HRMgrSystem
             btnSave.Enabled = enabled;
             btnCancel.Enabled = enabled;
             txtId.Enabled = !enabled;
+            btnFind.Enabled = !enabled;
+            btnAdd.Enabled = !enabled;
+            btnClean.Enabled = !enabled;
+            grid.Enabled = !enabled;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            cleanData();
+            CleanData();
 
             opration = OP_ADD;
 
@@ -187,7 +192,9 @@ namespace HRMgrSystem
                 HRContract vo = list[grid.CurrentRow.Index];
                 dao.Delete(vo.Id);
                 list.RemoveAt(grid.CurrentRow.Index);
-                initData();
+
+                CleanData();
+                InitData();
             }
         }
 
@@ -217,7 +224,6 @@ namespace HRMgrSystem
             txtSalary.Text = vo.Salary.ToString();
 
             cboEmp.SelectedValue = vo.EmpId;
-            cboContractType.SelectedValue = vo.ContractType;
 
             dtETime.Text = vo.EndTime;
             dtSTime.Text = vo.StartTime;
@@ -238,6 +244,81 @@ namespace HRMgrSystem
             {
                 e.Value = rows[0]["label"];
             }
+        }
+
+        /// <summary>
+        /// 验证输入
+        /// </summary>
+        /// <returns></returns>
+        private bool validateInput()
+        {
+            if (EmptyUtils.EmptyObj(cboEmp.SelectedValue))
+            {
+                MessageBoxEx.Show(this, "请选择员工");
+                cboEmp.Focus();
+                return false;
+            }
+
+            if (EmptyUtils.EmptyStr(dtSTime.Text))
+            {
+                MessageBoxEx.Show(this, "请选择合同开始时间。");
+                txtSalary.Focus();
+                return false;
+            }
+
+            if (EmptyUtils.EmptyStr(txtProbation.Text))
+            {
+                MessageBoxEx.Show(this, "请输入试用期");
+                txtProbation.Focus();
+                return false;
+            }
+            if (EmptyUtils.IsNaN(txtProbation.Text))
+            {
+                MessageBoxEx.Show(this, "试用期格式不正确，请重新输入。");
+                txtProbation.Focus();
+                return false;
+            }
+            if (EmptyUtils.EmptyStr(txtSalary.Text))
+            {
+                MessageBoxEx.Show(this, "请输入工资");
+                txtSalary.Focus();
+                return false;
+            }
+            if (EmptyUtils.IsNaN(txtSalary.Text))
+            {
+                MessageBoxEx.Show(this, "试用期格式不正确，请重新输入。");
+                txtSalary.Focus();
+                return false;
+            }
+
+           
+            if (EmptyUtils.EmptyStr(dtETime.Text))
+            {
+                MessageBoxEx.Show(this, "请选择合同结束时间。");
+                txtSalary.Focus();
+                return false;
+            }
+
+            DateTime sDt = Convert.ToDateTime(dtSTime.Text);
+            DateTime eDt = Convert.ToDateTime(dtETime.Text);
+
+            if (DateTime.Compare(sDt, eDt) > 0)
+            {
+                MessageBoxEx.Show(this, "合同开始时间不能大于合同结束时间。");
+                dtSTime.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private void dtSTime_ValueChanged(object sender, EventArgs e)
+        {
+            dtSTime.CustomFormat = "yyyy-MM-dd";
+        }
+
+        private void dtETime_ValueChanged(object sender, EventArgs e)
+        {
+            dtETime.CustomFormat = "yyyy-MM-dd";
         }
     }
 }

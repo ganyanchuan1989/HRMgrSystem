@@ -24,7 +24,6 @@ namespace HRMgrSystem.vo
                     .MapProperty(x => x.EndTime).ToColumn("END_TIME")
                     .MapProperty(x => x.Probation).ToColumn("PROBATION")
                     .MapProperty(x => x.Salary).ToColumn("SALARY")
-                    .MapProperty(x => x.ContractType).ToColumn("CONTRACT_TYPE")
                     .MapProperty(x => x.EmpName).ToColumn("EMP_NAME"); // 
 
             // HRDept
@@ -74,7 +73,6 @@ namespace HRMgrSystem.vo
                    .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
                    .MapProperty(x => x.Password).ToColumn("PASSWORD")
                    .MapProperty(x => x.UserName).ToColumn("USERNAME")
-                   .MapProperty(x => x.Status).ToColumn("STATUS")
                    .MapProperty(x => x.UserType).ToColumn("USER_TYPE")
                    .MapProperty(x => x.EmpName).ToColumn("EMP_NAME");
 
@@ -102,6 +100,7 @@ namespace HRMgrSystem.vo
             mappings.RegisterType<HRPayroll>()
                        .MapProperty(x => x.Id).ToColumn("ID")
                        .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
+                       .MapProperty(x => x.EmpName).ToColumn("EMP_NAME")
                        .MapProperty(x => x.PayrollDate).ToColumn("PAYROLL_DATE")
                        .MapProperty(x => x.ProbationStatus).ToColumn("PROBATION_STATUS")
                        .MapProperty(x => x.SickLeaveDay).ToColumn("SICK_LEAVE_DAY")

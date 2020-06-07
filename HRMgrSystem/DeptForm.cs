@@ -35,10 +35,12 @@ namespace HRMgrSystem
         {
             InitializeComponent();
 
-            initData();
+            CleanData();
+
+            InitData();
         }
 
-        private void initData()
+        private void InitData()
         {
             list = dao.FindAll();
             empList = empDao.FindAll();
@@ -48,10 +50,12 @@ namespace HRMgrSystem
             grid.DataSource = listSource;
         }
 
-        private void cleanData()
+        private void CleanData()
         {
             txtId.Text = "";
             txtName.Text = "";
+            grid.ClearSelection();
+            grid.CurrentCell = null;
 
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
@@ -64,6 +68,7 @@ namespace HRMgrSystem
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            CleanData();
             opration = OP_ADD;
 
             txtId.Enabled = false;
@@ -79,10 +84,31 @@ namespace HRMgrSystem
             btnSave.Enabled = enabled;
             btnCancel.Enabled = enabled;
             txtId.Enabled = !enabled;
+            btnFind.Enabled = !enabled;
+            btnAdd.Enabled = !enabled;
+            btnClean.Enabled = !enabled;
+            grid.Enabled = !enabled;
+        }
+
+        /// <summary>
+        /// 验证输入
+        /// </summary>
+        /// <returns></returns>
+        private bool validateInput()
+        {
+            if (EmptyUtils.EmptyStr(txtName.Text))
+            {
+                MessageBoxEx.Show(this, "请输入部门名称");
+                txtName.Focus();
+                return false;
+            }
+            return true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!validateInput()) return;
+
             btnSaveEnbaled(false);
 
             if (opration == OP_ADD)
@@ -104,6 +130,9 @@ namespace HRMgrSystem
                 dao.Update(dept);
                 grid.Refresh();
             }
+
+
+            CleanData();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -126,19 +155,19 @@ namespace HRMgrSystem
             HRDept dept = list[e.RowIndex];
             txtId.Text = dept.Id;
             txtName.Text = dept.Name;
+
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
         }
 
         private void btnClean_Click(object sender, EventArgs e)
         {
-
-            initData();
             opration = -1;
 
-            txtId.Text = "";
-            txtName.Text = "";
+            btnSaveEnbaled(false);
+            CleanData();
 
-            grid.ClearSelection();
-            grid.CurrentCell = null;
+            InitData();
             
         }
 
@@ -151,7 +180,7 @@ namespace HRMgrSystem
         {
             if (grid.CurrentRow.Index < 0)
             {
-                MessageBox.Show("请选择一条数据,在进行操作");
+                MessageBoxEx.Show("请选择一条数据,在进行操作");
                 return;
             }
 
@@ -165,18 +194,26 @@ namespace HRMgrSystem
         {
             if (grid.CurrentRow.Index < 0)
             {
-                MessageBox.Show("请选择一条数据,在进行操作");
+                MessageBoxEx.Show("请选择一条数据,在进行操作");
                 return;
             }
-            DialogResult result = MessageBox.Show(this, "确认要删除吗?", "", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBoxEx.Show(this, "确认要删除吗?", "", MessageBoxButtons.YesNo);
 
             //如果点击的是"YES"按钮,将form关闭.
             if (result == DialogResult.Yes)
             {
-                HRDept job = list[grid.CurrentRow.Index];
-                dao.Delete(job.Id);
+                HRDept dept = list[grid.CurrentRow.Index];
+                try
+                {
+                    dao.Delete(dept.Id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxEx.Show(this, "删除失败！" + ex.StackTrace, "报错提示", MessageBoxButtons.YesNo);
+                    return;
+                }
                 list.RemoveAt(grid.CurrentRow.Index);
-                initData();
+                InitData();
             }
         }
     }

@@ -114,6 +114,7 @@
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(195, 38);
             this.lblError.TabIndex = 8;
+            this.lblError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ChangePwdForm
             // 

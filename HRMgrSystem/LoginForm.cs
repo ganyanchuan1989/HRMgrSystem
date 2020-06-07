@@ -35,21 +35,18 @@ namespace HRMgrSystem
             }
             else
             {
-                if(user.Status == 2)
+                GlobalInfo.loginUser = user;
+                GlobalInfo.loginEmp = empDao.FindById(user.EmpId);
+
+                if (GlobalInfo.loginEmp.Status == 2)
                 {
                     lblError.Text = "用户已经被停用，请联系管理员。";
                 }
                 else
                 {
                     this.Hide();
-
-                    GlobalInfo.loginUser = user;
-                    GlobalInfo.loginEmp = empDao.FindById(user.EmpId);
-
                     MainForm main = new MainForm();
                     main.Show();
-                    // HomeForm home = new HomeForm();
-                    // home.Show();
                 }
             }
         }

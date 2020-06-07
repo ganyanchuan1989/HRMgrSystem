@@ -37,6 +37,35 @@ namespace HRMgrSystem.utils
             return false;
         }
 
-        
+
+        public static bool IsNaN(string str)
+        {
+            double num = 0;
+            if (!Double.TryParse(str, out num))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsEmail(string str)
+        {
+            if(str.IndexOf("@")<0 || str.IndexOf(".") < 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 字符串不为空情况下，是否是有效字符
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool NotNullIsNaN(string str)
+        {
+            if (EmptyStr(str)) return true;
+            return IsNaN(str);
+        }
     }
 }

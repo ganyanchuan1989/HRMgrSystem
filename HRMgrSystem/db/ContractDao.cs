@@ -14,15 +14,14 @@ namespace HRMgrSystem.db
         // 新增
         public int Add(HRContract vo)
         {
-            var ret = conn.Execute(@"insert HR_CONTRACT(ID,EMP_ID,START_TIME,END_TIME,PROBATION,SALARY,CONTRACT_TYPE) " +
-                    "values (@Id,@EmpId,@StartTime,@EndTime,@Probation,@Salary,@ContractType)",
+            var ret = conn.Execute(@"insert HR_CONTRACT(ID,EMP_ID,START_TIME,END_TIME,PROBATION,SALARY) " +
+                    "values (@Id,@EmpId,@StartTime,@EndTime,@Probation,@Salary)",
                 new[] { new { Id = vo.Id,
                     EmpId = vo.EmpId,
                     StartTime = vo.StartTime,
                     EndTime = vo.EndTime,
                     Probation = vo.Probation,
-                    Salary = vo.Salary,
-                    ContractType = vo.ContractType } });
+                    Salary = vo.Salary} });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
 
@@ -81,7 +80,6 @@ namespace HRMgrSystem.db
             if (vo.Salary > 0 ) whereSql += " and c.Salary=@Salary";
             if (vo.Probation > 0) whereSql += " and c.Probation=@Probation";
             if (!EmptyUtils.EmptyStr(vo.EmpId)) whereSql += " and c.EMP_ID=@EmpId";
-            if (vo.ContractType > 0) whereSql += " and c.Contract_Type=@ContractType";
 
             string sql = "SELECT c.*, e.name as EMP_NAME FROM HR_CONTRACT c ,HR_EMPLOYEE e where c.EMP_ID = e.ID";
 
@@ -89,8 +87,7 @@ namespace HRMgrSystem.db
                 Id = vo.Id,
                 Salary = vo.Salary,
                 Probation = vo.Probation,
-                EmpId = vo.EmpId,
-                ContractType = vo.ContractType
+                EmpId = vo.EmpId
             }).ToList();
         }
 
@@ -122,7 +119,7 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public int Update(HRContract vo)
         {
-            return conn.Execute(@"update HR_CONTRACT SET EMP_ID=@EmpId,START_TIME=@StartTime,END_TIME=@EndTime,PROBATION=@Probation,SALARY=@Salary,CONTRACT_TYPE=@ContractType WHERE id = @Id",
+            return conn.Execute(@"update HR_CONTRACT SET EMP_ID=@EmpId,START_TIME=@StartTime,END_TIME=@EndTime,PROBATION=@Probation,SALARY=@Salary WHERE id = @Id",
                 new
                 {
                     Id = vo.Id,
@@ -130,8 +127,7 @@ namespace HRMgrSystem.db
                     StartTime = vo.StartTime,
                     EndTime = vo.EndTime,
                     Probation = vo.Probation,
-                    Salary = vo.Salary,
-                    ContractType = vo.ContractType
+                    Salary = vo.Salary
                 });
         }
 

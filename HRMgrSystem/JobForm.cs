@@ -33,15 +33,27 @@ namespace HRMgrSystem
         {
             InitializeComponent();
 
-            jobList = dao.FindAll();
-            initData();
+            
+            InitData();
         }
 
-        private void initData()
+        private void InitData()
         {
+            jobList = dao.FindAll();
             var bindingList = new BindingList<HRJob>(jobList);
             jobListSource = new BindingSource(bindingList, null);
             grid.DataSource = jobListSource;
+        }
+
+        private void CleanData()
+        {
+            txtId.Text = "";
+            txtName.Text = "";
+            grid.ClearSelection();
+            grid.CurrentCell = null;
+
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -52,8 +64,26 @@ namespace HRMgrSystem
             grid.DataSource = tempJob;
         }
 
+        /// <summary>
+        /// 验证输入
+        /// </summary>
+        /// <returns></returns>
+        private bool validateInput()
+        {
+            if (EmptyUtils.EmptyStr(txtName.Text))
+            {
+                MessageBoxEx.Show(this, "请输入职位名称");
+                txtName.Focus();
+                return false;
+            }
+            return true;
+        }
+
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            CleanData();
+
             opration = OP_ADD;
 
             txtId.Enabled = false;
@@ -69,7 +99,7 @@ namespace HRMgrSystem
         {
             if (grid.CurrentRow.Index < 0)
             {
-                MessageBox.Show("请选择一条数据,在进行操作");
+                MessageBoxEx.Show("请选择一条数据,在进行操作");
                 return;
             }
 
@@ -83,18 +113,27 @@ namespace HRMgrSystem
         {
             if(grid.CurrentRow.Index < 0)
             {
-                MessageBox.Show("请选择一条数据,在进行操作");
+                MessageBoxEx.Show("请选择一条数据,在进行操作");
                 return;
             }
-            DialogResult result = MessageBox.Show(this, "确认要删除吗?", "", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBoxEx.Show(this, "确认要删除吗?", "操作提示", MessageBoxButtons.YesNo);
 
             //如果点击的是"YES"按钮,将form关闭.
             if (result == DialogResult.Yes)
             {
                 HRJob job = jobList[grid.CurrentRow.Index];
-                dao.Delete(job.Id);
+                try
+                {
+                    dao.Delete(job.Id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxEx.Show(this, "删除失败！"+ex.StackTrace, "报错提示", MessageBoxButtons.YesNo);
+                    return;
+                }
+               
                 jobList.RemoveAt(grid.CurrentRow.Index);
-                initData();
+                InitData();
             }
         }
 
@@ -121,6 +160,8 @@ namespace HRMgrSystem
                 dao.Update(job);
                 grid.Refresh();
             }
+
+            CleanData();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -134,7 +175,7 @@ namespace HRMgrSystem
             txtName.Text = "";
             grid.ClearSelection();
             grid.CurrentCell = null;
-            initData();
+            InitData();
             opration = -1;
         }
 
@@ -143,6 +184,10 @@ namespace HRMgrSystem
             btnSave.Enabled = enabled;
             btnCancel.Enabled = enabled;
             txtId.Enabled = !enabled;
+            btnFind.Enabled = !enabled;
+            btnAdd.Enabled = !enabled;
+            btnClean.Enabled = !enabled;
+            grid.Enabled = !enabled;
         }
 
         private void dataGridJob_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -153,7 +198,9 @@ namespace HRMgrSystem
             Console.WriteLine(job.Id);
             txtId.Text = job.Id;
             txtName.Text = job.Name;
-            // dataGridJob.dat;
+
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
         }
 
         private void JobForm_Load(object sender, EventArgs e)

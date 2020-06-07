@@ -50,7 +50,6 @@ namespace HRMgrSystem
                     txtSalary.Text = vo.Salary.ToString();
 
                     cboEmp.SelectedValue = vo.EmpId;
-                    cboContractType.SelectedValue = vo.ContractType;
 
                     dtETime.Text = vo.EndTime;
                     dtSTime.Text = vo.StartTime;

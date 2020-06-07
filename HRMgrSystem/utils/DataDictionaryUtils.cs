@@ -125,29 +125,6 @@ namespace HRMgrSystem.utils
             return dt;
         }
 
-
-        /// <summary>
-        /// 用户状态（1：可用；2：停用）
-        /// </summary>
-        public static DataTable GetUserStatusDict()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("value");
-            dt.Columns.Add("label");
-
-            DataRow dr = dt.NewRow();
-            dr["value"] = 1;
-            dr["label"] = "可用";
-            dt.Rows.Add(dr);
-
-            dr = dt.NewRow();
-            dr["value"] = 2;
-            dr["label"] = "停用";
-            dt.Rows.Add(dr);
-
-            return dt;
-        }
-
         /// <summary>
         /// 用户类型（1：普通用户；2:部门经理；3：管理员用户）
         /// </summary>

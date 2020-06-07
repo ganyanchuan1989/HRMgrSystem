@@ -38,8 +38,6 @@
             this.dtETime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dtSTime = new System.Windows.Forms.DateTimePicker();
-            this.cboContractType = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.cboEmp = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -74,8 +72,6 @@
             this.groupBox1.Controls.Add(this.dtETime);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dtSTime);
-            this.groupBox1.Controls.Add(this.cboContractType);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cboEmp);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtId);
@@ -86,14 +82,14 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(622, 170);
+            this.groupBox1.Size = new System.Drawing.Size(622, 146);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "合同信息";
             // 
             // txtSalary
             // 
-            this.txtSalary.Location = new System.Drawing.Point(73, 101);
+            this.txtSalary.Location = new System.Drawing.Point(284, 68);
             this.txtSalary.Margin = new System.Windows.Forms.Padding(2);
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(121, 21);
@@ -102,7 +98,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 104);
+            this.label2.Location = new System.Drawing.Point(245, 71);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
@@ -112,7 +108,7 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(103, 126);
+            this.btnCancel.Location = new System.Drawing.Point(105, 107);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(56, 30);
@@ -123,7 +119,7 @@
             // 
             // btnClean
             // 
-            this.btnClean.Location = new System.Drawing.Point(182, 126);
+            this.btnClean.Location = new System.Drawing.Point(184, 107);
             this.btnClean.Margin = new System.Windows.Forms.Padding(2);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(56, 30);
@@ -135,7 +131,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(24, 126);
+            this.btnSave.Location = new System.Drawing.Point(26, 107);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(56, 30);
@@ -146,62 +142,43 @@
             // 
             // txtProbation
             // 
-            this.txtProbation.Location = new System.Drawing.Point(479, 65);
+            this.txtProbation.Location = new System.Drawing.Point(79, 65);
             this.txtProbation.Margin = new System.Windows.Forms.Padding(2);
             this.txtProbation.Name = "txtProbation";
-            this.txtProbation.Size = new System.Drawing.Size(121, 21);
+            this.txtProbation.Size = new System.Drawing.Size(127, 21);
             this.txtProbation.TabIndex = 11;
             // 
             // dtETime
             // 
             this.dtETime.CustomFormat = "yyyy-MM-dd";
             this.dtETime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtETime.Location = new System.Drawing.Point(284, 65);
+            this.dtETime.Location = new System.Drawing.Point(491, 65);
             this.dtETime.Margin = new System.Windows.Forms.Padding(2);
             this.dtETime.Name = "dtETime";
             this.dtETime.Size = new System.Drawing.Size(127, 21);
             this.dtETime.TabIndex = 10;
+            this.dtETime.ValueChanged += new System.EventHandler(this.dtETime_ValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(436, 69);
+            this.label3.Location = new System.Drawing.Point(5, 69);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = "试用期";
+            this.label3.Text = "试用期（月）";
             // 
             // dtSTime
             // 
             this.dtSTime.CustomFormat = "yyyy-MM-dd";
             this.dtSTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtSTime.Location = new System.Drawing.Point(73, 65);
+            this.dtSTime.Location = new System.Drawing.Point(491, 29);
             this.dtSTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtSTime.Name = "dtSTime";
             this.dtSTime.Size = new System.Drawing.Size(127, 21);
             this.dtSTime.TabIndex = 9;
-            // 
-            // cboContractType
-            // 
-            this.cboContractType.DisplayMember = "label";
-            this.cboContractType.FormattingEnabled = true;
-            this.cboContractType.Location = new System.Drawing.Point(479, 29);
-            this.cboContractType.Margin = new System.Windows.Forms.Padding(2);
-            this.cboContractType.Name = "cboContractType";
-            this.cboContractType.Size = new System.Drawing.Size(121, 20);
-            this.cboContractType.TabIndex = 8;
-            this.cboContractType.ValueMember = "value";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(424, 32);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 12);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "合同类型";
+            this.dtSTime.ValueChanged += new System.EventHandler(this.dtSTime_ValueChanged);
             // 
             // cboEmp
             // 
@@ -217,7 +194,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 69);
+            this.label5.Location = new System.Drawing.Point(431, 33);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
@@ -226,7 +203,7 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(73, 28);
+            this.txtId.Location = new System.Drawing.Point(79, 28);
             this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(127, 21);
@@ -235,7 +212,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 32);
+            this.label1.Location = new System.Drawing.Point(58, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
@@ -245,7 +222,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(226, 69);
+            this.label4.Location = new System.Drawing.Point(433, 69);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
@@ -265,7 +242,7 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(219, 184);
+            this.btnDelete.Location = new System.Drawing.Point(215, 169);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(56, 30);
@@ -277,7 +254,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(147, 184);
+            this.btnUpdate.Location = new System.Drawing.Point(143, 169);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(56, 30);
@@ -288,7 +265,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(77, 184);
+            this.btnAdd.Location = new System.Drawing.Point(73, 169);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(56, 30);
@@ -299,7 +276,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(9, 184);
+            this.btnFind.Location = new System.Drawing.Point(5, 169);
             this.btnFind.Margin = new System.Windows.Forms.Padding(2);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(56, 30);
@@ -324,12 +301,13 @@
             this.gridProbation,
             this.gridContractType,
             this.gridEmpID});
-            this.grid.Location = new System.Drawing.Point(10, 218);
+            this.grid.Location = new System.Drawing.Point(6, 203);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
-            this.grid.Size = new System.Drawing.Size(634, 157);
+            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grid.Size = new System.Drawing.Size(619, 157);
             this.grid.TabIndex = 21;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
@@ -395,7 +373,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 384);
+            this.ClientSize = new System.Drawing.Size(640, 368);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -420,8 +398,6 @@
         private System.Windows.Forms.DateTimePicker dtETime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtSTime;
-        private System.Windows.Forms.ComboBox cboContractType;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboEmp;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtId;

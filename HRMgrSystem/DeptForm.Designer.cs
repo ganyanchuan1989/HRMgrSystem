@@ -37,12 +37,12 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -140,6 +140,8 @@
             // 
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -149,9 +151,26 @@
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 27;
+            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid.Size = new System.Drawing.Size(553, 200);
             this.grid.TabIndex = 1;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 200;
+            // 
+            // deptName
+            // 
+            this.deptName.DataPropertyName = "Name";
+            this.deptName.HeaderText = "部门名称";
+            this.deptName.Name = "deptName";
+            this.deptName.ReadOnly = true;
+            this.deptName.Width = 150;
             // 
             // btnAdd
             // 
@@ -197,23 +216,7 @@
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Id";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 200;
-            // 
-            // deptName
-            // 
-            this.deptName.DataPropertyName = "Name";
-            this.deptName.HeaderText = "部门名称";
-            this.deptName.Name = "deptName";
-            this.deptName.ReadOnly = true;
-            this.deptName.Width = 150;
-            // 
-            // DeptForm1
+            // DeptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -225,7 +228,7 @@
             this.Controls.Add(this.grid);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "DeptForm1";
+            this.Name = "DeptForm";
             this.Text = "部门管理";
             this.Load += new System.EventHandler(this.DeptForm_Load);
             this.groupBox1.ResumeLayout(false);

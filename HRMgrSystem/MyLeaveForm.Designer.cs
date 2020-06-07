@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.grid = new System.Windows.Forms.DataGridView();
+            this.gridId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridLeaveType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridLeaveDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridLeaveStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridLeaveCause = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -38,14 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFind = new System.Windows.Forms.Button();
-            this.gridId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridLeaveType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridLeaveDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridLeaveStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridLeaveCause = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -68,9 +68,68 @@
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 23;
+            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid.Size = new System.Drawing.Size(648, 238);
             this.grid.TabIndex = 0;
             this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
+            // 
+            // gridId
+            // 
+            this.gridId.DataPropertyName = "id";
+            this.gridId.HeaderText = "ID";
+            this.gridId.Name = "gridId";
+            this.gridId.ReadOnly = true;
+            // 
+            // gridLeaveType
+            // 
+            this.gridLeaveType.DataPropertyName = "type";
+            this.gridLeaveType.HeaderText = "请假类型";
+            this.gridLeaveType.Name = "gridLeaveType";
+            this.gridLeaveType.ReadOnly = true;
+            // 
+            // gridLeaveDay
+            // 
+            this.gridLeaveDay.DataPropertyName = "LeaveDay";
+            this.gridLeaveDay.HeaderText = "请假天数";
+            this.gridLeaveDay.Name = "gridLeaveDay";
+            this.gridLeaveDay.ReadOnly = true;
+            // 
+            // gridLeaveStartDate
+            // 
+            this.gridLeaveStartDate.DataPropertyName = "LeaveDate";
+            this.gridLeaveStartDate.HeaderText = "请假开始时间";
+            this.gridLeaveStartDate.Name = "gridLeaveStartDate";
+            this.gridLeaveStartDate.ReadOnly = true;
+            // 
+            // gridLeaveCause
+            // 
+            this.gridLeaveCause.DataPropertyName = "cause";
+            this.gridLeaveCause.HeaderText = "请假原因";
+            this.gridLeaveCause.Name = "gridLeaveCause";
+            this.gridLeaveCause.ReadOnly = true;
+            // 
+            // gridStatus
+            // 
+            this.gridStatus.DataPropertyName = "Status";
+            this.gridStatus.HeaderText = "请假状态";
+            this.gridStatus.Name = "gridStatus";
+            this.gridStatus.ReadOnly = true;
+            // 
+            // gridEmpId
+            // 
+            this.gridEmpId.DataPropertyName = "EmpId";
+            this.gridEmpId.HeaderText = "EmpId";
+            this.gridEmpId.Name = "gridEmpId";
+            this.gridEmpId.ReadOnly = true;
+            this.gridEmpId.Visible = false;
+            // 
+            // gridEmpName
+            // 
+            this.gridEmpName.DataPropertyName = "EmpName";
+            this.gridEmpName.HeaderText = "EmpName";
+            this.gridEmpName.Name = "gridEmpName";
+            this.gridEmpName.ReadOnly = true;
+            this.gridEmpName.Visible = false;
             // 
             // groupBox1
             // 
@@ -162,64 +221,6 @@
             this.btnFind.TabIndex = 1;
             this.btnFind.Text = "查询";
             this.btnFind.UseVisualStyleBackColor = true;
-            // 
-            // gridId
-            // 
-            this.gridId.DataPropertyName = "id";
-            this.gridId.HeaderText = "ID";
-            this.gridId.Name = "gridId";
-            this.gridId.ReadOnly = true;
-            // 
-            // gridLeaveType
-            // 
-            this.gridLeaveType.DataPropertyName = "type";
-            this.gridLeaveType.HeaderText = "请假类型";
-            this.gridLeaveType.Name = "gridLeaveType";
-            this.gridLeaveType.ReadOnly = true;
-            // 
-            // gridLeaveDay
-            // 
-            this.gridLeaveDay.DataPropertyName = "LeaveDay";
-            this.gridLeaveDay.HeaderText = "请假天数";
-            this.gridLeaveDay.Name = "gridLeaveDay";
-            this.gridLeaveDay.ReadOnly = true;
-            // 
-            // gridLeaveStartDate
-            // 
-            this.gridLeaveStartDate.DataPropertyName = "LeaveDate";
-            this.gridLeaveStartDate.HeaderText = "请假开始时间";
-            this.gridLeaveStartDate.Name = "gridLeaveStartDate";
-            this.gridLeaveStartDate.ReadOnly = true;
-            // 
-            // gridLeaveCause
-            // 
-            this.gridLeaveCause.DataPropertyName = "cause";
-            this.gridLeaveCause.HeaderText = "请假原因";
-            this.gridLeaveCause.Name = "gridLeaveCause";
-            this.gridLeaveCause.ReadOnly = true;
-            // 
-            // gridStatus
-            // 
-            this.gridStatus.DataPropertyName = "Status";
-            this.gridStatus.HeaderText = "请假状态";
-            this.gridStatus.Name = "gridStatus";
-            this.gridStatus.ReadOnly = true;
-            // 
-            // gridEmpId
-            // 
-            this.gridEmpId.DataPropertyName = "EmpId";
-            this.gridEmpId.HeaderText = "EmpId";
-            this.gridEmpId.Name = "gridEmpId";
-            this.gridEmpId.ReadOnly = true;
-            this.gridEmpId.Visible = false;
-            // 
-            // gridEmpName
-            // 
-            this.gridEmpName.DataPropertyName = "EmpName";
-            this.gridEmpName.HeaderText = "EmpName";
-            this.gridEmpName.Name = "gridEmpName";
-            this.gridEmpName.ReadOnly = true;
-            this.gridEmpName.Visible = false;
             // 
             // MyLeaveForm
             // 

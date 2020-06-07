@@ -37,11 +37,11 @@
             this.gridLeaveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridReadSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDesc = new System.Windows.Forms.Label();
             this.btnCommit = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.dtTime = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblDesc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,8 @@
             // 
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.gridEmpId,
@@ -63,6 +65,7 @@
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 23;
+            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid.Size = new System.Drawing.Size(745, 226);
             this.grid.TabIndex = 0;
             this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
@@ -130,6 +133,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "工资单";
             // 
+            // lblDesc
+            // 
+            this.lblDesc.ForeColor = System.Drawing.Color.Maroon;
+            this.lblDesc.Location = new System.Drawing.Point(273, 26);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(447, 60);
+            this.lblDesc.TabIndex = 37;
+            this.lblDesc.Text = "111";
+            // 
             // btnCommit
             // 
             this.btnCommit.Enabled = false;
@@ -173,15 +185,6 @@
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 10;
             this.label5.Text = "时间：";
-            // 
-            // lblDesc
-            // 
-            this.lblDesc.ForeColor = System.Drawing.Color.Maroon;
-            this.lblDesc.Location = new System.Drawing.Point(273, 26);
-            this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(447, 60);
-            this.lblDesc.TabIndex = 37;
-            this.lblDesc.Text = "111";
             // 
             // PayrollForm
             // 

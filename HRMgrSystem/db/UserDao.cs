@@ -14,12 +14,11 @@ namespace HRMgrSystem.db
         // 新增
         public int Add(HRUser vo)
         {
-            var ret = conn.Execute(@"insert HR_USER(ID,EMP_ID,PASSWORD,USERNAME,STATUS,USER_TYPE) values (@Id,@EmpId,@Password,@Username,@Status,@UserType)",
+            var ret = conn.Execute(@"insert HR_USER(ID,EMP_ID,PASSWORD,USERNAME,USER_TYPE) values (@Id,@EmpId,@Password,@Username,@UserType)",
                 new[] { new { Id = vo.Id,
                     EmpId = vo.EmpId,
                     Password = vo.Password,
                     Username = vo.UserName,
-                    Status = vo.Status,
                     UserType = vo.UserType} });
 
             Console.WriteLine(string.Format("插入数据库成功{0}", ret));
@@ -75,18 +74,10 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public List<HRUser> FindByWhere(HRUser vo)
         {
-            //o.Id = txtId.Text;
-            //vo.EmpId = !EmptyUtils.EmptyObj(cboEmp.SelectedValue) ? cboEmp.SelectedValue.ToString() : "";
-            //vo.UserName = txtUserName.Text;
-            //vo.Password = txtPwd.Text;
-            //vo.Status = !EmptyUtils.EmptyObj(cboStatus.SelectedValue) ? int.Parse(cboStatus.SelectedValue.ToString()) : -1;
-            //vo.UserType = !EmptyUtils.EmptyObj(cb
-
             string whereSql = "";
             if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and u.id=@Id";
             if (!EmptyUtils.EmptyStr(vo.EmpId)) whereSql += " and u.Emp_Id=@EmpId";
             if (!EmptyUtils.EmptyStr(vo.UserName)) whereSql += " and u.UserName=@UserName";
-            if (vo.Status > 0) whereSql += " and u.Status=@Status";
             if (vo.UserType > 0) whereSql += " and u.User_Type=@UserType";
 
             string baseSql = @"SELECT u.*, e.name as EMP_NAME FROM HR_USER u , HR_EMPLOYEE e where u.emp_id = e.id";
@@ -96,7 +87,6 @@ namespace HRMgrSystem.db
                 EmpId = vo.EmpId,
                 UserName = vo.UserName,
                 UserType = vo.UserType,
-                Status = vo.Status
             }).ToList();  
         }
         
@@ -107,14 +97,13 @@ namespace HRMgrSystem.db
         /// <returns></returns>
         public int Update(HRUser vo)
         {
-            return conn.Execute(@"update HR_USER SET Id=@Id,EMP_ID=@EmpId,PASSWORD=@Password,USERNAME=@Username,STATUS=@Status,USER_TYPE=@UserType WHERE id = @Id",
+            return conn.Execute(@"update HR_USER SET Id=@Id,EMP_ID=@EmpId,PASSWORD=@Password,USERNAME=@Username,USER_TYPE=@UserType WHERE id = @Id",
                 new
                 {
                     Id = vo.Id,
                     EmpId = vo.EmpId,
                     Password = vo.Password,
                     Username = vo.UserName,
-                    Status = vo.Status,
                     UserType = vo.UserType,
                 });
         }

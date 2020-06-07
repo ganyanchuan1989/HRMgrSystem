@@ -27,6 +27,42 @@ namespace HRMgrSystem
             cboLeaveType.DataSource = DataDictionaryUtils.GetLeaveTypeDict();
         }
 
+
+        /// <summary>
+        /// 验证输入
+        /// </summary>
+        /// <returns></returns>
+        private bool validateInput()
+        {
+            if (EmptyUtils.EmptyObj(cboLeaveType.SelectedValue))
+            {
+                MessageBoxEx.Show(this, "请选择请假类型");
+                cboLeaveType.Focus();
+                return false;
+            }
+            if (EmptyUtils.EmptyStr(txtLeaveDay.Text))
+            {
+                MessageBoxEx.Show(this, "请输入请假天数");
+                txtLeaveDay.Focus();
+                return false;
+            }
+
+            if (EmptyUtils.IsNaN(txtLeaveDay.Text))
+            {
+                MessageBoxEx.Show(this, "请假天数格式不合法，请输入数字。");
+                txtLeaveDay.Focus();
+                return false;
+            }
+
+            if (EmptyUtils.EmptyStr(txtCause.Text))
+            {
+                MessageBoxEx.Show(this, "请输入请假原因");
+                txtCause.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void btnCommit_Click(object sender, EventArgs e)
         {
             if(dao.FindByDate(dtStartDate.Text).Count > 0)
@@ -34,6 +70,8 @@ namespace HRMgrSystem
                 MessageBoxEx.Show(this, dtStartDate.Text + "已经请过假了，请选择其他日期");
                 return;
             }
+            if (!validateInput()) return;
+
             HRLeave vo = new HRLeave();
             vo.Id = UidUtils.GGuidPrefix("LEAVE");
             vo.EmpId = GlobalInfo.loginEmp.Id;

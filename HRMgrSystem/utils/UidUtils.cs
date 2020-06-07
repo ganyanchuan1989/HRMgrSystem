@@ -30,9 +30,29 @@ namespace HRMgrSystem.utils
         /// </summary>
         /// <param name="prefix"></param>
         /// <returns></returns>
-        public static string GGuidPrefix(string prefix)
+        public static string GGuidPrefix(int index = 0)
         {
-            return DateTime.Now.ToString("yyyyMMddHHmmssffffff");
+            if(index <= 0)
+            {
+                return DateTime.Now.ToString("yyyyMMddHHmmssffffff");
+            }
+            if(index >0 && index < 10)
+            {
+                return DateTime.Now.ToString("yyyyMMddHHmmssfffff")+index;
+            }
+            if (index > 10 && index < 100)
+            {
+                return DateTime.Now.ToString("yyyyMMddHHmmssffff") + index;
+            }
+            if (index > 100 && index < 1000)
+            {
+                return DateTime.Now.ToString("yyyyMMddHHmmssfff") + index;
+            }
+            if (index > 1000 && index < 10000)
+            {
+                return DateTime.Now.ToString("yyyyMMddHHmmssff") + index;
+            }
+            return DateTime.Now.ToString("yyyyMMddHHmmssffffff"); 
         }
     }
 }

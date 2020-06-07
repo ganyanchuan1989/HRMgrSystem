@@ -35,8 +35,9 @@
             this.menuItemDept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemJob = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemPayroll = new System.Windows.Forms.ToolStripMenuItem();
-            this.我的主页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemPersonal = new System.Windows.Forms.ToolStripMenuItem();
+            this.我的主页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +101,15 @@
             this.menuItemPayroll.Text = "批量工资单";
             this.menuItemPayroll.Click += new System.EventHandler(this.薪资管理ToolStripMenuItem_Click);
             // 
+            // menuItemPersonal
+            // 
+            this.menuItemPersonal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.我的主页ToolStripMenuItem,
+            this.退出ToolStripMenuItem});
+            this.menuItemPersonal.Name = "menuItemPersonal";
+            this.menuItemPersonal.Size = new System.Drawing.Size(68, 21);
+            this.menuItemPersonal.Text = "个人中心";
+            // 
             // 我的主页ToolStripMenuItem
             // 
             this.我的主页ToolStripMenuItem.Name = "我的主页ToolStripMenuItem";
@@ -107,13 +117,12 @@
             this.我的主页ToolStripMenuItem.Text = "我的主页";
             this.我的主页ToolStripMenuItem.Click += new System.EventHandler(this.我的主页ToolStripMenuItem_Click);
             // 
-            // menuItemPersonal
+            // 退出ToolStripMenuItem
             // 
-            this.menuItemPersonal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.我的主页ToolStripMenuItem});
-            this.menuItemPersonal.Name = "menuItemPersonal";
-            this.menuItemPersonal.Size = new System.Drawing.Size(68, 21);
-            this.menuItemPersonal.Text = "个人中心";
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -145,6 +154,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemPayroll;
         private System.Windows.Forms.ToolStripMenuItem menuItemPersonal;
         private System.Windows.Forms.ToolStripMenuItem 我的主页ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
     }
 }
 

@@ -25,6 +25,7 @@ namespace HRMgrSystem
             InitializeComponent();
 
             cboLeaveType.DataSource = DataDictionaryUtils.GetLeaveTypeDict();
+            cboLeaveType.SelectedIndex = -1;
         }
 
 
@@ -65,15 +66,16 @@ namespace HRMgrSystem
 
         private void btnCommit_Click(object sender, EventArgs e)
         {
-            if(dao.FindByDate(dtStartDate.Text).Count > 0)
+            if (!validateInput()) return;
+
+            if (dao.FindByDate(dtStartDate.Text).Count > 0)
             {
                 MessageBoxEx.Show(this, dtStartDate.Text + "已经请过假了，请选择其他日期");
                 return;
             }
-            if (!validateInput()) return;
 
             HRLeave vo = new HRLeave();
-            vo.Id = UidUtils.GGuidPrefix("LEAVE");
+            vo.Id = UidUtils.GGuidPrefix();
             vo.EmpId = GlobalInfo.loginEmp.Id;
             vo.Cause = txtCause.Text;
             vo.Type = !EmptyUtils.EmptyObj(cboLeaveType.SelectedValue) ? int.Parse(cboLeaveType.SelectedValue.ToString()) : -1;

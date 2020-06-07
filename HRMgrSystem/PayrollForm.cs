@@ -70,10 +70,11 @@ namespace HRMgrSystem
             List<HRContract> contractList = contractDao.FindByDate(endDate);
 
             list = new List<HRPayroll>();
+            int index = 1;
             foreach (var contractVo in contractList)
             {
                 HRPayroll vo = new HRPayroll();
-                vo.Id = UidUtils.GGuidPrefix("");
+                vo.Id = UidUtils.GGuidPrefix(index);
                 vo.EmpId = contractVo.EmpId;
                 vo.EmpName = contractVo.EmpName;
                 vo.PayrollDate = dtTime.Text;
@@ -83,6 +84,8 @@ namespace HRMgrSystem
                 vo.ProbationStatus = JudgeIsProbationStatus(contractVo);
                 vo.RealSalary = CalcSalary(contractVo.Salary, vo);
                 list.Add(vo);
+
+                index++;
             }
 
             var bindingList = new BindingList<HRPayroll>(list);

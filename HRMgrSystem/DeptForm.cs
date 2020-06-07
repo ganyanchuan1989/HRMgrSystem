@@ -72,7 +72,7 @@ namespace HRMgrSystem
             opration = OP_ADD;
 
             txtId.Enabled = false;
-            txtId.Text = UidUtils.GGuidPrefix(PREFIX);
+            txtId.Text = UidUtils.GGuidPrefix();
 
             txtName.Text = "";
 

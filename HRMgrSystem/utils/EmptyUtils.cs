@@ -18,7 +18,7 @@ namespace HRMgrSystem.utils
 
         public static bool EmptyStr(string str)
         {
-            if (str == null || str == "")
+            if (str == null || str.Trim() == "")
                 return true;
 
             return false;

@@ -364,7 +364,7 @@
             this.Controls.Add(this.btnQJSQ);
             this.Controls.Add(this.pictureBox1);
             this.Name = "HomeForm";
-            this.Text = "HomeForm";
+            this.Text = "个人主页";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

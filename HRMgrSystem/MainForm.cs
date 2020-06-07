@@ -35,31 +35,38 @@ namespace HRMgrSystem
         {
             InitializeComponent();
             // 菜单权限
-            // userAuthority();
+            userAuthority();
             // DBUtils.Test();
 
-            HomeForm homeForm = new HomeForm(
+            showHomeForm();
+        }
+        private HomeForm homeForm;
+
+        private void showHomeForm()
+        {
+            if (homeForm == null || homeForm.IsDisposed)
+            {
+                homeForm = new HomeForm(
                 () => {
                     this.请假申请ToolStripMenuItem_Click(null, null);
-                }, 
+                },
                 () => {
                     this.请假审批ToolStripMenuItem_Click(null, null);
-                }, 
+                },
                 () => {
                     this.我的请假ToolStripMenuItem_Click(null, null);
-                }, 
+                },
                 () => {
                     this.我的合同ToolStripMenuItem_Click(null, null);
-                }, 
+                },
                 () => {
                     this.我的工资单ToolStripMenuItem_Click(null, null);
-                }, 
+                },
                 () => {
                     this.修改密码ToolStripMenuItem_Click(null, null);
                 });
-
-            homeForm.MdiParent = this;
-            homeForm.Show();
+            }
+            ShowChildForm(homeForm);
         }
 
         /// <summary>
@@ -67,24 +74,22 @@ namespace HRMgrSystem
         /// </summary>
         private void userAuthority()
         {
-            menuItemContract.Visible = false;
+            menuItemUser.Visible = false;
             menuItemEmployee.Visible = false;
+            menuItemContract.Visible = false;
             menuItemDept.Visible = false;
             menuItemJob.Visible = false;
-
-
-            // 1: 普通用户;2: 管理员
-            if (GlobalInfo.loginUser.UserType == 1)
+            menuItemPayroll.Visible = false;
+            
+            // 0：部门经理；1: 普通用户;2: 管理员
+            if (GlobalInfo.loginUser.UserType == GlobalInfo.ADMIN)
             {
-                GlobalInfo.IS_ADMIN = false;
-            }
-            else if (GlobalInfo.loginUser.UserType == 2)
-            {
-                GlobalInfo.IS_ADMIN = true;
-                menuItemContract.Visible = true;
+                menuItemUser.Visible = true;
                 menuItemEmployee.Visible = true;
+                menuItemContract.Visible = true;
                 menuItemDept.Visible = true;
                 menuItemJob.Visible = true;
+                menuItemPayroll.Visible = true;
             }
         }
 
@@ -139,6 +144,7 @@ namespace HRMgrSystem
             f.FormClosed += ChildForm_FormClosed;
             f.MdiParent = this;
             f.Show(); ;
+            f.StartPosition = FormStartPosition.CenterScreen;
             f.BringToFront();
         }
 
@@ -233,6 +239,11 @@ namespace HRMgrSystem
                 payrollForm = new PayrollForm();
             }
             ShowChildForm(payrollForm);
+        }
+
+        private void 我的主页ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showHomeForm();
         }
     }
 }

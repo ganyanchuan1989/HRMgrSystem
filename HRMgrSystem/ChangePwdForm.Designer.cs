@@ -130,7 +130,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ChangePwdForm";
-            this.Text = "ChangePwdForm";
+            this.Text = "修改密码";
             this.Load += new System.EventHandler(this.ChangePwdForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

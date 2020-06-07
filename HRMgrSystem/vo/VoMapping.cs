@@ -24,6 +24,7 @@ namespace HRMgrSystem.vo
                     .MapProperty(x => x.EndTime).ToColumn("END_TIME")
                     .MapProperty(x => x.Probation).ToColumn("PROBATION")
                     .MapProperty(x => x.Salary).ToColumn("SALARY")
+                    .MapProperty(x => x.ContractType).ToColumn("CONTRACT_TYPE")
                     .MapProperty(x => x.EmpName).ToColumn("EMP_NAME"); // 
 
             // HRDept
@@ -93,6 +94,8 @@ namespace HRMgrSystem.vo
                    .MapProperty(x => x.EmpId).ToColumn("EMP_ID")
                    .MapProperty(x => x.LeaveDate).ToColumn("LEAVE_DATE")
                    .MapProperty(x => x.LeaveDay).ToColumn("LEAVE_DAY")
+                   .MapProperty(x => x.Type).ToColumn("TYPE")
+                   .MapProperty(x => x.Status).ToColumn("STATUS")
                    .MapProperty(x => x.Cause).ToColumn("CAUSE");
 
             // HR_PAYROLL

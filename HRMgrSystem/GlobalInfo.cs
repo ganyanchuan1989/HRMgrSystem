@@ -11,7 +11,10 @@ namespace HRMgrSystem
     {
         public static HRUser loginUser;
         public static HREmployee loginEmp;
-        public static bool IS_ADMIN = false;
-        
+
+        public const int EMP = 1;// 普通员工
+        public const int DEPT_MGR = 2; // 部门经理
+        public const int ADMIN = 3; // 管理员
+
     }
 }

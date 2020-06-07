@@ -158,11 +158,34 @@ namespace HRMgrSystem.db
 
         }
 
-            /// <summary>
-            /// 更新
-            /// </summary>
-            /// <returns></returns>
-            public int Update(HREmployee vo)
+        public List<HREmployee> FindByDeptId(string deptId)
+        {
+            string baseSql = @"SELECT * from HR_EMPLOYEE where DEPT_ID=@DeptId";
+
+            return conn.Query<HREmployee>(baseSql, new
+            {
+                DeptId = deptId
+            }).ToList();
+        }
+
+        public List<HREmployee> FindByUserType(int userType)
+        {
+            string baseSql = @"SELECT * from HR_EMPLOYEE where id in (SELECT EMP_ID FROM HR_USER WHERE USER_TYPE=@UserType)";
+
+            return conn.Query<HREmployee>(baseSql, new
+            {
+                UserType = userType
+            }).ToList();
+        }
+
+
+
+
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <returns></returns>
+        public int Update(HREmployee vo)
         {
             return conn.Execute(@"update HR_EMPLOYEE SET NAME=@Name,SEX=@Sex,ID_CARD=@IdCard,EDUCATION=@Education,SCHOOL=@School,GRADUATION_TIME=@GraduationTime,PROFESSION=@Profession,TELEPHONE=@Telephone,POLITICAL_STATUS=@PoliticalStatus,ADDRESS=@Address,BANK_CARD=@BankCard,EMAIL=@Email,DEPT_ID=@DeptId,JOB_ID=@JobId,STATUS=@Status WHERE id = @Id",
                 new

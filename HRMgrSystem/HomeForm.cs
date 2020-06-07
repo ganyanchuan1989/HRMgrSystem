@@ -52,10 +52,19 @@ namespace HRMgrSystem
                 txtBYSJ.Text = empVo.GraduationTime;
                 lblName.Text += " " + empVo.Name;
             }
-            if(GlobalInfo.IS_ADMIN)
+            if(GlobalInfo.loginUser.UserType == GlobalInfo.ADMIN)
             {
                 // 管理员
-                btnQJSQ.Visible = false;
+                btnQJSQ.Enabled = false;
+                btnWDQJ.Enabled = false;
+                btnWDHT.Enabled = false;
+
+                btnWDGZD.Text = "工资单";
+            }
+            else if(GlobalInfo.loginUser.UserType == GlobalInfo.EMP)
+            {
+                // 普通员工
+                btnQJSP.Enabled = false;
             }
         }
 

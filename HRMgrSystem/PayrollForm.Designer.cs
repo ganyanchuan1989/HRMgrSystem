@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtTime = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
+            this.grid = new System.Windows.Forms.DataGridView();
             this.gridEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridPayrollDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,17 +36,22 @@
             this.gridSickLeaveDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridLeaveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridReadSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCommit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.dtTime = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblDesc = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
+            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.gridEmpId,
             this.gridEmpName,
             this.gridPayrollDate,
@@ -58,57 +59,13 @@
             this.gridSickLeaveDay,
             this.gridLeaveDate,
             this.gridReadSalary});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 143);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(745, 226);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnCommit);
-            this.groupBox1.Controls.Add(this.btnCreate);
-            this.groupBox1.Controls.Add(this.dtTime);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(12, 11);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(745, 126);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "工资单";
-            // 
-            // dtTime
-            // 
-            this.dtTime.CustomFormat = "yyyy-MM-dd";
-            this.dtTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTime.Location = new System.Drawing.Point(69, 36);
-            this.dtTime.Margin = new System.Windows.Forms.Padding(2);
-            this.dtTime.Name = "dtTime";
-            this.dtTime.Size = new System.Drawing.Size(165, 21);
-            this.dtTime.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 42);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "时间：";
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Enabled = false;
-            this.btnCreate.Location = new System.Drawing.Point(69, 81);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(73, 30);
-            this.btnCreate.TabIndex = 35;
-            this.btnCreate.Text = "批量生成";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.grid.Location = new System.Drawing.Point(12, 143);
+            this.grid.Name = "grid";
+            this.grid.ReadOnly = true;
+            this.grid.RowTemplate.Height = 23;
+            this.grid.Size = new System.Drawing.Size(745, 226);
+            this.grid.TabIndex = 0;
+            this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
             // 
             // gridEmpId
             // 
@@ -159,6 +116,20 @@
             this.gridReadSalary.Name = "gridReadSalary";
             this.gridReadSalary.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblDesc);
+            this.groupBox1.Controls.Add(this.btnCommit);
+            this.groupBox1.Controls.Add(this.btnCreate);
+            this.groupBox1.Controls.Add(this.dtTime);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(12, 11);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(745, 126);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "工资单";
+            // 
             // btnCommit
             // 
             this.btnCommit.Enabled = false;
@@ -171,16 +142,57 @@
             this.btnCommit.UseVisualStyleBackColor = true;
             this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
             // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(69, 81);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(73, 30);
+            this.btnCreate.TabIndex = 35;
+            this.btnCreate.Text = "批量生成";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // dtTime
+            // 
+            this.dtTime.CustomFormat = "yyyy-MM-dd";
+            this.dtTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtTime.Location = new System.Drawing.Point(69, 36);
+            this.dtTime.Margin = new System.Windows.Forms.Padding(2);
+            this.dtTime.Name = "dtTime";
+            this.dtTime.Size = new System.Drawing.Size(165, 21);
+            this.dtTime.TabIndex = 11;
+            this.dtTime.ValueChanged += new System.EventHandler(this.dtTime_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 42);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "时间：";
+            // 
+            // lblDesc
+            // 
+            this.lblDesc.ForeColor = System.Drawing.Color.Maroon;
+            this.lblDesc.Location = new System.Drawing.Point(273, 26);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(447, 60);
+            this.lblDesc.TabIndex = 37;
+            this.lblDesc.Text = "111";
+            // 
             // PayrollForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 381);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.grid);
             this.Name = "PayrollForm";
             this.Text = "批量工资单";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -189,7 +201,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtTime;
         private System.Windows.Forms.Label label5;
@@ -202,5 +214,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gridLeaveDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridReadSalary;
         private System.Windows.Forms.Button btnCommit;
+        private System.Windows.Forms.Label lblDesc;
     }
 }

@@ -34,14 +34,9 @@
             this.menuItemContract = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemJob = new System.Windows.Forms.ToolStripMenuItem();
-            this.我的ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.请假申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.请假审批ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.我的请假ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.我的合同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.我的工资单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.薪资管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemPayroll = new System.Windows.Forms.ToolStripMenuItem();
+            this.我的主页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemPersonal = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,8 +49,8 @@
             this.menuItemContract,
             this.menuItemDept,
             this.menuItemJob,
-            this.薪资管理ToolStripMenuItem,
-            this.我的ToolStripMenuItem});
+            this.menuItemPayroll,
+            this.menuItemPersonal});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -98,67 +93,27 @@
             this.menuItemJob.Text = "职位管理";
             this.menuItemJob.Click += new System.EventHandler(this.menuItemDeptJob_Click);
             // 
-            // 我的ToolStripMenuItem
+            // menuItemPayroll
             // 
-            this.我的ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.请假申请ToolStripMenuItem,
-            this.我的请假ToolStripMenuItem,
-            this.请假审批ToolStripMenuItem,
-            this.我的合同ToolStripMenuItem,
-            this.我的工资单ToolStripMenuItem,
-            this.修改密码ToolStripMenuItem});
-            this.我的ToolStripMenuItem.Name = "我的ToolStripMenuItem";
-            this.我的ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.我的ToolStripMenuItem.Text = "个人中心";
+            this.menuItemPayroll.Name = "menuItemPayroll";
+            this.menuItemPayroll.Size = new System.Drawing.Size(80, 21);
+            this.menuItemPayroll.Text = "批量工资单";
+            this.menuItemPayroll.Click += new System.EventHandler(this.薪资管理ToolStripMenuItem_Click);
             // 
-            // 请假申请ToolStripMenuItem
+            // 我的主页ToolStripMenuItem
             // 
-            this.请假申请ToolStripMenuItem.Name = "请假申请ToolStripMenuItem";
-            this.请假申请ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.请假申请ToolStripMenuItem.Text = "请假申请";
-            this.请假申请ToolStripMenuItem.Click += new System.EventHandler(this.请假申请ToolStripMenuItem_Click);
+            this.我的主页ToolStripMenuItem.Name = "我的主页ToolStripMenuItem";
+            this.我的主页ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.我的主页ToolStripMenuItem.Text = "我的主页";
+            this.我的主页ToolStripMenuItem.Click += new System.EventHandler(this.我的主页ToolStripMenuItem_Click);
             // 
-            // 请假审批ToolStripMenuItem
+            // menuItemPersonal
             // 
-            this.请假审批ToolStripMenuItem.Name = "请假审批ToolStripMenuItem";
-            this.请假审批ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.请假审批ToolStripMenuItem.Text = "我的审批";
-            this.请假审批ToolStripMenuItem.Click += new System.EventHandler(this.请假审批ToolStripMenuItem_Click);
-            // 
-            // 我的请假ToolStripMenuItem
-            // 
-            this.我的请假ToolStripMenuItem.Name = "我的请假ToolStripMenuItem";
-            this.我的请假ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.我的请假ToolStripMenuItem.Text = "我的请假";
-            this.我的请假ToolStripMenuItem.Click += new System.EventHandler(this.我的请假ToolStripMenuItem_Click);
-            // 
-            // 我的合同ToolStripMenuItem
-            // 
-            this.我的合同ToolStripMenuItem.Name = "我的合同ToolStripMenuItem";
-            this.我的合同ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.我的合同ToolStripMenuItem.Text = "我的合同";
-            this.我的合同ToolStripMenuItem.Click += new System.EventHandler(this.我的合同ToolStripMenuItem_Click);
-            // 
-            // 我的工资单ToolStripMenuItem
-            // 
-            this.我的工资单ToolStripMenuItem.Name = "我的工资单ToolStripMenuItem";
-            this.我的工资单ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.我的工资单ToolStripMenuItem.Text = "我的工资单";
-            this.我的工资单ToolStripMenuItem.Click += new System.EventHandler(this.我的工资单ToolStripMenuItem_Click);
-            // 
-            // 修改密码ToolStripMenuItem
-            // 
-            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.修改密码ToolStripMenuItem.Text = "修改密码";
-            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
-            // 
-            // 薪资管理ToolStripMenuItem
-            // 
-            this.薪资管理ToolStripMenuItem.Name = "薪资管理ToolStripMenuItem";
-            this.薪资管理ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
-            this.薪资管理ToolStripMenuItem.Text = "批量工资单";
-            this.薪资管理ToolStripMenuItem.Click += new System.EventHandler(this.薪资管理ToolStripMenuItem_Click);
+            this.menuItemPersonal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.我的主页ToolStripMenuItem});
+            this.menuItemPersonal.Name = "menuItemPersonal";
+            this.menuItemPersonal.Size = new System.Drawing.Size(68, 21);
+            this.menuItemPersonal.Text = "个人中心";
             // 
             // MainForm
             // 
@@ -187,14 +142,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemContract;
         private System.Windows.Forms.ToolStripMenuItem menuItemUser;
         private System.Windows.Forms.ToolStripMenuItem menuItemDept;
-        private System.Windows.Forms.ToolStripMenuItem 我的ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 请假申请ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 请假审批ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 我的请假ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 我的合同ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 我的工资单ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 薪资管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemPayroll;
+        private System.Windows.Forms.ToolStripMenuItem menuItemPersonal;
+        private System.Windows.Forms.ToolStripMenuItem 我的主页ToolStripMenuItem;
     }
 }
 

@@ -149,7 +149,7 @@ namespace HRMgrSystem.utils
         }
 
         /// <summary>
-        /// 用户类型（1：普通用户；2：管理员用户）
+        /// 用户类型（1：普通用户；2:部门经理；3：管理员用户）
         /// </summary>
         public static DataTable GetUserTypeDict()
         {
@@ -157,6 +157,7 @@ namespace HRMgrSystem.utils
             dt.Columns.Add("value");
             dt.Columns.Add("label");
 
+            
             DataRow dr = dt.NewRow();
             dr["value"] = 1;
             dr["label"] = "普通用户";
@@ -164,6 +165,11 @@ namespace HRMgrSystem.utils
 
             dr = dt.NewRow();
             dr["value"] = 2;
+            dr["label"] = "部门经理";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["value"] = 3;
             dr["label"] = "管理员";
             dt.Rows.Add(dr);
 
@@ -196,7 +202,7 @@ namespace HRMgrSystem.utils
         /// 1：年假，2：病假，3：婚假，4：产假，5：事假
         /// </summary>
         /// <returns></returns>
-        public static DataTable GetLeaveDict()
+        public static DataTable GetLeaveTypeDict()
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("value");
@@ -231,7 +237,7 @@ namespace HRMgrSystem.utils
         }
 
         /// <summary>
-        /// 审批状态（1：保存，2：提交申请，3：审批通过，4：驳回）
+        /// 审批状态（1：提交，2：通过，3：不通过）
         /// </summary>
         /// <returns></returns>
         public static DataTable GetLeaveStatusDict()
@@ -242,27 +248,20 @@ namespace HRMgrSystem.utils
 
             DataRow dr = dt.NewRow();
             dr["value"] = 1;
-            dr["label"] = "保存";
+            dr["label"] = "提交";
             dt.Rows.Add(dr);
 
             dr = dt.NewRow();
             dr["value"] = 2;
-            dr["label"] = "提交申请";
+            dr["label"] = "通过";
             dt.Rows.Add(dr);
 
             dr = dt.NewRow();
             dr["value"] = 3;
-            dr["label"] = "审批通过";
-            dt.Rows.Add(dr);
-
-            dr = dt.NewRow();
-            dr["value"] = 4;
-            dr["label"] = "驳回";
+            dr["label"] = "不通过";
             dt.Rows.Add(dr);
 
             return dt;
         }
-
-
     }
 }

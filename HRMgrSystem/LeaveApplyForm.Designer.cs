@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtLeaveDay = new System.Windows.Forms.TextBox();
             this.cboLeaveType = new System.Windows.Forms.ComboBox();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,8 +41,6 @@
             this.txtCause = new System.Windows.Forms.TextBox();
             this.btnCommit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtLeaveDay);
             this.groupBox1.Controls.Add(this.cboLeaveType);
             this.groupBox1.Controls.Add(this.dtStartDate);
             this.groupBox1.Controls.Add(this.label3);
@@ -64,24 +64,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "请假明细";
             // 
-            // textBox1
+            // txtId
             // 
-            this.textBox1.Location = new System.Drawing.Point(353, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 21);
-            this.textBox1.TabIndex = 9;
+            this.txtId.Location = new System.Drawing.Point(82, 19);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(151, 21);
+            this.txtId.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 25);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "请假ID:";
+            // 
+            // txtLeaveDay
+            // 
+            this.txtLeaveDay.Location = new System.Drawing.Point(353, 83);
+            this.txtLeaveDay.Name = "txtLeaveDay";
+            this.txtLeaveDay.Size = new System.Drawing.Size(151, 21);
+            this.txtLeaveDay.TabIndex = 9;
             // 
             // cboLeaveType
             // 
+            this.cboLeaveType.DisplayMember = "label";
             this.cboLeaveType.FormattingEnabled = true;
             this.cboLeaveType.Location = new System.Drawing.Point(85, 54);
             this.cboLeaveType.Margin = new System.Windows.Forms.Padding(2);
             this.cboLeaveType.Name = "cboLeaveType";
             this.cboLeaveType.Size = new System.Drawing.Size(148, 20);
             this.cboLeaveType.TabIndex = 8;
+            this.cboLeaveType.ValueMember = "value";
             // 
             // dtStartDate
             // 
+            this.dtStartDate.CustomFormat = "yyyy-MM-dd";
+            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtStartDate.Location = new System.Drawing.Point(82, 86);
             this.dtStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtStartDate.Name = "dtStartDate";
@@ -161,24 +183,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 12);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "请假ID:";
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(82, 19);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(151, 21);
-            this.txtId.TabIndex = 11;
-            // 
             // LeaveApplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -190,7 +194,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LeaveApplyForm";
-            this.Text = "LeaveForm";
+            this.Text = "请假申请";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -211,7 +215,7 @@
         private System.Windows.Forms.TextBox txtCause;
         private System.Windows.Forms.ComboBox cboLeaveType;
         private System.Windows.Forms.DateTimePicker dtStartDate;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLeaveDay;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label4;
     }

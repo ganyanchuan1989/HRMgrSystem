@@ -32,8 +32,7 @@ namespace HRMgrSystem.utils
         /// <returns></returns>
         public static string GGuidPrefix(string prefix)
         {
-            string str = prefix + GUID(20 - prefix.Length);
-            return str.ToUpper();
+            return DateTime.Now.ToString("yyyyMMddHHmmssffffff");
         }
     }
 }

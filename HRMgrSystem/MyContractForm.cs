@@ -15,18 +15,32 @@ namespace HRMgrSystem
 {
     public partial class MyContractForm : Form
     {
-        ContractDao dao = new ContractDao();
+        private ContractDao dao = new ContractDao();
+        private EmployeeDao empDao = new EmployeeDao();
 
+
+        private List<HREmployee> empList = null;
         public MyContractForm()
         {
             InitializeComponent();
 
             InitData();
+
+
         }
 
         private void InitData()
         {
-            if(GlobalInfo.loginEmp != null)
+            // 合同类型
+            cboContractType.DataSource = DataDictionaryUtils.GetContractTypeDict();
+            cboContractType.SelectedIndex = -1;
+
+            
+            empList = empDao.FindAll();
+            cboEmp.DataSource = empList;
+            cboEmp.SelectedIndex = -1;
+
+            if (GlobalInfo.loginEmp != null)
             {
                 HRContract vo = dao.FindByEmpId(GlobalInfo.loginEmp.Id);
                 if(vo != null)

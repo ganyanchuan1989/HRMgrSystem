@@ -48,6 +48,7 @@
             // 
             // txtSalary
             // 
+            this.txtSalary.Enabled = false;
             this.txtSalary.Location = new System.Drawing.Point(75, 105);
             this.txtSalary.Margin = new System.Windows.Forms.Padding(2);
             this.txtSalary.Name = "txtSalary";
@@ -66,6 +67,7 @@
             // 
             // txtProbation
             // 
+            this.txtProbation.Enabled = false;
             this.txtProbation.Location = new System.Drawing.Point(481, 69);
             this.txtProbation.Margin = new System.Windows.Forms.Padding(2);
             this.txtProbation.Name = "txtProbation";
@@ -75,6 +77,7 @@
             // dtETime
             // 
             this.dtETime.CustomFormat = "yyyy-MM-dd";
+            this.dtETime.Enabled = false;
             this.dtETime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtETime.Location = new System.Drawing.Point(286, 69);
             this.dtETime.Margin = new System.Windows.Forms.Padding(2);
@@ -95,6 +98,7 @@
             // dtSTime
             // 
             this.dtSTime.CustomFormat = "yyyy-MM-dd";
+            this.dtSTime.Enabled = false;
             this.dtSTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtSTime.Location = new System.Drawing.Point(75, 69);
             this.dtSTime.Margin = new System.Windows.Forms.Padding(2);
@@ -105,6 +109,7 @@
             // cboContractType
             // 
             this.cboContractType.DisplayMember = "label";
+            this.cboContractType.Enabled = false;
             this.cboContractType.FormattingEnabled = true;
             this.cboContractType.Location = new System.Drawing.Point(481, 33);
             this.cboContractType.Margin = new System.Windows.Forms.Padding(2);
@@ -126,6 +131,7 @@
             // cboEmp
             // 
             this.cboEmp.DisplayMember = "Name";
+            this.cboEmp.Enabled = false;
             this.cboEmp.FormattingEnabled = true;
             this.cboEmp.Location = new System.Drawing.Point(286, 33);
             this.cboEmp.Margin = new System.Windows.Forms.Padding(2);
@@ -149,6 +155,7 @@
             this.txtId.Location = new System.Drawing.Point(75, 32);
             this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(127, 21);
             this.txtId.TabIndex = 20;
             // 

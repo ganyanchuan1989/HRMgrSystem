@@ -30,19 +30,22 @@
         {
             this.grid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnFind = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboLeaveType = new System.Windows.Forms.ComboBox();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.gridId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridLeaveType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridLeaveDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridLeaveStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridLeaveCause = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridLeaveStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -53,21 +56,25 @@
             this.grid.AllowUserToDeleteRows = false;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridId,
             this.gridLeaveType,
             this.gridLeaveDay,
             this.gridLeaveStartDate,
             this.gridLeaveCause,
-            this.gridLeaveStatus});
+            this.gridStatus,
+            this.gridEmpId,
+            this.gridEmpName});
             this.grid.Location = new System.Drawing.Point(12, 156);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowTemplate.Height = 23;
-            this.grid.Size = new System.Drawing.Size(550, 238);
+            this.grid.Size = new System.Drawing.Size(648, 238);
             this.grid.TabIndex = 0;
+            this.grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grid_CellFormatting);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cboLeaveType);
@@ -77,19 +84,19 @@
             this.groupBox1.Controls.Add(this.btnFind);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(550, 138);
+            this.groupBox1.Size = new System.Drawing.Size(648, 138);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "请假查询";
             // 
-            // btnFind
+            // btnReset
             // 
-            this.btnFind.Location = new System.Drawing.Point(37, 91);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 30);
-            this.btnFind.TabIndex = 1;
-            this.btnFind.Text = "查询";
-            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnReset.Location = new System.Drawing.Point(130, 91);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 30);
+            this.btnReset.TabIndex = 18;
+            this.btnReset.Text = "重置";
+            this.btnReset.UseVisualStyleBackColor = true;
             // 
             // txtId
             // 
@@ -119,6 +126,8 @@
             // 
             // dtStartDate
             // 
+            this.dtStartDate.CustomFormat = "yyyy-MM-dd";
+            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtStartDate.Location = new System.Drawing.Point(340, 58);
             this.dtStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtStartDate.Name = "dtStartDate";
@@ -145,14 +154,21 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "开始日期：";
             // 
-            // button1
+            // btnFind
             // 
-            this.button1.Location = new System.Drawing.Point(130, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "取消";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFind.Location = new System.Drawing.Point(37, 91);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 30);
+            this.btnFind.TabIndex = 1;
+            this.btnFind.Text = "查询";
+            this.btnFind.UseVisualStyleBackColor = true;
+            // 
+            // gridId
+            // 
+            this.gridId.DataPropertyName = "id";
+            this.gridId.HeaderText = "ID";
+            this.gridId.Name = "gridId";
+            this.gridId.ReadOnly = true;
             // 
             // gridLeaveType
             // 
@@ -182,21 +198,37 @@
             this.gridLeaveCause.Name = "gridLeaveCause";
             this.gridLeaveCause.ReadOnly = true;
             // 
-            // gridLeaveStatus
+            // gridStatus
             // 
-            this.gridLeaveStatus.DataPropertyName = "status";
-            this.gridLeaveStatus.HeaderText = "请假状态";
-            this.gridLeaveStatus.Name = "gridLeaveStatus";
-            this.gridLeaveStatus.ReadOnly = true;
+            this.gridStatus.DataPropertyName = "Status";
+            this.gridStatus.HeaderText = "请假状态";
+            this.gridStatus.Name = "gridStatus";
+            this.gridStatus.ReadOnly = true;
             // 
-            // LeaveForm
+            // gridEmpId
+            // 
+            this.gridEmpId.DataPropertyName = "EmpId";
+            this.gridEmpId.HeaderText = "EmpId";
+            this.gridEmpId.Name = "gridEmpId";
+            this.gridEmpId.ReadOnly = true;
+            this.gridEmpId.Visible = false;
+            // 
+            // gridEmpName
+            // 
+            this.gridEmpName.DataPropertyName = "EmpName";
+            this.gridEmpName.HeaderText = "EmpName";
+            this.gridEmpName.Name = "gridEmpName";
+            this.gridEmpName.ReadOnly = true;
+            this.gridEmpName.Visible = false;
+            // 
+            // MyLeaveForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 404);
+            this.ClientSize = new System.Drawing.Size(676, 404);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grid);
-            this.Name = "LeaveForm";
+            this.Name = "MyLeaveForm";
             this.Text = "我的请假";
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -216,11 +248,14 @@
         private System.Windows.Forms.DateTimePicker dtStartDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridId;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridLeaveType;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridLeaveDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridLeaveStartDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridLeaveCause;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gridLeaveStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpName;
     }
 }

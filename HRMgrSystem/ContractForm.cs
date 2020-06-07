@@ -201,8 +201,6 @@ namespace HRMgrSystem
             this.gridStartTime.DisplayIndex = 2;
             this.gridEndTime.DisplayIndex = 3;
             this.gridProbation.DisplayIndex = 4;
-            this.gridProbationSalary.DisplayIndex = 5;
-            this.gridCorrectedSalary.DisplayIndex = 6;
             this.gridContractType.DisplayIndex = 7;
         }
 

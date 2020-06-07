@@ -53,11 +53,10 @@
             this.grid = new System.Windows.Forms.DataGridView();
             this.gridID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridEmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridProbation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridProbationSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridCorrectedSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridContractType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridEmpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -319,11 +318,10 @@
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.gridID,
             this.gridEmpName,
+            this.gridSalary,
             this.gridStartTime,
             this.gridEndTime,
             this.gridProbation,
-            this.gridProbationSalary,
-            this.gridCorrectedSalary,
             this.gridContractType,
             this.gridEmpID});
             this.grid.Location = new System.Drawing.Point(10, 218);
@@ -350,6 +348,13 @@
             this.gridEmpName.Name = "gridEmpName";
             this.gridEmpName.ReadOnly = true;
             // 
+            // gridSalary
+            // 
+            this.gridSalary.DataPropertyName = "salary";
+            this.gridSalary.HeaderText = "工资";
+            this.gridSalary.Name = "gridSalary";
+            this.gridSalary.ReadOnly = true;
+            // 
             // gridStartTime
             // 
             this.gridStartTime.DataPropertyName = "StartTime";
@@ -370,20 +375,6 @@
             this.gridProbation.HeaderText = "试用期";
             this.gridProbation.Name = "gridProbation";
             this.gridProbation.ReadOnly = true;
-            // 
-            // gridProbationSalary
-            // 
-            this.gridProbationSalary.DataPropertyName = "ProbationSalary";
-            this.gridProbationSalary.HeaderText = "试用期工资";
-            this.gridProbationSalary.Name = "gridProbationSalary";
-            this.gridProbationSalary.ReadOnly = true;
-            // 
-            // gridCorrectedSalary
-            // 
-            this.gridCorrectedSalary.DataPropertyName = "CorrectedSalary";
-            this.gridCorrectedSalary.HeaderText = "转正后工资";
-            this.gridCorrectedSalary.Name = "gridCorrectedSalary";
-            this.gridCorrectedSalary.ReadOnly = true;
             // 
             // gridContractType
             // 
@@ -445,16 +436,15 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.DataGridView grid;
+        private System.Windows.Forms.TextBox txtSalary;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridID;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gridSalary;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridStartTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridProbation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gridProbationSalary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gridCorrectedSalary;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridContractType;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridEmpID;
-        private System.Windows.Forms.TextBox txtSalary;
-        private System.Windows.Forms.Label label2;
     }
 }

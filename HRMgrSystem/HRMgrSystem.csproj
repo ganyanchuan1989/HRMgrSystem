@@ -147,6 +147,7 @@
     <Compile Include="LeaveApproveForm.Designer.cs">
       <DependentUpon>LeaveApproveForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxEx.cs" />
     <Compile Include="MyLeaveForm.cs">
       <SubType>Form</SubType>
     </Compile>

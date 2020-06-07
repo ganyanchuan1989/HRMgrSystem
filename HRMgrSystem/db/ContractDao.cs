@@ -78,7 +78,7 @@ namespace HRMgrSystem.db
         {
             string whereSql = "";
             if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and c.id=@Id";
-            if (!float.IsNaN(vo.Salary)) whereSql += " and c.Salary=@Salary";
+            if (vo.Salary > 0 ) whereSql += " and c.Salary=@Salary";
             if (vo.Probation > 0) whereSql += " and c.Probation=@Probation";
             if (!EmptyUtils.EmptyStr(vo.EmpId)) whereSql += " and c.EMP_ID=@EmpId";
             if (vo.ContractType > 0) whereSql += " and c.Contract_Type=@ContractType";
@@ -102,6 +102,19 @@ namespace HRMgrSystem.db
         {
             return conn.Query<HRContract>("SELECT * FROM HR_CONTRACT").ToList();
         }
+
+        /// <summary>
+        /// 根据日期查询有效的合同
+        /// </summary>
+        /// <returns></returns>
+        public List<HRContract> FindByDate(string date)
+        {
+            return conn.Query<HRContract>("select c.*, e.NAME as EMP_NAME from HR_CONTRACT c, HR_EMPLOYEE e where c.EMP_ID = e.ID and date(start_time) < @date and date(end_time) > @date", new {
+                date = date
+            }).ToList();
+        }
+
+
 
         /// <summary>
         /// 更新

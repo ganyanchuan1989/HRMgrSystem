@@ -86,7 +86,8 @@ namespace HRMgrSystem.db
             if (!EmptyUtils.EmptyStr(vo.Id)) whereSql += " and u.id=@Id";
             if (!EmptyUtils.EmptyStr(vo.EmpId)) whereSql += " and u.Emp_Id=@EmpId";
             if (!EmptyUtils.EmptyStr(vo.UserName)) whereSql += " and u.UserName=@UserName";
-            if (vo.Status > 0) whereSql += " and u.User_Type=@UserType";
+            if (vo.Status > 0) whereSql += " and u.Status=@Status";
+            if (vo.UserType > 0) whereSql += " and u.User_Type=@UserType";
 
             string baseSql = @"SELECT u.*, e.name as EMP_NAME FROM HR_USER u , HR_EMPLOYEE e where u.emp_id = e.id";
 
@@ -95,6 +96,7 @@ namespace HRMgrSystem.db
                 EmpId = vo.EmpId,
                 UserName = vo.UserName,
                 UserType = vo.UserType,
+                Status = vo.Status
             }).ToList();  
         }
         

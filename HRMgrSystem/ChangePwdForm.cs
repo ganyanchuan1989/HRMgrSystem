@@ -39,6 +39,8 @@ namespace HRMgrSystem
                 {
                     user.Password = txtNewPwd.Text;
                     dao.Update(user);
+                    MessageBoxEx.Show(this, "密码修改成功");
+                    Close();
                 }
             }
         }

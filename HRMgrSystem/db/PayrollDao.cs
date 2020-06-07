@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Dapper;
+using HRMgrSystem.utils;
+using HRMgrSystem.vo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using Dapper;
-using HRMgrSystem.vo;
-using HRMgrSystem.utils;
 
 
 namespace HRMgrSystem.db
@@ -31,11 +28,6 @@ namespace HRMgrSystem.db
             return ret;
         }
 
-        /// <summary>
-        /// 查询部门根据ID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public HRPayroll FindById(string id)
         {
             List<HRPayroll> list = conn.Query<HRPayroll>("SELECT * FROM HR_Payroll where Id = @Id", new { Id = id }).ToList();
@@ -47,6 +39,44 @@ namespace HRMgrSystem.db
             {
                 return list[0];
             }
+        }
+
+        /// <summary>
+        /// 根据工资单日期区间查询
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<HRPayroll> FindByDateInterval(int year, int month)
+        {
+            string startDate = string.Format("{0}-{1}-01", year, month);
+            string endDate = string.Format("{0}-{1}-31", year, month);
+            List<HRPayroll> list = conn.Query<HRPayroll>("select * from HR_PAYROLL where date(PAYROLL_DATE) between @startDate and @endDate", new {
+                startDate = startDate,
+                endDate = endDate
+            }).ToList();
+
+            return list;
+        }
+
+        /// <summary>
+        /// 根据工资单日期区间查询
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<HRPayroll> FindByWhere(HRPayroll vo)
+        {
+            string whereSql = "";
+            if (!EmptyUtils.EmptyStr(vo.PayrollDate)) whereSql += " and PAYROLL_DATE=@PayrollDate";
+            if (!EmptyUtils.EmptyStr(vo.EmpId)) whereSql += " and EMP_ID=@EmpId";
+
+            string baseSql = "select p.*, e.NAME as EMP_NAME from HR_PAYROLL p, HR_EMPLOYEE e where p.EMP_ID = e.ID ";
+            List<HRPayroll> list = conn.Query<HRPayroll>(baseSql + whereSql, new
+            {
+                PayrollDate = vo.PayrollDate,
+                EmpId = vo.EmpId
+            }).ToList();
+
+            return list;
         }
 
         /// <summary>
